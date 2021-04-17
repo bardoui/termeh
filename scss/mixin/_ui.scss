@@ -1,0 +1,115 @@
+/// Generate placeholder selector for input
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @group ui
+/// @example @include placeholder(){...}
+@mixin placeholder() {
+    $placeholders: ":-moz" ":-webkit-input" "-moz" "-ms-input";
+    @each $placeholder in $placeholders {
+        &:#{$placeholder}-placeholder {
+            @content;
+        }
+    }
+}
+
+/// Style scrollbar
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @group ui
+/// @param {number} $width scrollbar width
+/// @param {color} $track track background color
+/// @param {color} $thumb thumb background color
+/// @param {color} $thumb-hover thumb hover state background color
+/// @example @include scrollbar(6px, gray, darkgray, red);
+@mixin scrollbar($width, $track: null, $thumb: null, $thumb-hover: null) {
+    &::-webkit-scrollbar {
+        width: $width;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $track;
+        box-shadow: 0 0 3px 0 palette("shade", "200") inset,
+            0 0 1px palette("shade", "200") inset;
+        transition: all 200ms;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $thumb;
+        transition: all 200ms;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: $thumb-hover;
+    }
+}
+
+/// Create css loader
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @group ui
+/// @param {number} $size loader size
+/// @param {color} $color loader color
+/// @example @include loader(1.5rem, red);
+@mixin loader($size, $color) {
+    position: relative;
+    z-index: 0;
+
+    &::after {
+        text-rendering: optimizeLegibility;
+        display: block;
+        position: absolute;
+        box-sizing: border-box;
+        content: "";
+        z-index: 2;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        width: $size;
+        height: $size;
+        border-radius: get-var("radius", "circle");
+        animation: loader-animation 900ms infinite
+            cubic-bezier(0.86, 0, 0.07, 1);
+        @at-root {
+            @keyframes loader-animation {
+                from {
+                    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+                }
+                to {
+                    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+                }
+            }
+        }
+        border: 2px solid $color;
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+    }
+}
+
+/// Create css overlay
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @group ui
+/// @param {color} $color overlay color
+/// @example @include overlay(rgba(0,0,0, 0.5));
+@mixin overlay($color) {
+    position: relative;
+    z-index: 0;
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: $color;
+    }
+}
+
+/// Create soft drop shadow
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @group ui
+/// @param {number} $x shadow x size
+/// @param {number} $y shadow y size
+/// @param {color} $color shadow color
+/// @example @include shadow(0, 30px, #8A959E);
+@mixin shadow($x, $y, $color) {
+    box-shadow: $x $y (max((abs($x) abs($y)) ...) * 2) change-color($color: $color, $alpha: 0.2);
+}

@@ -1,0 +1,82 @@
+// Theme
+@include set-theme("light");
+
+// Vars
+@include set-var("base", "direction", ltr);
+@include set-var("base", "line-height", 1.6);
+
+@include set-var("font", "size", 12px);
+@include set-var(
+    "font",
+    "family",
+    "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+);
+
+@include set-var("radius", "normal", 2px);
+@include set-var("radius", "rounded", 290486px);
+@include set-var("radius", "circle", 50%);
+
+@include set-var("transition", "duration", 150ms);
+
+// Gaps
+@include set-gap("container", 1.5rem, false);
+@include set-gap("element", 1rem, false);
+@include set-gap("mini", 0.5em, true);
+@include set-gap("small", 0.75em, true);
+@include set-gap("normal", 1em, true);
+@include set-gap("medium", 1.5em, true);
+@include set-gap("large", 2em, true);
+@include set-gap("huge", 2.5em, true);
+@include set-gap("massive", 3em, true);
+
+// Units
+@include set-unit("full", 100%, true);
+@include set-unit("half", 50%, true);
+@include set-unit("1-of-3", 33.3333%, true);
+@include set-unit("2-of-3", 66.6666%, true);
+@include set-unit("1-of-4", 25%, true);
+@include set-unit("2-of-4", 50%, true);
+@include set-unit("3-of-4", 75%, true);
+@include set-unit("1-of-5", 20%, true);
+@include set-unit("2-of-5", 40%, true);
+@include set-unit("3-of-5", 60%, true);
+@include set-unit("4-of-5", 80%, true);
+@include set-unit("1-of-7", 14.2857%, true);
+@include set-unit("2-of-7", 28.5714%, true);
+@include set-unit("3-of-7", 42.8571%, true);
+@include set-unit("4-of-7", 57.1428%, true);
+@include set-unit("5-of-7", 71.4285%, true);
+@include set-unit("6-of-7", 85.7142%, true);
+
+// Color
+@include set-color("shade", #8a959e, true);
+@include set-color("primary", #2196f3, true);
+@include set-color("error", #cc0000, true);
+@include set-color("warning", #f5bc00, true);
+@include set-color("info", #8236ec, true);
+@include set-color("success", #2dcd75, true);
+
+@include set-color("background", white, false);
+@include set-color("foreground", #1a1a1a, false);
+@include set-color("background-alt", palette("primary", "50"), false);
+@include set-color(
+    "separator",
+    contrast-invert(
+        get-color("background"),
+        palette("shade", "200"),
+        palette("shade", "700")
+    ),
+    false
+);
+@include set-color("container", white, false);
+@include set-color("input", white, false);
+
+// Font sizes
+@include set-font-size("mini", 0.5em, true);
+@include set-font-size("small", 0.75em, true);
+@include set-font-size("normal", 1em, true);
+@include set-font-size("medium", 1.25em, true);
+@include set-font-size("large", 1.5em, true);
+@include set-font-size("big", 2em, true);
+@include set-font-size("huge", 2.5em, true);
+@include set-font-size("massive", 3em, true);

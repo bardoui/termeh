@@ -1,0 +1,38 @@
+.link {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    line-height: 1;
+    padding: ((get-var("base", "line-height") - 1) / 2) 0;
+    cursor: pointer;
+    text-decoration: none;
+    text-shadow: none;
+    @include unselectable();
+
+    > :not(.icon) {
+        flex: 1;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0%;
+        width: 0%;
+        height: 1px;
+        transform: translateX(-50%);
+        transition: all get-var("transition", "duration");
+        background: currentColor;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+
+    @each $label, $color in iterate-palette("600") {
+        &.is-#{$label} {
+            color: $color !important;
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+
+    img {
+        display: block;
+        max-height: 90%;
+        max-width: 90%;
+    }
+
+    svg {
+        width: 90%;
+    }
+
+    @each $label, $size in iterate-font-sizes() {
+        &.is-#{$label} {
+            height: $size;
+            width: $size;
+        }
+    }
+
+    &:not(.is-fit) {
+        @if get-var("base", "direction") == "rtl" {
+            margin-left: get-gap("element");
+        } @else {
+            margin-right: get-gap("element");
+        }
+        .is-ltr > &,
+        &.is-ltr-layout {
+            margin-right: get-gap("element");
+        }
+        .is-rtl > &,
+        &.is-rtl-layout {
+            margin-left: get-gap("element");
+        }
+    }
+}

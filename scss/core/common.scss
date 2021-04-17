@@ -1,0 +1,149 @@
+:root {
+    font-size: get-var("font", "size");
+}
+
+html {
+    text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    direction: get-var("base", "direction");
+    min-width: get-var("base", "min-width", 300px);
+    font-size: get-var("font", "size");
+}
+
+body {
+    direction: get-var("base", "direction");
+    background: get-color("background");
+    color: get-color("foreground");
+    line-height: get-var("base", "line-height");
+    font-family: get-var("font", "family");
+    font-size: 1rem;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+    display: block;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: get-var("font", "family");
+    font-size: 1rem;
+}
+
+input:not([type="button"]):not([type="reset"]):not([type="submit"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
+select,
+textarea {
+    @include control();
+    display: block;
+    width: 100%;
+    background: get-color("input");
+    border: 1px solid get-color("separator");
+    border-radius: get-var("radius", "normal");
+    padding: get-gap("element") / 2 get-gap("element");
+    margin-bottom: get-gap("element");
+
+    @include placeholder {
+        color: palette("foreground", "100");
+    }
+
+    &:focus,
+    &:active {
+        border-color: get-color("primary");
+    }
+
+    &:disabled,
+    &.is-disabled {
+        @include locked();
+        background: palette("shade", "50");
+        border-color: palette("shade", "100");
+        color: palette("shade", "300");
+    }
+}
+
+select {
+    appearance: menulist;
+    -moz-appearance: menulist;
+    -webkit-appearance: menulist;
+}
+
+select optgroup,
+select option {
+    font: inherit;
+}
+
+code,
+pre {
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: auto;
+}
+
+p:not(:last-child) {
+    margin-bottom: get-gap("container");
+}
+
+code {
+    direction: ltr;
+    padding: 1em;
+    background: get-color("background-alt");
+}
+
+hr {
+    display: block;
+    border: none;
+    height: 1px;
+    width: 100%;
+    background: get-color("separator");
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    vertical-align: middle;
+}
+
+small {
+    font-size: font-size("small");
+}
+
+strong {
+    font-weight: bold;
+}
+
+pre {
+    direction: ltr;
+    -webkit-overflow-scrolling: touch;
+    background: get-color("background-alt");
+    overflow-x: auto;
+    padding: 1em;
+    white-space: pre;
+    word-wrap: normal;
+
+    code {
+        background: none;
+        color: currentColor;
+        font-size: 1em;
+        padding: 0;
+    }
+}
+
+a {
+    color: get-color("primary");
+    transition: all get-var("transition", "duration");
+
+    &:hover {
+        color: readable(get-color("primary"), get-color("background"));
+    }
+}
+
+::selection {
+    background-color: get-color("primary");
+    color: foreground(get-color("primary"));
+}

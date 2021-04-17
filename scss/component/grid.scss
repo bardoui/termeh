@@ -1,0 +1,141 @@
+.grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    flex-wrap: wrap;
+    margin: -(get-gap("container") / 2);
+
+    &.is-start-align {
+        align-items: flex-start;
+    }
+
+    &.is-end-align {
+        align-items: flex-end;
+    }
+
+    &.is-stretched {
+        align-items: stretch;
+    }
+
+    &.is-stackable {
+        @include mobile() {
+            flex-direction: column;
+
+            &.is-reversed {
+                flex-direction: column-reverse;
+            }
+
+            .break {
+                display: none;
+            }
+        }
+    }
+
+    .column {
+        flex: 1;
+        box-sizing: border-box;
+        padding: get-gap("container") / 2;
+
+        &.is-fit {
+            flex: none;
+        }
+
+        @include tablet() {
+            flex-basis: 0;
+            flex-grow: 1;
+            flex-shrink: 1;
+            width: auto;
+        }
+
+        @each $label, $unit in iterate-units() {
+            &.is-#{$label} {
+                flex: none;
+                width: $unit;
+            }
+
+            @include mobile {
+                &.is-#{$label}-mobile {
+                    flex: none;
+                    width: $unit;
+                }
+            }
+
+            @include tablet {
+                &.is-#{$label}-tablet {
+                    flex: none;
+                    width: $unit;
+                }
+            }
+
+            @include tablet-only {
+                &.is-#{$label}-tablet-only {
+                    flex: none;
+                    width: $unit;
+                }
+            }
+
+            @include until-desktop {
+                &.is-#{$label}-until-desktop {
+                    flex: none;
+                    width: $unit;
+                }
+            }
+
+            @include desktop {
+                &.is-#{$label}-desktop {
+                    flex: none;
+                    width: $unit;
+                }
+            }
+
+            @include desktop-only {
+                &.is-#{$label}-desktop-only {
+                    flex: none;
+                    width: $unit;
+                }
+            }
+
+            @include until-widescreen {
+                &.is-#{$label}-until-widescreen {
+                    flex: none;
+                    width: $unit;
+                }
+            }
+
+            @include widescreen {
+                &.is-#{$label}-widescreen {
+                    flex: none;
+                    width: $unit;
+                }
+            }
+
+            @include widescreen-only {
+                &.is-#{$label}-widescreen-only {
+                    flex: none;
+                    width: $unit;
+                }
+            }
+
+            @include until-fullhd {
+                &.is-#{$label}-until-fullhd {
+                    flex: none;
+                    width: $unit;
+                }
+            }
+
+            @include fullhd {
+                &.is-#{$label}-fullhd {
+                    flex: none;
+                    width: $unit;
+                }
+            }
+        }
+    }
+
+    .break {
+        display: block;
+        flex-basis: 100%;
+        height: 0;
+    }
+}

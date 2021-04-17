@@ -1,0 +1,79 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    white-space: normal;
+}
+
+ul {
+    list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+img,
+audio,
+video {
+    box-sizing: border-box;
+    height: auto;
+    max-width: 100%;
+}
+
+iframe {
+    box-sizing: border-box;
+    border: 0;
+}
+
+table {
+    box-sizing: border-box;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td,
+th {
+    box-sizing: border-box;
+    padding: 0;
+    text-align: right;
+}

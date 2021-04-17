@@ -1,0 +1,49 @@
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button,
+.button {
+    @include control();
+    width: auto;
+    border: none;
+    text-align: center;
+    background-color: get-color("shade");
+    color: foreground(get-color("shade"));
+    border-radius: get-var("radius", "normal");
+    padding: (get-gap("element") / 2) get-gap("element");
+    transition: all get-var("transition", "duration");
+    text-decoration: none;
+
+    &:not(:last-child) {
+        @if get-var("base", "direction") == "rtl" {
+            margin-left: get-gap("element");
+        } @else {
+            margin-right: get-gap("element");
+        }
+        .is-ltr > &,
+        &.is-ltr-layout {
+            margin-right: get-gap("element");
+        }
+        .is-rtl > &,
+        &.is-rtl-layout {
+            margin-left: get-gap("element");
+        }
+    }
+
+    &:hover {
+        background-color: palette("shade", "600");
+        color: foreground(palette("shade", "600"));
+    }
+
+    @each $label, $color in iterate-colors() {
+        &.is-#{$label} {
+            background-color: $color;
+            color: foreground($color);
+
+            &:hover {
+                background-color: palette($label, "600");
+                color: foreground(palette($label, "600"));
+            }
+        }
+    }
+}

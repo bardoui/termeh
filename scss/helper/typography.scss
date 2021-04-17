@@ -1,0 +1,142 @@
+@each $label, $size in iterate-font-sizes() {
+    .has-#{$label}-size {
+        font-size: $size !important;
+    }
+
+    @include mobile() {
+        .has-#{$label}-size-mobile {
+            font-size: $size !important;
+        }
+    }
+    @include tablet() {
+        .has-#{$label}-size-tablet {
+            font-size: $size !important;
+        }
+    }
+    @include tablet-only() {
+        .has-#{$label}-size-tablet-only {
+            font-size: $size !important;
+        }
+    }
+    @include until-desktop() {
+        .has-#{$label}-size-until-desktop {
+            font-size: $size !important;
+        }
+    }
+    @include desktop() {
+        .has-#{$label}-size-desktop {
+            font-size: $size !important;
+        }
+    }
+    @include desktop-only() {
+        .has-#{$label}-size-desktop-only {
+            font-size: $size !important;
+        }
+    }
+    @include until-widescreen() {
+        .has-#{$label}-size-until-widescreen {
+            font-size: $size !important;
+        }
+    }
+    @include widescreen() {
+        .has-#{$label}-size-widescreen {
+            font-size: $size !important;
+        }
+    }
+    @include widescreen-only() {
+        .has-#{$label}-size-widescreen-only {
+            font-size: $size !important;
+        }
+    }
+    @include until-fullhd() {
+        .has-#{$label}-size-until-fullhd {
+            font-size: $size !important;
+        }
+    }
+    @include fullhd() {
+        .has-#{$label}-size-fullhd {
+            font-size: $size !important;
+        }
+    }
+}
+
+@each $label, $weight in iterate-font-weights() {
+    .is-#{$label} {
+        font-weight: $weight !important;
+    }
+}
+
+$text-aligns: left right center justify;
+@each $align in $text-aligns {
+    .is-#{$align}-align {
+        text-align: $align !important;
+    }
+
+    @include mobile() {
+        .is-#{$align}-align-mobile {
+            text-align: $align !important;
+        }
+    }
+    @include tablet() {
+        .is-#{$align}-align-tablet {
+            text-align: $align !important;
+        }
+    }
+    @include tablet-only() {
+        .is-#{$align}-align-tablet-only {
+            text-align: $align !important;
+        }
+    }
+    @include until-desktop() {
+        .is-#{$align}-align-until-desktop {
+            text-align: $align !important;
+        }
+    }
+    @include desktop() {
+        .is-#{$align}-align-desktop {
+            text-align: $align !important;
+        }
+    }
+    @include desktop-only() {
+        .is-#{$align}-align-desktop-only {
+            text-align: $align !important;
+        }
+    }
+    @include until-widescreen() {
+        .is-#{$align}-align-until-widescreen {
+            text-align: $align !important;
+        }
+    }
+    @include widescreen() {
+        .is-#{$align}-align-widescreen {
+            text-align: $align !important;
+        }
+    }
+    @include widescreen-only() {
+        .is-#{$align}-align-widescreen-only {
+            text-align: $align !important;
+        }
+    }
+    @include until-fullhd() {
+        .is-#{$align}-align-until-fullhd {
+            text-align: $align !important;
+        }
+    }
+    @include fullhd() {
+        .is-#{$align}-align-fullhd {
+            text-align: $align !important;
+        }
+    }
+}
+
+.is-italic {
+    font-style: italic !important;
+}
+
+.is-underline {
+    text-decoration: underline !important;
+}
+
+.is-undecorated {
+    text-decoration: none;
+}

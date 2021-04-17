@@ -1,0 +1,31 @@
+.layout {
+    display: block;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    filter: grayscale(0%);
+    transition: filter get-var("transition", "duration");
+
+    &:not(.is-simple) {
+        overflow: hidden;
+        overflow-y: auto;
+        @include scrollbar(
+            1rem,
+            palette("shade", "50"),
+            palette("shade", "300"),
+            get-color("primary")
+        );
+    }
+
+    &.has-modal {
+        overflow: hidden !important;
+        filter: grayscale(100%);
+    }
+
+    &.is-centered {
+        display: flex;
+        > * {
+            margin: auto;
+        }
+    }
+}

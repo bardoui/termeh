@@ -1,0 +1,14 @@
+/// Termeh Core (SCSS)
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @link http://ekramy.ir
+/// Import this file to use all function and mixin
+@import "./core/vars";
+@import "./core/contrast";
+@import "./core/palette";
+@import "./core/setter";
+@import "./core/getter";
+@import "./core/iterator";
+@import "./mixin/layout";
+@import "./mixin/mediaquery";
+@import "./mixin/ui";
+@import "./default";

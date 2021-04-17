@@ -1,0 +1,172 @@
+/// Set global theme
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @access public
+/// @group helpers
+/// @param {'dark'|'light'} $theme
+/// @example @include set-theme('dark');
+@mixin set-theme($theme) {
+    // Validate
+    @if ($theme != "light" and $theme != "dark") {
+        @error 'set-theme: $theme only can set to light or dark';
+    }
+    // Set theme
+    $--termeh-theme: $theme !global;
+}
+
+/// Set variable for component
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @access public
+/// @group helpers
+/// @param {string} $component component name
+/// @param {string} $property property name
+/// @param {string} $value value
+/// @example @include set-var('sidebar', 'background', white);
+@mixin set-var($component, $property, $value) {
+    // Validate
+    @if (type-of($component) != "string") {
+        @error 'set-var: $component must be string';
+    }
+    @if (type-of($property) != "string") {
+        @error 'set-var: $property must be string';
+    }
+    // Register component property
+    $componentMap: ();
+    @if map-has-key($termeh-vars, $component) {
+        $componentMap: map-get($termeh-vars, $component);
+    }
+
+    $componentMap: map-merge(
+        $componentMap,
+        (
+            $property: $value
+        )
+    );
+    $termeh-vars: map-merge(
+        $termeh-vars,
+        (
+            $component: $componentMap
+        )
+    ) !global;
+}
+
+/// Register new gap
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @access public
+/// @group helpers
+/// @param {string} $name gap name
+/// @param {number} $size gap size
+/// @param {boolean} $is-iterable specific new gap must list in iteration gaps or not
+/// @example @include set-gap('normal', 1rem, true);
+/// @example @include set-gap('container', 1rem, false);
+@mixin set-gap($name, $size, $is-iterable: true) {
+    // Validate
+    @if (type-of($name) != "string") {
+        @error 'set-gap: $name must be string';
+    }
+    @if (type-of($size) != "number") {
+        @error 'set-gap: $size must be number';
+    }
+    @if (type-of($is-iterable) != "bool") {
+        @error 'set-gap: $is-iterable must be boolean';
+    }
+    // Register gap
+    $termeh-gaps: map-merge(
+        $termeh-gaps,
+        (
+            $name: (
+                $size $is-iterable == true
+            )
+        )
+    ) !global;
+}
+
+/// Register new unit
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @access public
+/// @group helpers
+/// @param {string} $name unit name
+/// @param {number} $size unit size
+/// @param {boolean} $is-iterable specific new unit must list in iteration units or not
+/// @example @include set-unit('half', 50%, true);
+/// @example @include set-unit('avatar', 2rem, false);
+@mixin set-unit($name, $size, $is-iterable: true) {
+    // Validate
+    @if (type-of($name) != "string") {
+        @error 'set-unit: $name must be string';
+    }
+    @if (type-of($size) != "number") {
+        @error 'set-unit: $size must be number';
+    }
+    @if (type-of($is-iterable) != "bool") {
+        @error 'set-unit: $is-iterable must be boolean';
+    }
+    // Register unit
+    $termeh-units: map-merge(
+        $termeh-units,
+        (
+            $name: (
+                $size $is-iterable == true
+            )
+        )
+    ) !global;
+}
+
+/// Register new color
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @access public
+/// @group helpers
+/// @param {string} $name color name
+/// @param {color} $color
+/// @param {boolean} $is-iterable specific new color must list in iteration colors or not
+/// @example @include set-color('primary', blue, true);
+@mixin set-color($name, $color, $is-iterable: false) {
+    // Validate
+    @if (type-of($name) != "string") {
+        @error 'set-color: $name must be string';
+    }
+    @if (type-of($color) != "color") {
+        @error 'set-color: $color must be color';
+    }
+    @if (type-of($is-iterable) != "bool") {
+        @error 'set-color: $is-iterable must be boolean';
+    }
+    // Register color
+    $termeh-palette: map-merge(
+        $termeh-palette,
+        (
+            $name: (
+                $color $is-iterable == true
+            )
+        )
+    ) !global;
+}
+
+/// Register new font size
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @access public
+/// @group helpers
+/// @param {string} $name font size name
+/// @param {number} $size font size
+/// @param {boolean} $is-iterable specific new font size must list in iteration font sizes or not
+/// @example @include set-font-size('huge', 3rem);
+@mixin set-font-size($name, $size, $is-iterable: true) {
+    // Validate
+    @if (type-of($name) != "string") {
+        @error 'set-font-size: $name must be string';
+    }
+    @if (type-of($size) != "number") {
+        @error 'set-font-size: $size must be number';
+    }
+    @if (type-of($is-iterable) != "bool") {
+        @error 'set-font-size: $is-iterable must be boolean';
+    }
+    // Register font size
+    $termeh-font-sizes: map-merge(
+        $termeh-font-sizes,
+        (
+            $name: (
+                $size $is-iterable == true
+            )
+        )
+    ) !global;
+}

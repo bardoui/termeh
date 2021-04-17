@@ -1,0 +1,80 @@
+/// make color lighten
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @access public
+/// @group helpers
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+/// @example $background: tint(red, 88%);
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+/// make color darken
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @access public
+/// @group helpers
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+/// @example $color: shade(red, 75%);
+/// TODO: Make darkColor smarter base on color
+@function shade($color, $percentage) {
+    $hue: hue($color);
+    $lightness: 15%;
+    @if ($hue >= 0 and $hue <= 20) {
+        $lightness: 25%;
+        $hue: $hue - 10;
+    } @else if($hue >= 21 and $hue <= 60) {
+        $lightness: 40%;
+        $hue: $hue - 15;
+    }
+    $darkColor: change-color($color, $hue: $hue, $lightness: $lightness);
+    @return mix($darkColor, $color, $percentage);
+}
+
+/// Get palette of color
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @access public
+/// @group helpers
+/// @param {color} $color color
+/// @param {'50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'} $variant
+/// @return {color}
+/// @example $color-light: get-palette(#FFBF00, '50');
+/// @example $color-dark: get-palette(#FFBF00, '900');
+@function get-palette($color, $variant: "500") {
+    @if (type-of($color) != "color") {
+        @error 'get-palette: $color must be color';
+    }
+    @if (
+        index(
+                ("50" "100" "200" "300" "400" "500" "600" "700" "800" "900"),
+                $variant
+            ) ==
+            null
+    ) {
+        @error 'get-palette: $variant must be a valid color variant';
+    }
+    @if ($variant == "50") {
+        @return tint($color, 88%);
+    } @else if($variant == "100") {
+        @return tint($color, 70%);
+    } @else if($variant == "200") {
+        @return tint($color, 50%);
+    } @else if($variant == "300") {
+        @return tint($color, 30%);
+    } @else if($variant == "400") {
+        @return tint($color, 15%);
+    } @else if($variant == "500") {
+        @return $color;
+    } @else if($variant == "600") {
+        @return shade($color, 13%);
+    } @else if($variant == "700") {
+        @return shade($color, 30%);
+    } @else if($variant == "800") {
+        @return shade($color, 46%);
+    } @else if($variant == "900") {
+        @return shade($color, 75%);
+    }
+    @return $color;
+}

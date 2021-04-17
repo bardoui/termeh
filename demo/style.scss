@@ -1,0 +1,9 @@
+@import "../scss/core.scss";
+@include set-var("font", "family", "calibri");
+@include set-var("font", "size", 12px);
+@include set-color("primary", #118153, true);
+@import "../scss/reset.scss";
+@import "../scss/component/heading.scss";
+@import "../scss/component/layout.scss";
+@import "../scss/component/container.scss";
+@import "../scss/component/button.scss";

@@ -1,0 +1,59 @@
+.input {
+    display: block;
+
+    &:not(:last-child) {
+        margin-bottom: get-gap("element");
+    }
+
+    label {
+        display: block;
+        width: 100%;
+        margin-bottom: get-gap("element");
+    }
+
+    input:not([type="button"]):not([type="reset"]):not([type="submit"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
+    select,
+    textarea {
+        display: block;
+        width: 100%;
+
+        &:not(:last-child) {
+            margin-bottom: get-gap("element");
+        }
+    }
+
+    .errors {
+        display: none;
+        width: 100%;
+    }
+
+    &.is-required {
+        label::after {
+            content: "*";
+            color: get-color("primary");
+        }
+    }
+
+    &.has-error {
+        input:not([type="button"]):not([type="reset"]):not([type="submit"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
+        select,
+        textarea {
+            border-color: get-color("error");
+        }
+
+        .errors {
+            display: block;
+
+            > * {
+                display: block;
+                margin: 0;
+                padding: 0;
+                color: readable(get-color("error"), get-color("background"));
+
+                &:not(:last-child) {
+                    margin-bottom: get-gap("element") / 2;
+                }
+            }
+        }
+    }
+}

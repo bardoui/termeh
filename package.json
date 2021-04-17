@@ -1,0 +1,42 @@
+{
+    "name": "@bardoui/termeh",
+    "version": "1.0.0",
+    "private": false,
+    "description": "Modern modular CSS framework",
+    "license": "ISC",
+    "main": "./scss/core.scss",
+    "scss": "./scss/core.scss",
+    "scripts": {
+        "serve": "rollup -c"
+    },
+    "files": [
+        "scss",
+        "docs"
+    ],
+    "keywords": [
+        "css",
+        "sass",
+        "layout",
+        "grid",
+        "flexbox",
+        "responsive",
+        "framework"
+    ],
+    "authors": [
+        {
+            "email": "m.ajamekramy@gmail.com",
+            "homepage": "http://ekramy.ir",
+            "name": "Mojtaba Ekramy",
+            "role": "Developer"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bardoui/termeh"
+    },
+    "devDependencies": {
+        "rollup": "^2.45.2",
+        "rollup-plugin-live-server": "^2.0.0",
+        "rollup-plugin-scss": "^2.6.1"
+    }
+}

@@ -1,0 +1,24 @@
+// Base config
+$--termeh-theme: "light"; // Theme mode (dark or light)
+
+// Holders
+$termeh-vars: () !default;
+$termeh-gaps: () !default;
+$termeh-units: () !default;
+$termeh-palette: () !default;
+$termeh-font-sizes: () !default;
+$termeh-breakpoints: (
+    "tablet": 769px,
+    "desktop": 1024px,
+    "widescreen": 1216px,
+    "fullhd": 1408px
+) !default;
+$termeh-font-weights: (
+    "lighter": 100,
+    "light": 300,
+    "normal": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+    "bolder": 900
+) !default;

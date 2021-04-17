@@ -1,0 +1,36 @@
+.container {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    padding: get-gap("normal");
+    width: 100%;
+    max-width: none;
+
+    &:not(.is-fit) {
+        margin-bottom: get-gap("container");
+    }
+
+    &.has-grid,
+    &.has-grid.is-paddingless {
+        padding: get-gap("container") / 2;
+    }
+
+    &:not(.is-fluid) {
+        @include desktop() {
+            max-width: 960px;
+        }
+        @include widescreen() {
+            max-width: 1200px;
+        }
+    }
+
+    &:not(.has-grid) {
+        @each $label, $gap in iterate-gaps() {
+            &.has-#{$label}-padding {
+                padding: $gap;
+            }
+        }
+    }
+}
