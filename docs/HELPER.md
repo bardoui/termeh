@@ -3,10 +3,10 @@
 For using helper classes you must import them from `helper` directory. by default no helper imported in your app.
 
 ```scss
-@import "@vbardo/termeh/scss/helper/color.scss";
-@import "@vbardo/termeh/scss/helper/layout.scss";
-@import "@vbardo/termeh/scss/helper/typography.scss";
-@import "@vbardo/termeh/scss/helper/visibility.scss";
+@import "@ bardoui/termeh/scss/helper/color.scss";
+@import "@ bardoui/termeh/scss/helper/layout.scss";
+@import "@ bardoui/termeh/scss/helper/typography.scss";
+@import "@ bardoui/termeh/scss/helper/visibility.scss";
 ```
 
 ## Color

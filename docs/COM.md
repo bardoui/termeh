@@ -3,15 +3,15 @@
 For using components you must import them from `component` directory. by default no component imported in your app.
 
 ```scss
-@import "@vbardo/termeh/scss/component/button.scss";
-@import "@vbardo/termeh/scss/component/container.scss";
-@import "@vbardo/termeh/scss/component/grid.scss";
-@import "@vbardo/termeh/scss/component/heading.scss";
-@import "@vbardo/termeh/scss/component/icon.scss";
-@import "@vbardo/termeh/scss/component/image.scss";
-@import "@vbardo/termeh/scss/component/input.scss";
-@import "@vbardo/termeh/scss/component/layout.scss";
-@import "@vbardo/termeh/scss/component/link.scss";
+@import "@ bardoui/termeh/scss/component/button.scss";
+@import "@ bardoui/termeh/scss/component/container.scss";
+@import "@ bardoui/termeh/scss/component/grid.scss";
+@import "@ bardoui/termeh/scss/component/heading.scss";
+@import "@ bardoui/termeh/scss/component/icon.scss";
+@import "@ bardoui/termeh/scss/component/image.scss";
+@import "@ bardoui/termeh/scss/component/input.scss";
+@import "@ bardoui/termeh/scss/component/layout.scss";
+@import "@ bardoui/termeh/scss/component/link.scss";
 ```
 
 ## Button
