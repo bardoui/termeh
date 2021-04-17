@@ -122,7 +122,7 @@ Make a icon container for img and svg tags.
 
 **is-circular** This class make img tag circular.
 
-**Sizing** Mui use registered font size for image sizing. You can override registered font sizes to change this behavior.
+**Sizing** termeh use registered font size for image sizing. You can override registered font sizes to change this behavior.
 
 ```html
 <img src="..." alt="..." class="is-huge" />
