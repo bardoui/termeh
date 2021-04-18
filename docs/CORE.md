@@ -46,7 +46,7 @@ $border-color: contrast-invert(black, white, black); // > black
 
 ### Get Foreground Color
 
-Get foreground for color (this function use contrast function with tow color of semi-white and semi-black for foreground `contrast($color, mix(white, $color, 95%), mix(black, $color, 95%))`)
+Get foreground for color (this function use contrast function with two color of semi-white and semi-black for foreground `contrast($color, mix(white, $color, 95%), mix(black, $color, 95%))`)
 
 ```scss
 $foreground: foreground(#f44336); // > #fef6f5

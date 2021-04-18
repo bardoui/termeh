@@ -55,6 +55,12 @@ container width is `100%` for **tablet** and **mobile**, `960px` for **desktop**
 
 **has-grid** remove all container padding and make grid fit inside container.
 
+```html
+<div class="container is-fluid is-fit has-grid">
+  <div class="grid">...</div>
+</div>
+```
+
 ## Grid
 
 A flexbox based grid system. columns size is equal by default but you can register and use unit to add column size.
@@ -156,6 +162,12 @@ Layout component can used for main container of page. its come with default styl
 **is-centered** You can add this class to make layout content center aligned (ex: login page).
 
 **is-simple** You can add this class to disable scrollbar.
+
+```html
+<div class="layout is-simple is-centered">
+  <div class="my-login-form">...</div>
+</div>
+```
 
 ## Link
 
