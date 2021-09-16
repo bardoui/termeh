@@ -77,6 +77,8 @@ A flexbox based grid system. columns size is equal by default but you can regist
 
 **is-fit** Make column size fit to content size
 
+**is-vertical** make grid direction vertical
+
 ```html
 <div class="grid is-stackable">
   <!-- Three equal column -->

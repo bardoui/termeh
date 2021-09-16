@@ -1,7 +1,5 @@
 .grid {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     white-space: nowrap;
     flex-wrap: wrap;
     margin: -(get-gap("container") / 2);
@@ -16,6 +14,16 @@
 
     &.is-stretched {
         align-items: stretch;
+    }
+
+    &.is-vertical {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    &:not(.is-vertical) {
+        flex-direction: row;
+        align-items: center;
     }
 
     &.is-stackable {
