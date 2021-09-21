@@ -46,4 +46,26 @@ button,
             }
         }
     }
+
+    &.is-simple {
+        background-color: palette("shade", "50");
+        color: foreground(get-color("background"));
+
+        &:hover {
+            background-color: palette("shade", "200");
+            color: foreground(palette("shade", "200"));
+        }
+
+        @each $label, $color in iterate-colors() {
+            &.is-#{$label} {
+                background-color: palette("shade", "50");
+                color: readable($color, get-color("background"));
+
+                &:hover {
+                    background-color: $color;
+                    color: foreground($color);
+                }
+            }
+        }
+    }
 }

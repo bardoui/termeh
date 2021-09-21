@@ -19,6 +19,7 @@ For using components you must import them from `component` directory. by default
 by default styling `<input type="button">`, `<input type="submit">`, `<input type="reset">`, `<button>` and `.button` class.
 
 **is-{color}** change color to registered {color}
+**is-simple** make simple button with light background.
 
 ```html
 <input type="submit" />
