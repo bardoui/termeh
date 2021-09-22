@@ -111,5 +111,5 @@
 /// @param {color} $color shadow color
 /// @example @include shadow(0, 30px, #8A959E);
 @mixin shadow($x, $y, $color) {
-    box-shadow: $x $y (max((abs($x) abs($y)) ...) * 2) change-color($color: $color, $alpha: 0.2);
+    box-shadow: shadow($x, $y, $color);
 }

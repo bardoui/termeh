@@ -1,0 +1,13 @@
+/// Create soft drop shadow value
+/// @author mekramy <m.ajamekramy@gmail.com>
+/// @group ui
+/// @param {number} $x shadow x size
+/// @param {number} $y shadow y size
+/// @param {color} $color shadow color
+/// @example $shadow: shadow(0, 30px, #8A959E);
+@function shadow($x, $y, $color) {
+    @return (
+        $x $y (max((abs($x) abs($y))...) * 2)
+            change-color($color: $color, $alpha: 0.2)
+    );
+}

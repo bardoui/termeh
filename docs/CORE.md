@@ -94,6 +94,14 @@ $lighten: get-palette(#f44336, "50"); // > #fee8e7
 $darken: get-palette(#f44336, "900"); // > #98161b
 ```
 
+## UI
+
+### Generate Soft Shadow
+
+```scss
+$shadow: shadow(2px, 2px, palette("shade", "100"));
+```
+
 ## Links
 
 - [Back to Home](../README.md)
