@@ -22,10 +22,12 @@ button,
         }
         .is-ltr > &,
         &.is-ltr-layout {
+            margin-left: 0;
             margin-right: get-gap("element");
         }
         .is-rtl > &,
         &.is-rtl-layout {
+            margin-right: 0;
             margin-left: get-gap("element");
         }
     }
