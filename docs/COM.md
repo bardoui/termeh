@@ -5,7 +5,7 @@ For using components you must import them from `component` directory. by default
 ```scss
 @import "@bardoui/termeh/scss/component/button.scss";
 @import "@bardoui/termeh/scss/component/container.scss";
-@import "@bardoui/termeh/scss/component/grid.scss";
+@import "@bardoui/termeh/scss/component/flex.scss";
 @import "@bardoui/termeh/scss/component/heading.scss";
 @import "@bardoui/termeh/scss/component/icon.scss";
 @import "@bardoui/termeh/scss/component/image.scss";
@@ -62,9 +62,9 @@ container width is `100%` for **tablet** and **mobile**, `960px` for **desktop**
 </div>
 ```
 
-## Grid
+## Flex
 
-A flexbox based grid system. columns size is equal by default but you can register and use unit to add column size.
+A flexbox based grid system. item size is equal by default but you can register and use unit to add column size.
 
 **is-start-align** This class align grid items to start of grid.
 
@@ -81,16 +81,16 @@ A flexbox based grid system. columns size is equal by default but you can regist
 **is-vertical** make grid direction vertical
 
 ```html
-<div class="grid is-stackable">
+<div class="flex is-stackable">
   <!-- Three equal column -->
-  <div class="column">...</div>
-  <div class="column">...</div>
+  <div class="flex-item">...</div>
+  <div class="flex-item">...</div>
   <!-- Break line and make new row -->
   <div class="break">...</div>
-  <div class="column is-fit">...</div>
+  <div class="flex-item is-fit">...</div>
 
   <!-- Half size on all device, 2-of-3 on mobile and 1-of-3 on widescreen or wider -->
-  <div class="column is-half is-2-of-3-mobile is-1-of-3-widescreen">...</div>
+  <div class="flex-item is-half is-2-of-3-mobile is-1-of-3-widescreen">...</div>
 </div>
 ```
 

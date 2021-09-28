@@ -1,4 +1,4 @@
-.grid {
+.flex {
     display: flex;
     white-space: nowrap;
     flex-wrap: wrap;
@@ -36,7 +36,7 @@
         }
     }
 
-    .column {
+    .flex-item {
         flex: 1;
         box-sizing: border-box;
         padding: get-gap("container") / 2;
