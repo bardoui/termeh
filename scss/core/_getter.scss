@@ -1,33 +1,15 @@
-/// Check if theme is light
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
-/// @return {boolean} return true if theme is light and false otherwise
-/// @example @if(is-theme-light()){ ...
-@function is-theme-light() {
-    @return $--termeh-theme == "light";
-}
-
 /// Get component variable
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {string} $component component name
 /// @param {string} $property property name
 /// @param {any} $fallback default value if property not registered
 /// @return {any} return value on found and fallback on fails
-/// @example border-color: get-var('panel', 'border-color', #a7a7a7);
-@function get-var($component, $property, $fallback: null) {
-    // Validate
-    @if (type-of($component) != "string") {
-        @error 'get-var: $component must be string';
-    }
-    @if (type-of($property) != "string") {
-        @error 'get-var: $property must be string';
-    }
-    // Get component property
-    @if map-has-key($termeh-vars, $component) {
-        $componentMap: map-get($termeh-vars, $component);
+/// @example border-color: _var('panel', 'border', #a7a7a7);
+@function _var($component, $property, $fallback: null) {
+    $e: type-check($component, "_var", "component", "string");
+    $e: type-check($property, "_var", "property", "string");
+    @if map-has-key($--vars, $component) {
+        $componentMap: map-get($--vars, $component);
         @if map-has-key($componentMap, $property) {
             @return map-get($componentMap, $property);
         }
@@ -36,134 +18,90 @@
 }
 
 /// Get gap
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {string} $name gap name
 /// @return {number} return gap on found and throw error on fails
-/// @example margin-bottom: get-gap('element');
-@function get-gap($name) {
-    // Validate
-    @if (type-of($name) != "string") {
-        @error 'get-gap: $name must be string';
+/// @example margin-bottom: _gap('element');
+@function _gap($name) {
+    $e: type-check($name, "_gap", "name", "string");
+    @if map-has-key($--gaps, $name) {
+        @return nth(map-get($--gaps, $name), 1);
     }
-    // Get gap
-    @if map-has-key($termeh-gaps, $name) {
-        @return nth(map-get($termeh-gaps, $name), 1);
-    }
-    // Return error
     @error "#{$name} gap not found!";
 }
 
 /// Get unit
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {string} $name unit name
 /// @return {number} return unit on found and throw error on fails
-/// @example width: get-unit('half');
-/// @example width: get-unit('avatar');
-@function get-unit($name) {
-    // Validate
-    @if (type-of($name) != "string") {
-        @error 'get-unit: $name must be string';
+/// @example width: _unit('half');
+/// @example width: _unit('avatar');
+@function _unit($name) {
+    $e: type-check($name, "_unit", "name", "string");
+    @if map-has-key($--units, $name) {
+        @return nth(map-get($--units, $name), 1);
     }
-    // Get gap
-    @if map-has-key($termeh-units, $name) {
-        @return nth(map-get($termeh-units, $name), 1);
-    }
-    // Return error
     @error "#{$name} unit not found!";
 }
 
 /// Get color
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {string} $name color name
 /// @return {number} return color on found and throw error on fails
-/// @example background-color: get-color('primary');
-@function get-color($name) {
-    // Validate
-    @if (type-of($name) != "string") {
-        @error 'get-color: $name must be string';
+/// @example background-color: _color('primary');
+@function _color($name) {
+    $e: type-check($name, "_color", "name", "string");
+    @if map-has-key($--palette, $name) {
+        @return nth(map-get($--palette, $name), 1);
     }
-    // Get gap
-    @if map-has-key($termeh-palette, $name) {
-        @return nth(map-get($termeh-palette, $name), 1);
-    }
-    // Return error
     @error "#{$name} color not found!";
 }
 
-/// get palette for color
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+/// get palette for registered color
+///
 /// @param {string} $name registered color name
 /// @param {string} $variant
 /// @return {color} return palette on success and error on fails
-/// @example color: palette('primary', 900);
-@function palette($name, $variant: 500) {
-    @return get-palette(get-color($name), $variant);
+/// @example color: _palette('primary', '900');
+@function _palette($name, $variant: "500") {
+    @return palette(_color($name), $variant);
 }
 
 /// Get font size
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {string} $name font size name
 /// @return {number} return font size on found and throw error on fails
-/// @example font-size: get-font-size('huge');
-@function get-font-size($name) {
-    // Validate
-    @if (type-of($name) != "string") {
-        @error 'get-font-size: $name must be string';
+/// @example font-size: _size('huge');
+@function _size($name) {
+    $e: type-check($name, "_size", "name", "string");
+    @if map-has-key($--sizes, $name) {
+        @return nth(map-get($--sizes, $name), 1);
     }
-    // Get gap
-    @if map-has-key($termeh-font-sizes, $name) {
-        @return nth(map-get($termeh-font-sizes, $name), 1);
-    }
-    // Return error
     @error "#{$name} font size not found!";
 }
 
 /// Get breakpoint
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
-/// @param {string} $name breakpoint name
-/// @return {number} return breakpoint on found and throw error on fails
-/// @example @media screen and (min-width: get-breakpoint('tablet')) ...
-@function get-breakpoint($name) {
-    // Validate
-    @if (type-of($name) != "string") {
-        @error 'get-breakpoint: $name must be string';
+///
+/// @param {string} $name breakpoint name (mobile, tablet, tablet-only, until-desktop, desktop, desktop-only, until-widescreen, widescreen, widescreen-only, until-fullhd, fullhd)
+/// @return {number} return breakpoint query on found and throw error on fails
+/// @example @media #{_breakpoint("mobile")} { ...
+@function _breakpoint($name) {
+    $e: type-check($name, "_breakpoint", "name", "string");
+    @if map-has-key($--breakpoints, $name) {
+        @return map-get($--breakpoints, $name);
     }
-    // Get gap
-    @if map-has-key($termeh-breakpoints, $name) {
-        @return map-get($termeh-breakpoints, $name);
-    }
-    // Return error
     @error "#{$name} breakpoint not found!";
 }
 
 /// Get font weight
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {string} $name font weight name
 /// @return {number} return font weight on found and throw error on fails
-/// @example font-weight: get-font-weight('bolder');
-@function get-font-weight($name) {
-    // Validate
-    @if (type-of($name) != "string") {
-        @error 'get-font-weight: $name must be string';
+/// @example font-weight: _weight('bolder');
+@function _weight($name) {
+    $e: type-check($name, "_weight", "name", "string");
+    @if map-has-key($--weights, $name) {
+        @return map-get($--weights, $name);
     }
-    // Get gap
-    @if map-has-key($termeh-font-weights, $name) {
-        @return map-get($termeh-font-weights, $name);
-    }
-    // Return error
     @error "#{$name} font weight not found!";
 }

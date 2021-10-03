@@ -1,0 +1,169 @@
+.card {
+    $gap: _gap("container");
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    max-width: 100%;
+    padding: $gap;
+    border-radius: _var("radius", "normal");
+    background: _color("container");
+    color: foreground(_color("container"));
+    border: _var("card", "border");
+    box-shadow: _var(
+        "card",
+        "shadow",
+        (
+            shadow(0, 3px, _palette("shade", "500"), false),
+            shadow(0, 6px, _palette("shade", "500"), true)
+        )
+    );
+
+    > .separator {
+        display: block;
+        height: 1px;
+        background: _color("separator");
+        z-index: 1;
+
+        &.is-attached {
+            margin: 0 (-$gap);
+        }
+    }
+
+    > .section {
+        display: block;
+        margin: 0 (-$gap);
+        padding: 0;
+        z-index: 1;
+
+        &:first-child,
+        &.is-header {
+            margin-top: -$gap;
+        }
+        &:last-child,
+        &.is-footer {
+            margin-bottom: -$gap;
+        }
+
+        &:not(.is-attached) {
+            padding: $gap;
+        }
+
+        &.is-secondary {
+            background: _color("section");
+        }
+    }
+
+    > .overlay {
+        display: flex;
+        position: absolute;
+        box-sizing: border-box;
+        padding: $gap;
+        overflow: hidden;
+        overflow-y: auto;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: _color("overlay");
+        color: foreground(_color("overlay"));
+        backdrop-filter: _var("overlay", "filter");
+        transition: all _var("transition", "duration")
+            _var("transition", "ease");
+        opacity: 0;
+        z-index: -1;
+
+        @include scrollbar(
+            $width: _var("scroll", "size", 1rem),
+            $track: _palette("shade", "50"),
+            $thumb: _palette("shade", "300"),
+            $thumb-hover: foreground(_color("container"))
+        );
+
+        & > * {
+            margin: auto;
+            max-width: 100%;
+        }
+    }
+
+    &.is-decorated {
+        border-bottom: _var("decorator", "size", 2px) solid
+            foreground(_color("container"));
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &.is-loading {
+        @include overlay(_color("overlay"));
+        @include spinner(
+            $size: _var("spinner", "size", 2rem),
+            $color: foreground(_color("overlay")),
+            $width: _var("decorator", "size", 2px)
+        );
+    }
+
+    &.is-overlaid:not(.is-loading) {
+        > .overlay {
+            z-index: 2;
+            opacity: 1;
+        }
+    }
+
+    @each $label, $gap in _gaps(_var("card", "gaps", ())) {
+        &.is-#{$label}-gaped {
+            padding: $gap;
+            > .separator {
+                &.is-attached {
+                    margin: 0 (-$gap);
+                }
+            }
+
+            > .section {
+                margin: 0 (-$gap);
+                &:first-child,
+                &.is-header {
+                    margin-top: -$gap;
+                }
+                &:last-child,
+                &.is-footer {
+                    margin-bottom: -$gap;
+                }
+                &:not(.is-attached) {
+                    padding: $gap;
+                }
+            }
+
+            > .overlay {
+                padding: $gap;
+            }
+        }
+    }
+
+    @each $name, $color in _colors(_var("card", "colors", ())) {
+        &.is-#{$name} {
+            border: _var("card", "border-#{$name}", null);
+            box-shadow: _var("card", "shadow-#{$name}", null);
+
+            > .overlay {
+                @include scrollbar(
+                    $width: _var("scroll", "size", 1rem),
+                    $track: _palette("shade", "50"),
+                    $thumb: _palette("shade", "300"),
+                    $thumb-hover: $color
+                );
+            }
+
+            &.is-decorated {
+                border-bottom-color: $color;
+            }
+
+            &.is-loading {
+                @include spinner(
+                    $size: _var("spinner", "size", 2rem),
+                    $color: $color,
+                    $width: _var("decorator", "size", 2px)
+                );
+            }
+        }
+    }
+}

@@ -2,5 +2,9 @@
 /// @author mekramy <m.ajamekramy@gmail.com>
 /// @link http://ekramy.ir
 /// CSS style resets
-@import "./core/reset";
-@import "./core/common";
+@import "./reset/reset";
+@import "./reset/common";
+@import "./reset/helper";
+@import "./reset/heading";
+@import "./reset/image";
+@import "./reset/table";

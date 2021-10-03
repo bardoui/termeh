@@ -1,42 +1,67 @@
 .icon {
     display: inline-flex;
+    box-sizing: border-box;
     align-items: center;
     justify-content: center;
     width: 1em;
     height: 1em;
+    transition: all _var("transition", "duration") _var("transition", "ease");
 
     img {
         display: block;
         max-height: 90%;
         max-width: 90%;
+        transition: all _var("transition", "duration")
+            _var("transition", "ease");
     }
 
     svg {
         width: 90%;
+        fill: currentColor;
+        transition: all _var("transition", "duration")
+            _var("transition", "ease");
+
+        > * {
+            fill: currentColor;
+        }
     }
 
-    @each $label, $size in iterate-font-sizes() {
+    &.is-action {
+        cursor: pointer;
+        color: _color("mute");
+
+        > img {
+            filter: grayscale(_var("icon", "grayed", 0.5));
+        }
+
+        &:hover {
+            color: _color("foreground");
+
+            > img {
+                filter: grayscale(0);
+            }
+        }
+    }
+
+    @each $label, $size in _sizes(_var("icon", "sizes", ())) {
         &.is-#{$label} {
             height: $size;
             width: $size;
         }
     }
 
-    &:not(.is-fit) {
-        @if get-var("base", "direction") == "rtl" {
-            margin-left: get-gap("element");
-        } @else {
-            margin-right: get-gap("element");
-        }
-        .is-ltr > &,
-        &.is-ltr-layout {
-            margin-left: 0;
-            margin-right: get-gap("element");
-        }
-        .is-rtl > &,
-        &.is-rtl-layout {
-            margin-right: 0;
-            margin-left: get-gap("element");
+    @each $label, $color in _colors(_var("icon", "colors", ())) {
+        &.is-#{$label} {
+            color: readable($color, _color("base"));
+
+            &.is-action {
+                cursor: pointer;
+                color: _color("mute");
+
+                &:hover {
+                    color: readable($color, _color("base"));
+                }
+            }
         }
     }
 }

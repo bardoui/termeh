@@ -2,13 +2,16 @@
     display: block;
 
     &:not(:last-child) {
-        margin-bottom: get-gap("element");
+        margin-bottom: _gap("container");
+    }
+
+    & > :not(:last-child) {
+        margin-bottom: _gap("element");
     }
 
     label {
         display: block;
         width: 100%;
-        margin-bottom: get-gap("element");
     }
 
     input:not([type="button"]):not([type="reset"]):not([type="submit"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
@@ -16,10 +19,6 @@
     textarea {
         display: block;
         width: 100%;
-
-        &:not(:last-child) {
-            margin-bottom: get-gap("element");
-        }
     }
 
     .errors {
@@ -30,15 +29,15 @@
     &.is-required {
         label::after {
             content: "*";
-            color: get-color("primary");
+            color: readable(_color("primary"), _color("base"));
         }
     }
 
-    &.has-error {
+    &.is-failed {
         input:not([type="button"]):not([type="reset"]):not([type="submit"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
         select,
         textarea {
-            border-color: get-color("error");
+            border-color: _color("error");
         }
 
         .errors {
@@ -48,11 +47,7 @@
                 display: block;
                 margin: 0;
                 padding: 0;
-                color: readable(get-color("error"), get-color("background"));
-
-                &:not(:last-child) {
-                    margin-bottom: get-gap("element") / 2;
-                }
+                color: readable(_color("error"), _color("base"));
             }
         }
     }

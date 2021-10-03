@@ -1,6 +1,5 @@
 /// make around of floated element clear (no sibling)
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group layout
+///
 /// @example @include clearfix();
 @mixin clearfix() {
     &::after {
@@ -10,79 +9,16 @@
     }
 }
 
-/// make element unselectable
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group layout
-/// @example @include unselectable();
-@mixin unselectable() {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/// make element selectable by click on it
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group layout
-/// @example @include selectable();
-@mixin selectable() {
-    -webkit-touch-callout: all;
-    -webkit-user-select: all;
-    -moz-user-select: all;
-    -ms-user-select: all;
-    user-select: all;
-}
-
 /// make element not re-actable
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group layout
+///
 /// @example @include locked();
 @mixin locked() {
     pointer-events: none;
     user-select: none;
 }
 
-/// Reset style of control
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group layout
-/// @example @include control();
-@mixin control() {
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    box-sizing: border-box;
-    box-shadow: none;
-    position: relative;
-    vertical-align: middle;
-    outline: 0;
-    // States
-    &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active {
-        outline: none;
-    }
-
-    &[disabled],
-    &.is-disabled {
-        cursor: default;
-    }
-
-    &::-moz-focus-inner {
-        border: 0;
-    }
-}
-
 /// generate unified parent selector
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group selector
+///
 /// @param {string} $child child of parent
 /// @example @include unify-parent(.sidebar){ ...
 @mixin unify-parent($child) {

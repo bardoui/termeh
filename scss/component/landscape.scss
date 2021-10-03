@@ -1,0 +1,32 @@
+.landscape {
+    display: block;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    > * {
+        flex-wrap: nowrap;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: _gap("container");
+    }
+
+    &:not(.is-padding-less) {
+        padding: _gap("container");
+
+        @each $label, $gap in _gaps(_var("landscape", "gaps", ())) {
+            &.is-#{$label}-padded {
+                padding: $gap;
+            }
+        }
+    }
+
+    @media (hover: hover) {
+        overflow-x: hidden;
+        > * {
+            flex-wrap: wrap !important;
+        }
+    }
+}

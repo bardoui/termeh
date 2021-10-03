@@ -1,50 +1,22 @@
-.flex {
-    display: flex;
-    white-space: nowrap;
-    flex-wrap: wrap;
-    align-items: center;
+.gaper {
+    display: inline-flex;
     flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
     box-sizing: border-box;
-    margin: -(half-of(_gap("container")));
+    margin: -(half-of(_gap("element")));
 
-    > .break {
-        display: block;
-        flex-basis: 100%;
-        height: 0;
+    > * {
+        margin: half-of(_gap("element"));
     }
 
-    > .flex-item {
-        flex: 1;
-        box-sizing: border-box;
-        max-width: 100%;
-        padding: half-of(_gap("container"));
+    &.is-fluid {
+        display: flex;
+    }
 
-        &.is-fit {
-            flex: none;
-        }
-
-        @include tablet() {
-            flex-basis: 0;
-            flex-grow: 1;
-            flex-shrink: 1;
-            width: auto;
-        }
-
-        @each $label, $unit in _units(_var("flex", "units", ())) {
-            &.is-#{$label} {
-                flex: none;
-                width: $unit;
-            }
-
-            @each $device, $mq in _breakpoints() {
-                @media #{$mq} {
-                    &.is-#{$device}-#{$label} {
-                        flex: none !important;
-                        width: $unit !important;
-                    }
-                }
-            }
-        }
+    &.is-wrapped {
+        flex-wrap: wrap;
     }
 
     &.is-stacked {
@@ -59,16 +31,17 @@
 
     &.is-gap-less {
         margin: 0;
-        > .flex-item {
-            padding: 0;
+        > * {
+            margin: 0;
         }
     }
 
-    @each $label, $gap in _gaps(_var("flex", "gaps", ())) {
+    @each $label, $gap in _gaps(_var("gaper", "gaps", ())) {
         &.is-#{$label}-gaped {
             margin: -($gap / 2);
-            > .flex-item {
-                padding: ($gap / 2);
+
+            > * {
+                margin: ($gap / 2);
             }
         }
     }
@@ -82,14 +55,22 @@
 
     $justify-content: flex-start, flex-end, center, space-between, space-around,
         space-evenly;
-    @each $justify in $justify-content {
-        &.is-#{$justify}-justified {
-            justify-content: $justify;
+    @each $align in $justify-content {
+        &.is-#{$align}-justified {
+            justify-content: $align;
         }
     }
 
     @each $device, $mq in _breakpoints() {
         @media #{$mq} {
+            &.is-#{$device}-fluid {
+                display: flex !important;
+            }
+
+            &.is-#{$device}-wrapped {
+                flex-wrap: wrap !important;
+            }
+
             &.is-#{$device}-stacked {
                 flex-direction: column !important;
                 align-items: stretch;
@@ -102,16 +83,17 @@
 
             &.is-#{$device}-gap-less {
                 margin: 0 !important;
-                > .flex-item {
-                    padding: 0 !important;
+                > * {
+                    margin: 0 !important;
                 }
             }
 
-            @each $label, $gap in _gaps(_var("flex", "gaps", ())) {
+            @each $label, $gap in _gaps(_var("gaper", "gaps", ())) {
                 &.is-#{$device}-#{$label}-gaped {
                     margin: -($gap / 2) !important;
-                    > .flex-item {
-                        padding: ($gap / 2) !important;
+
+                    > * {
+                        margin: ($gap / 2) !important;
                     }
                 }
             }
@@ -125,9 +107,9 @@
 
             $justify-content: flex-start, flex-end, center, space-between,
                 space-around, space-evenly;
-            @each $justify in $justify-content {
-                &.is-#{$device}-#{$justify}-justified {
-                    justify-content: $justify !important;
+            @each $align in $justify-content {
+                &.is-#{$device}-#{$align}-justified {
+                    justify-content: $align !important;
                 }
             }
         }

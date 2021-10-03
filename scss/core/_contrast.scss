@@ -1,111 +1,81 @@
 /// calculate color brightness
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {color} $color
-/// @example $x: brightness(red);
-@function brightness($color) {
-    @if (type-of($color) != "color") {
-        @error 'brightness: $color must be color';
-    }
+/// @example $x: br(red);
+@function br($color) {
+    $e: type-check($color, "br", "color", "color");
     @return (red($color) + green($color) + blue($color)) / (255 * 3);
 }
 
 /// calculate brightness ratio to base color
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {color} $base base color
 /// @param {color} $color color to compare
-/// @example $x: brightness-ratio(red, white);
-@function brightness-ratio($base, $color) {
-    @if (type-of($base) != "color") {
-        @error 'brightness-ratio: $base must be color';
-    }
-    @if (type-of($color) != "color") {
-        @error 'brightness-ratio: $color must be color';
-    }
-    @return abs(brightness($base) - brightness($color));
+/// @example $x: br-ratio(red, white);
+@function br-ratio($base, $color) {
+    $e: type-check($base, "br-ratio", "base", "color");
+    $e: type-check($color, "br-ratio", "color", "color");
+    @return abs(br($base) - br($color));
 }
 
-/// Compare colors to higher contrast
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+/// Compare colors for higher contrast
+///
 /// @param {color} $base
 /// @param {color} $color1
 /// @param {color} $color2
 /// @example $x: contrast(red, white, black);
 @function contrast($base, $color1, $color2) {
-    @if (type-of($base) != "color") {
-        @error 'contrast: $base must be color';
-    }
-    @if (type-of($color1) != "color") {
-        @error 'contrast: $color1 must be color';
-    }
-    @if (type-of($color2) != "color") {
-        @error 'contrast: $color2 must be color';
-    }
+    $e: type-check($base, "contrast", "base", "color");
+    $e: type-check($color1, "contrast", "color1", "color");
+    $e: type-check($color2, "contrast", "color2", "color");
     @return if(
-        brightness-ratio($base, $color1) > brightness-ratio($base, $color2),
+        br-ratio($base, $color1) > br-ratio($base, $color2),
         $color1,
         $color2
     );
 }
 
-///  Compare colors to lower contrast
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///  Compare colors for lower contrast
+///
 /// @param {color} $base
 /// @param {color} $color1
 /// @param {color} $color2
-/// @example $x: contrast-invert(red, white, black);
-@function contrast-invert($base, $color1, $color2) {
-    @if (type-of($base) != "color") {
-        @error 'contrast-invert: $base must be color';
-    }
-    @if (type-of($color1) != "color") {
-        @error 'contrast-invert: $color1 must be color';
-    }
-    @if (type-of($color2) != "color") {
-        @error 'contrast-invert: $color2 must be color';
-    }
+/// @example $x: harmony(red, white, black);
+@function harmony($base, $color1, $color2) {
+    $e: type-check($base, "harmony", "base", "color");
+    $e: type-check($color1, "harmony", "color1", "color");
+    $e: type-check($color2, "harmony", "color2", "color");
     @return if(
-        brightness_ratio($base, $color1) > brightness_ratio($base, $color2),
+        br-ratio($base, $color1) > br-ratio($base, $color2),
         $color2,
         $color1
     );
 }
 
 /// Get foreground for color
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {color} $color
 /// @example $x: foreground(red);
 @function foreground($color) {
-    @if (type-of($color) != "color") {
-        @error 'foreground: $color must be color';
-    }
+    $e: type-check($color, "foreground", "color", "color");
     @return contrast($color, mix(white, $color, 95%), mix(black, $color, 95%));
 }
 
-/// Get readable text version of color
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+/// Get readable text version of color for background
+///
 /// @param {color} $color
-/// @param {color} $back background color for get
+/// @param {color} $background background color for get
 /// @example $x: readable(red, white);
-@function readable($color, $back) {
+@function readable($color, $background) {
+    $e: type-check($color, "foreground", "color", "color");
+    $e: type-check($background, "foreground", "background", "color");
     $light: $color;
-    @while brightness($light) < 0.6 {
-        $light: get-palette($light, "400");
+    @while br($light) < 0.6 {
+        $light: palette($light, "400");
     }
     $dark: $color;
-    @while brightness($dark) > 0.4 {
-        $dark: get-palette($dark, "600");
+    @while br($dark) > 0.4 {
+        $dark: palette($dark, "600");
     }
-    @return contrast($back, $light, $dark);
+    @return contrast($background, $light, $dark);
 }

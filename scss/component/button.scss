@@ -3,69 +3,74 @@ input[type="submit"],
 input[type="reset"],
 button,
 .button {
+    $background: harmony(
+        _color("base"),
+        _palette("shade", "300"),
+        _palette("shade", "600")
+    );
+
     @include control();
     width: auto;
-    border: none;
-    text-align: center;
-    background-color: get-color("shade");
-    color: foreground(get-color("shade"));
-    border-radius: get-var("radius", "normal");
-    padding: (get-gap("element") / 2) get-gap("element");
-    transition: all get-var("transition", "duration");
+    background-color: $background;
+    color: foreground($background);
+    border-radius: _var("radius", "normal");
+    padding: e-pad(_gap("element"));
+    transition: all _var("transition", "duration") _var("transition", "ease");
     text-decoration: none;
 
-    &:not(:last-child) {
-        @if get-var("base", "direction") == "rtl" {
-            margin-left: get-gap("element");
-        } @else {
-            margin-right: get-gap("element");
-        }
-        .is-ltr > &,
-        &.is-ltr-layout {
-            margin-left: 0;
-            margin-right: get-gap("element");
-        }
-        .is-rtl > &,
-        &.is-rtl-layout {
-            margin-right: 0;
-            margin-left: get-gap("element");
-        }
-    }
-
     &:hover {
-        background-color: palette("shade", "600");
-        color: foreground(palette("shade", "600"));
+        $background: harmony(
+            _color("base"),
+            _palette("shade", "400"),
+            _palette("shade", "500")
+        );
+        background-color: $background;
+        color: foreground($background);
     }
 
-    @each $label, $color in iterate-colors() {
+    &.is-simple {
+        background-color: transparent;
+        color: foreground(_color("base"));
+
+        &:hover {
+            $background: harmony(
+                _color("base"),
+                _palette("shade", "200"),
+                _palette("shade", "700")
+            );
+            background-color: $background;
+            color: foreground($background);
+        }
+    }
+
+    @each $label, $color in _colors(_var("button", "colors", ())) {
         &.is-#{$label} {
             background-color: $color;
             color: foreground($color);
 
             &:hover {
-                background-color: palette($label, "600");
-                color: foreground(palette($label, "600"));
+                $background: contrast(
+                    _color("base"),
+                    _palette($label, "600"),
+                    _palette($label, "400")
+                );
+                background-color: $background;
+                color: foreground($background);
             }
-        }
-    }
 
-    &.is-simple {
-        background-color: palette("shade", "50");
-        color: foreground(get-color("background"));
-
-        &:hover {
-            background-color: palette("shade", "200");
-            color: foreground(palette("shade", "200"));
-        }
-
-        @each $label, $color in iterate-colors() {
-            &.is-#{$label} {
-                background-color: palette("shade", "50");
-                color: readable($color, get-color("background"));
+            &.is-simple {
+                background-color: transparent;
+                color: readable($color, _color("base"));
 
                 &:hover {
-                    background-color: $color;
-                    color: foreground($color);
+                    $col: readable($color, _color("base"));
+                    $background: harmony(
+                        _color("base"),
+                        palette($col, "50"),
+                        palette($col, "800")
+                    );
+                    background-color: $col;
+                    color: readable($color, _color("base"));
                 }
             }
         }

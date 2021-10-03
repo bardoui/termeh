@@ -1,0 +1,204 @@
+// Layout
+.is-ltr {
+    direction: ltr !important;
+}
+
+.is-rtl {
+    direction: rtl !important;
+}
+
+.is-margin-less {
+    margin: 0 !important;
+}
+
+.is-padding-less {
+    padding: 0 !important;
+}
+
+.is-radius-less {
+    border-radius: 0 !important;
+}
+
+.is-clipped {
+    overflow: hidden !important;
+}
+
+.is-locked {
+    @include locked;
+}
+
+.is-radiused {
+    border-radius: _var("radius", "normal") !important;
+}
+
+.is-rounded {
+    border-radius: _var("radius", "rounded") !important;
+}
+
+.is-circular {
+    border-radius: _var("radius", "circle") !important;
+}
+
+// Ui
+.is-scrollable {
+    overflow: hidden;
+    overflow-y: auto;
+    @include scrollbar(
+        _var("scroll", "size", 1rem),
+        _palette("shade", "50"),
+        _palette("shade", "300"),
+        _color("primary")
+    );
+}
+
+.is-un-selectable {
+    user-select: none;
+}
+
+.is-selectable {
+    user-select: all;
+}
+
+.is-italic {
+    font-style: italic !important;
+}
+
+.is-underline {
+    text-decoration: underline !important;
+}
+
+.is-undecorated {
+    text-decoration: none;
+}
+
+@each $label, $size in _sizes() {
+    .is-#{$label}-sized {
+        font-size: $size !important;
+    }
+}
+
+@each $label, $weight in _weights() {
+    .is-#{$label}-weighted {
+        font-weight: $weight !important;
+    }
+}
+
+$text-aligns: left right center justify;
+@each $align in $text-aligns {
+    .is-#{$align}-aligned {
+        text-align: $align !important;
+    }
+}
+
+.is-current-colored {
+    color: currentColor !important;
+
+    svg,
+    svg > * {
+        fill: currentColor !important;
+    }
+
+    @at-root {
+        svg#{&},
+        svg#{&} > * {
+            fill: currentColor !important;
+        }
+    }
+}
+
+@each $label, $color in _colors() {
+    .is-#{$label}-colored {
+        color: readable($color, _color("base")) !important;
+    }
+}
+
+// Visibility
+.is-hidden {
+    display: none !important;
+}
+
+@include mobile() {
+    .is-mobile-hidden,
+    .is-tablet-only,
+    .is-desktop-only,
+    .is-widescreen-only,
+    .is-fullhd-only {
+        display: none !important;
+    }
+}
+
+@include tablet() {
+    .is-mobile-only,
+    .is-tablet-hidden,
+    .is-desktop-only,
+    .is-widescreen-only,
+    .is-fullhd-only {
+        display: none !important;
+    }
+}
+
+@include tablet-only() {
+    .is-tablet-only-hidden {
+        display: none !important;
+    }
+}
+
+@include until-desktop() {
+    .is-until-desktop-hidden {
+        display: none !important;
+    }
+}
+
+@include desktop() {
+    .is-mobile-only,
+    .is-tablet-only,
+    .is-desktop-hidden,
+    .is-widescreen-only,
+    .is-fullhd-only {
+        display: none !important;
+    }
+}
+
+@include desktop-only() {
+    .is-desktop-only-hidden {
+        display: none !important;
+    }
+}
+
+@include until-widescreen() {
+    .is-until-widescreen-hidden {
+        display: none !important;
+    }
+}
+
+@include widescreen() {
+    .is-mobile-only,
+    .is-tablet-only,
+    .is-desktop-only,
+    .is-widescreen-hidden,
+    .is-fullhd-only {
+        display: none !important;
+    }
+}
+
+@include widescreen-only() {
+    .is-widescreen-only-hidden {
+        display: none !important;
+    }
+}
+
+@include until-fullhd() {
+    .is-until-fullhd-hidden {
+        display: none !important;
+    }
+}
+
+@include fullhd() {
+    .is-mobile-only,
+    .is-tablet-only,
+    .is-desktop-only,
+    .is-widescreen-only,
+    .is-fullhd-hidden {
+        display: none !important;
+    }
+}

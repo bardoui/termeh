@@ -1,0 +1,19 @@
+.meta {
+    display: inline-block;
+    text-decoration: none;
+    user-select: none;
+    background: transparent;
+    color: _color("mute");
+    white-space: nowrap;
+
+    @each $label, $color in _colors(_var("meta", "colors", ())) {
+        &.is-#{$label} {
+            $col: readable($color, _color("base"));
+            color: harmony(
+                _color("base"),
+                palette($col, "200"),
+                palette($col, "700")
+            );
+        }
+    }
+}

@@ -1,5 +1,5 @@
 :root {
-    font-size: get-var("font", "size");
+    font-size: _var("font", "size", 12px);
 }
 
 html {
@@ -7,17 +7,17 @@ html {
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    direction: get-var("base", "direction");
-    min-width: get-var("base", "min-width", 300px);
-    font-size: get-var("font", "size");
+    direction: _var("base", "direction", ltr);
+    min-width: _var("base", "min-width", 25rem);
+    font-size: _var("font", "size", 12px);
 }
 
 body {
-    direction: get-var("base", "direction");
-    background: get-color("background");
-    color: get-color("foreground");
-    line-height: get-var("base", "line-height");
-    font-family: get-var("font", "family");
+    direction: _var("base", "direction", ltr);
+    background: _color("base");
+    color: _color("foreground");
+    line-height: _var("base", "line-height", 1.6em);
+    font-family: _var("font", "family");
     font-size: 1rem;
 }
 
@@ -35,7 +35,7 @@ button,
 input,
 select,
 textarea {
-    font-family: get-var("font", "family");
+    font-family: _var("font", "family");
     font-size: 1rem;
 }
 
@@ -45,27 +45,30 @@ textarea {
     @include control();
     display: block;
     width: 100%;
-    background: get-color("input");
-    border: 1px solid get-color("separator");
-    border-radius: get-var("radius", "normal");
-    padding: get-gap("element") / 2 get-gap("element");
-    margin-bottom: get-gap("element");
+    background: _color("input");
+    border: 1px solid _color("separator");
+    border-radius: _var("radius", "normal");
+    padding: (_gap("element") / 2) _gap("element");
 
-    @include placeholder {
-        color: palette("foreground", "100");
+    &::placeholder {
+        color: _color("mute");
     }
 
     &:focus,
     &:active {
-        border-color: get-color("primary");
+        border-color: _color("primary");
     }
 
     &:disabled,
     &.is-disabled {
         @include locked();
-        background: palette("shade", "50");
-        border-color: palette("shade", "100");
-        color: palette("shade", "300");
+        background: _palette("shade", "50");
+        border-color: _palette("shade", "100");
+        color: _palette("shade", "300");
+    }
+
+    &:invalid {
+        border-color: _color("error");
     }
 }
 
@@ -80,20 +83,20 @@ select option {
     font: inherit;
 }
 
+p:not(:last-child) {
+    margin-bottom: _gap("element");
+}
+
 code,
 pre {
     -moz-osx-font-smoothing: auto;
     -webkit-font-smoothing: auto;
 }
 
-p:not(:last-child) {
-    margin-bottom: get-gap("container");
-}
-
 code {
     direction: ltr;
-    padding: 1em;
-    background: get-color("background-alt");
+    padding: _gap("element");
+    background: _color("section");
 }
 
 hr {
@@ -101,7 +104,7 @@ hr {
     border: none;
     height: 1px;
     width: 100%;
-    background: get-color("separator");
+    background: _color("separator");
 }
 
 input[type="checkbox"],
@@ -110,7 +113,7 @@ input[type="radio"] {
 }
 
 small {
-    font-size: font-size("small");
+    font-size: _size("small");
 }
 
 strong {
@@ -120,9 +123,9 @@ strong {
 pre {
     direction: ltr;
     -webkit-overflow-scrolling: touch;
-    background: get-color("background-alt");
+    background: _color("section");
     overflow-x: auto;
-    padding: 1em;
+    padding: _gap("element");
     white-space: pre;
     word-wrap: normal;
 
@@ -135,15 +138,15 @@ pre {
 }
 
 a {
-    color: get-color("primary");
-    transition: all get-var("transition", "duration");
+    color: _color("primary");
+    transition: all _var("transition", "duration") _var("transition", "ease");
 
     &:hover {
-        color: readable(get-color("primary"), get-color("background"));
+        color: readable(_color("primary"), _color("base"));
     }
 }
 
 ::selection {
-    background-color: get-color("primary");
-    color: foreground(get-color("primary"));
+    background-color: _color("primary");
+    color: foreground(_color("primary"));
 }

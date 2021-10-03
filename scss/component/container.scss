@@ -4,17 +4,11 @@
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
-    padding: get-gap("normal");
-    width: 100%;
-    max-width: none;
+    padding: _gap("container");
+    max-width: 100%;
 
-    &:not(.is-fit) {
-        margin-bottom: get-gap("container");
-    }
-
-    &.has-grid,
-    &.has-grid.is-paddingless {
-        padding: get-gap("container") / 2;
+    &:not(:last-child) {
+        margin-bottom: _gap("container");
     }
 
     &:not(.is-fluid) {
@@ -26,9 +20,9 @@
         }
     }
 
-    &:not(.has-grid) {
-        @each $label, $gap in iterate-gaps() {
-            &.has-#{$label}-padding {
+    &:not(.is-padding-less) {
+        @each $label, $gap in _gaps(_var("container", "gaps", ())) {
+            &.is-#{$label}-padded {
                 padding: $gap;
             }
         }

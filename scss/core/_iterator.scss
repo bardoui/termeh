@@ -1,24 +1,18 @@
-/// get all gaps
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+/// get all iterable gaps
+///
 /// @param {list} $contains list of not iterable gaps to contains in iteration list
 /// @return {map} gaps list
-/// @example @each $name, $size in iterate-gaps(){ ...
-/// @example @each $name, $size in iterate-gaps('element' 'container'){ ...
-@function iterate-gaps($contains: ()) {
-    // Validate
-    @if (type-of($contains) != "list") {
-        @error 'iterate-gaps: $contains must be list';
-    }
-    // Generate iteration list
+/// @example @each $name, $gap in _gaps(){ ...
+/// @example @each $name, $gap in _gaps('element' 'container'){ ...
+@function _gaps($contains: ()) {
+    $e: type-check($contains, "_gaps", "contains", "list");
     $res: ();
-    @each $key, $data in $termeh-gaps {
+    @each $key, $data in $--gaps {
         @if (index($contains, $key) != null or nth($data, 2) == true) {
             $res: map-merge(
                 $res,
                 (
-                    $key: nth($data, 1)
+                    $key: nth($data, 1),
                 )
             );
         }
@@ -26,27 +20,21 @@
     @return $res;
 }
 
-/// get all units
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+/// get all iterable units
+///
 /// @param {list} $contains list of not iterable units to contains in iteration list
 /// @return {map} units list
-/// @example @each $name, $size in iterate-units(){ ...
-/// @example @each $name, $size in iterate-units(('avatar' 'notification')){ ...
-@function iterate-units($contains: ()) {
-    // Validate
-    @if (type-of($contains) != "list") {
-        @error 'iterate-units: $contains must be list';
-    }
-    // Generate iteration list
+/// @example @each $name, $unit in _units(){ ...
+/// @example @each $name, $unit in _units(('avatar' 'notification')){ ...
+@function _units($contains: ()) {
+    $e: type-check($contains, "_units", "contains", "list");
     $res: ();
-    @each $key, $data in $termeh-units {
+    @each $key, $data in $--units {
         @if (index($contains, $key) != null or nth($data, 2) == true) {
             $res: map-merge(
                 $res,
                 (
-                    $key: nth($data, 1)
+                    $key: nth($data, 1),
                 )
             );
         }
@@ -54,27 +42,21 @@
     @return $res;
 }
 
-/// get all colors
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+/// get all iterable colors
+///
 /// @param {list} $contains list of not iterable colors to contains in iteration list
 /// @return {map} colors list
-/// @example @each $name, $color in iterate-colors(){ ...
-/// @example @each $name, $color in iterate-colors(('teal' 'gray')){ ...
-@function iterate-colors($contains: ()) {
-    // Validate
-    @if (type-of($contains) != "list") {
-        @error 'iterate-colors: $contains must be list';
-    }
-    // Generate iteration list
+/// @example @each $name, $color in _colors(){ ...
+/// @example @each $name, $color in _colors(('teal' 'gray')){ ...
+@function _colors($contains: ()) {
+    $e: type-check($contains, "_colors", "contains", "list");
     $res: ();
-    @each $key, $data in $termeh-palette {
+    @each $key, $data in $--palette {
         @if (index($contains, $key) != null or nth($data, 2) == true) {
             $res: map-merge(
                 $res,
                 (
-                    $key: nth($data, 1)
+                    $key: nth($data, 1),
                 )
             );
         }
@@ -82,58 +64,44 @@
     @return $res;
 }
 
-/// get all palette color
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+/// get palette for all iterable colors
+///
 /// @param {string} $variant
 /// @param {list} $contains list of not iterable colors to contains in iteration list
 /// @return {map} colors list
-/// @example @each $name, $color in iterate-palette('900'){ ...
-/// @example @each $name, $color in iterate-palette('100', ('teal' 'gray')){ ...
-@function iterate-palette($variant: 500, $contains: ()) {
-    // Validate
-    @if (type-of($variant) != "string") {
-        @error 'iterate-palette: $variant must be string';
-    }
-    @if (type-of($contains) != "list") {
-        @error 'iterate-palette: $contains must be list';
-    }
-    // Generate iteration list
+/// @example @each $name, $color in _palettes('900'){ ...
+/// @example @each $name, $color in _palettes('100', ('teal' 'gray')){ ...
+@function _palettes($variant: 500, $contains: ()) {
+    $e: type-check($variant, "_palettes", "variant", "string");
+    $e: type-check($contains, "_palettes", "contains", "list");
     $res: ();
-    $colors: iterate-colors($contains);
+    $colors: _colors($contains);
     @each $key, $color in $colors {
         $res: map-merge(
             $res,
             (
-                $key: get-palette($color, $variant)
+                $key: palette($color, $variant),
             )
         );
     }
     @return $res;
 }
 
-/// get all font sizes
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+/// get all iterable sizes
+///
 /// @param {list} $contains list of not iterable font-sizes to contains in iteration list
 /// @return {map} font sizes list
-/// @example @each $name, $size in iterate-font-sizes(){ ...
-/// @example @each $name, $size in iterate-font-sizes(('header' 'other')){ ...
-@function iterate-font-sizes($contains: ()) {
-    // Validate
-    @if (type-of($contains) != "list") {
-        @error 'iterate-font-sizes: $contains must be list';
-    }
-    // Generate iteration list
+/// @example @each $name, $size in _sizes(){ ...
+/// @example @each $name, $size in _sizes(('header' 'other')){ ...
+@function _sizes($contains: ()) {
+    $e: type-check($contains, "_sizes", "contains", "list");
     $res: ();
-    @each $key, $data in $termeh-font-sizes {
+    @each $key, $data in $--sizes {
         @if (index($contains, $key) != null or nth($data, 2) == true) {
             $res: map-merge(
                 $res,
                 (
-                    $key: nth($data, 1)
+                    $key: nth($data, 1),
                 )
             );
         }
@@ -141,12 +109,23 @@
     @return $res;
 }
 
+/// get breakpoints label and query
+///
+/// @return {map} breakpoints list
+/// @example:
+/// @each $device, $mq in _breakpoints(){
+///     @media #{$mq}{
+///         ...
+///     }
+/// }
+@function _breakpoints() {
+    @return $--breakpoints;
+}
+
 /// get all font weights
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @return {map} font weights list
-/// @example @each $name, $weight in iterate-font-weights(){ ...
-@function iterate-font-weights() {
-    @return $termeh-font-weights;
+/// @example @each $name, $weight in _weights(){ ...
+@function _weights() {
+    @return $--weights;
 }

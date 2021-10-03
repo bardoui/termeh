@@ -1,0 +1,22 @@
+/// Check variable for type and generate error on fails
+///
+/// @param {any} $var variable
+/// @param {string} $func function name
+/// @param {param} $param parameter title
+/// @param {string} $type parameter type
+/// @example $e: type-check($col, "myFunc", "background", "color"); > "myFunc: background parameter must of color type
+@function type-check($var, $func, $param, $type) {
+    @if (type-of($var) != $type) {
+        @error "#{$func}: #{$param} parameter must of #{$type} type";
+    }
+    @return "";
+}
+
+/// get half of number
+///
+/// @param {number} $num
+/// @example padding: half-of(1rem) > padding: .5rem;
+@function half-of($num) {
+    $e: type-check($num, "half-of", "num", "number");
+    @return ($num / 2);
+}

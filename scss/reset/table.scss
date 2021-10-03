@@ -1,0 +1,124 @@
+table {
+    table-layout: auto;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font: inherit;
+    user-select: none;
+
+    tr {
+        background: _color("container");
+    }
+
+    th,
+    td {
+        width: 1px;
+        white-space: nowrap;
+        vertical-align: middle;
+        padding: e-pad(_gap("element"));
+        font-weight: normal;
+        font-size: 1rem;
+        text-overflow: ellipsis;
+        color: _color("foreground");
+        transition: all _var("transition", "duration")
+            _var("transition", "ease");
+
+        &.is-center-aligned {
+            text-align: center;
+        }
+
+        &.is-right-aligned {
+            text-align: right;
+        }
+
+        &.is-left-aligned {
+            text-align: left;
+        }
+
+        &.is-filler {
+            width: auto;
+        }
+
+        &.is-sorted {
+            background: _var(
+                "table",
+                "sorted",
+                rgba(_palette("shade", "100"), 0.25)
+            );
+        }
+    }
+
+    thead {
+        padding: 0;
+        margin: 0;
+        background: _color("container");
+        user-select: none;
+
+        tr {
+            border-top: 1px solid _color("separator");
+            border-bottom: 1px solid _color("shade");
+
+            th {
+                font-weight: bold;
+
+                &.is-sortable {
+                    cursor: pointer;
+                }
+
+                &.is-sorted {
+                    color: readable(_color("primary"), _color("base"));
+                }
+
+                &.is-asc {
+                    border-top: 1px solid _color("primary");
+                }
+
+                &.is-desc {
+                    border-bottom: 1px solid _color("primary");
+                }
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            &:not(:last-child) {
+                border-bottom: 1px solid _color("separator");
+            }
+
+            &:last-child {
+                border-bottom: 1px solid _color("shade");
+            }
+        }
+    }
+
+    &.is-fluid {
+        width: 100%;
+    }
+
+    &.is-stripped > tbody > tr:nth-child(even) {
+        background: _color("section");
+    }
+
+    &.is-hoverable > tbody > tr:hover {
+        background: _var("table", "hover", rgba(_palette("shade", "100"), 0.5));
+    }
+
+    @each $name, $color in _colors(_var("table", "colors", ())) {
+        &.is-#{$name} {
+            thead tr th {
+                &.is-sorted {
+                    color: readable($color, _color("base"));
+                }
+
+                &.is-asc {
+                    border-top-color: $color;
+                }
+
+                &.is-desc {
+                    border-bottom-color: $color;
+                }
+            }
+        }
+    }
+}

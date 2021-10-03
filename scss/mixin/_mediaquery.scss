@@ -1,109 +1,98 @@
 /// generate media query for mobile
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group media-queries
+///
 /// @example @include mobile(){ ...
 @mixin mobile() {
-    @media screen and (max-width: get-breakpoint("tablet") - 1px) {
+    @media #{_breakpoint("mobile")} {
         @content;
     }
 }
 
 /// generate media query for tablet and wider screen
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group media-queries
+///
 /// @example @include tablet(){ ...
 @mixin tablet() {
-    @media screen and (min-width: get-breakpoint("tablet")) {
+    @media #{_breakpoint("tablet")} {
         @content;
     }
 }
 
 /// generate media query for tablet only
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group media-queries
+///
 /// @example @include tablet-only(){ ...
 @mixin tablet-only() {
-    @media screen and (min-width: get-breakpoint("tablet")) and (max-width: get-breakpoint("desktop") - 1px) {
+    @media #{_breakpoint("tablet-only")} {
         @content;
     }
 }
 
 /// generate media query for screen smaller than desktop
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group media-queries
+///
 /// @example @include until-desktop(){ ...
 @mixin until-desktop() {
-    @media screen and (max-width: get-breakpoint("desktop") - 1px) {
+    @media #{_breakpoint("until-desktop")} {
         @content;
     }
 }
 
 /// generate media query for desktop and wider screen
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group media-queries
+///
 /// @example @include desktop(){ ...
 @mixin desktop() {
-    @media screen and (min-width: get-breakpoint("desktop")) {
+    @media #{_breakpoint("desktop")} {
         @content;
     }
 }
 
 /// generate media query for desktop only
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group media-queries
+///
 /// @example @include desktop-ony(){ ...
 @mixin desktop-only() {
-    @media screen and (min-width: get-breakpoint("desktop")) and (max-width: get-breakpoint("widescreen") - 1px) {
+    @media #{_breakpoint("desktop-only")} {
         @content;
     }
 }
 
 /// generate media query for screen smaller than widescreen
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group media-queries
+///
 /// @example @include until-widescreen(){ ...
 @mixin until-widescreen() {
-    @media screen and (max-width: get-breakpoint("widescreen") - 1px) {
+    @media #{_breakpoint("until-widescreen")} {
         @content;
     }
 }
 
 /// generate media query for widescreen and wider screen
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group media-queries
+///
 /// @example @include widescreen(){ ...
 @mixin widescreen() {
-    @media screen and (min-width: get-breakpoint("widescreen")) {
+    @media #{_breakpoint("widescreen")} {
         @content;
     }
 }
 
 /// generate media query for widescreen only
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group media-queries
+///
 /// @example @include widescreen-only(){ ...
 @mixin widescreen-only() {
-    @media screen and (min-width: get-breakpoint("widescreen")) and (max-width: get-breakpoint("fullhd") - 1px) {
+    @media #{_breakpoint("widescreen-only")} {
         @content;
     }
 }
 
 /// generate media query for screen smaller than fullhd
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group media-queries
+///
 /// @example @include until-fullhd(){ ...
 @mixin until-fullhd() {
-    @media screen and (max-width: get-breakpoint("fullhd") - 1px) {
+    @media #{_breakpoint("until-fullhd")} {
         @content;
     }
 }
 
 /// generate media query for fullhd and wider screen
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group media-queries
+///
 /// @example @include fullhd(){ ...
 @mixin fullhd() {
-    @media screen and (min-width: get-breakpoint("fullhd")) {
+    @media #{_breakpoint("fullhd")} {
         @content;
     }
 }

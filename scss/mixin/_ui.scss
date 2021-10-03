@@ -1,33 +1,59 @@
-/// Generate placeholder selector for input
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group ui
-/// @example @include placeholder(){...}
-@mixin placeholder() {
-    $placeholders: ":-moz" ":-webkit-input" "-moz" "-ms-input";
-    @each $placeholder in $placeholders {
-        &:#{$placeholder}-placeholder {
-            @content;
-        }
+/// Reset style of control
+///
+/// @example @include control();
+@mixin control() {
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    box-shadow: none;
+    position: relative;
+    border: none;
+    outline: 0;
+    white-space: nowrap;
+    // States
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-activated {
+        outline: none;
+    }
+
+    &[disabled],
+    &.is-disabled {
+        cursor: default;
+    }
+
+    &::-moz-focus-inner {
+        border: 0;
     }
 }
 
 /// Style scrollbar
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group ui
+///
 /// @param {number} $width scrollbar width
 /// @param {color} $track track background color
 /// @param {color} $thumb thumb background color
 /// @param {color} $thumb-hover thumb hover state background color
 /// @example @include scrollbar(6px, gray, darkgray, red);
 @mixin scrollbar($width, $track: null, $thumb: null, $thumb-hover: null) {
+    $e: type-check($width, "scrollbar", "width", "number");
+    $e: type-check($track, "scrollbar", "track", "color");
+    $e: type-check($thumb, "scrollbar", "thumb", "color");
+    $e: type-check($thumb-hover, "scrollbar", "thumb-hover", "color");
+
     &::-webkit-scrollbar {
         width: $width;
     }
 
     &::-webkit-scrollbar-track {
         background: $track;
-        box-shadow: 0 0 3px 0 palette("shade", "200") inset,
-            0 0 1px palette("shade", "200") inset;
+        box-shadow: 0 0 3px 0 _palette("shade", "200") inset,
+            0 0 1px _palette("shade", "200") inset;
         transition: all 200ms;
     }
 
@@ -41,13 +67,16 @@
     }
 }
 
-/// Create css loader
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group ui
-/// @param {number} $size loader size
-/// @param {color} $color loader color
-/// @example @include loader(1.5rem, red);
-@mixin loader($size, $color) {
+/// Create css spinner
+///
+/// @param {number} $size spinner size
+/// @param {color} $color spinner color
+/// @example @include spinner(1.5rem, red, 1px);
+@mixin spinner($size, $color, $width) {
+    $e: type-check($size, "spinner", "size", "number");
+    $e: type-check($color, "spinner", "color", "color");
+    $e: type-check($width, "spinner", "width", "number");
+
     position: relative;
     z-index: 0;
 
@@ -63,11 +92,11 @@
         transform: translate3d(-50%, -50%, 0);
         width: $size;
         height: $size;
-        border-radius: get-var("radius", "circle");
-        animation: loader-animation 900ms infinite
+        border-radius: _var("radius", "circle");
+        animation: spinner-animation 900ms infinite
             cubic-bezier(0.86, 0, 0.07, 1);
         @at-root {
-            @keyframes loader-animation {
+            @keyframes spinner-animation {
                 from {
                     transform: translate3d(-50%, -50%, 0) rotate(0deg);
                 }
@@ -76,18 +105,19 @@
                 }
             }
         }
-        border: 2px solid $color;
+        border: $width solid $color;
         border-top-color: transparent;
         border-bottom-color: transparent;
     }
 }
 
-/// Create css overlay
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group ui
+/// Create overlay on container
+///
 /// @param {color} $color overlay color
 /// @example @include overlay(rgba(0,0,0, 0.5));
 @mixin overlay($color) {
+    $e: type-check($color, "overlay", "color", "color");
+
     position: relative;
     z-index: 0;
 
@@ -100,16 +130,6 @@
         width: 100%;
         height: 100%;
         background: $color;
+        backdrop-filter: _var("overlay", "filter");
     }
-}
-
-/// Create soft drop shadow
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @group ui
-/// @param {number} $x shadow x size
-/// @param {number} $y shadow y size
-/// @param {color} $color shadow color
-/// @example @include shadow(0, 30px, #8A959E);
-@mixin shadow($x, $y, $color) {
-    box-shadow: shadow($x, $y, $color);
 }

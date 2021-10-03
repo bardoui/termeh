@@ -1,25 +1,24 @@
 /// make color lighten
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {Color} $color - color to tint
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color}
 /// @example $background: tint(red, 88%);
 @function tint($color, $percentage) {
+    $e: type-check($color, "tint", "color", "color");
+    $e: type-check($percentage, "tint", "percentage", "number");
     @return mix(white, $color, $percentage);
 }
 
 /// make color darken
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {Color} $color - color to shade
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color}
 /// @example $color: shade(red, 75%);
-/// TODO: Make darkColor smarter base on color
 @function shade($color, $percentage) {
+    $e: type-check($color, "shade", "color", "color");
+    $e: type-check($percentage, "shade", "percentage", "number");
     $hue: hue($color);
     $lightness: 15%;
     @if ($hue >= 0 and $hue <= 20) {
@@ -34,27 +33,15 @@
 }
 
 /// Get palette of color
-/// @author mekramy <m.ajamekramy@gmail.com>
-/// @access public
-/// @group helpers
+///
 /// @param {color} $color color
 /// @param {'50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'} $variant
 /// @return {color}
-/// @example $color-light: get-palette(#FFBF00, '50');
-/// @example $color-dark: get-palette(#FFBF00, '900');
-@function get-palette($color, $variant: "500") {
-    @if (type-of($color) != "color") {
-        @error 'get-palette: $color must be color';
-    }
-    @if (
-        index(
-                ("50" "100" "200" "300" "400" "500" "600" "700" "800" "900"),
-                $variant
-            ) ==
-            null
-    ) {
-        @error 'get-palette: $variant must be a valid color variant';
-    }
+/// @example $color-light: palette(#FFBF00, '50');
+/// @example $color-dark: palette(#FFBF00, '900');
+@function palette($color, $variant: "500") {
+    $e: type-check($color, "palette", "color", "color");
+    $e: type-check($variant, "palette", "variant", "string");
     @if ($variant == "50") {
         @return tint($color, 88%);
     } @else if($variant == "100") {
