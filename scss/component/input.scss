@@ -11,19 +11,16 @@
 
     label {
         display: block;
-        width: 100%;
     }
 
     input:not([type="button"]):not([type="reset"]):not([type="submit"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
     select,
     textarea {
         display: block;
-        width: 100%;
     }
 
     .errors {
         display: none;
-        width: 100%;
     }
 
     &.is-required {

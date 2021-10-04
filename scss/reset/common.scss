@@ -44,7 +44,6 @@ select,
 textarea {
     @include control();
     display: block;
-    width: 100%;
     background: _color("input");
     border: 1px solid _color("separator");
     border-radius: _var("radius", "normal");
@@ -103,7 +102,6 @@ hr {
     display: block;
     border: none;
     height: 1px;
-    width: 100%;
     background: _color("separator");
 }
 
