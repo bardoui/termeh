@@ -14,8 +14,8 @@
         "card",
         "shadow",
         (
-            shadow(0, 3px, _palette("shade", "500"), false),
-            shadow(0, 6px, _palette("shade", "500"), true)
+            shadow(0, 3px, _color("shade"), false),
+            shadow(0, 6px, _color("shade"), true)
         )
     );
 
