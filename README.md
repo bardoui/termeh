@@ -894,6 +894,23 @@ Following components included in termeh framework and not loaded by default. For
 @import "@bardoui/termeh/scss/component/badge.scss";
 ```
 
+#### action
+
+create a simple action link.
+
+```html
+<span class="action">Cancel</span>
+<span class="action is-primary is-default">Approve</span>
+```
+
+- **is-default** style as default action.
+- **is-disabled** style as disabled action.
+- **is-{color}** colorize action by registered iterable colors.
+
+| variable | description                                             | default |
+| :------- | :------------------------------------------------------ | :------ |
+| colors   | list of non-iterable colors to include in action colors | `()`    |
+
 #### badge
 
 ```html
@@ -916,6 +933,7 @@ By default styling `<input type="button">`, `<input type="submit">`, `<input typ
 ```
 
 - **is-simple**: make simple button.
+- **is-disabled**: make button disabled.
 - **is-{color}** colorize button by registered iterable colors.
 
 | variable | description                                             | default |

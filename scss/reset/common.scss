@@ -63,7 +63,7 @@ textarea {
         @include locked();
         background: _palette("shade", "50");
         border-color: _palette("shade", "100");
-        color: _palette("shade", "300");
+        color: _color("mute");
     }
 
     &:invalid {

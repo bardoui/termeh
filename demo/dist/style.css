@@ -137,7 +137,6 @@ textarea {
   outline: 0;
   white-space: nowrap;
   display: block;
-  width: 100%;
   background: white;
   border: 1px solid #dde0e7;
   border-radius: 3px;
@@ -226,7 +225,6 @@ hr {
   display: block;
   border: none;
   height: 1px;
-  width: 100%;
   background: #dde0e7;
 }
 
@@ -744,6 +742,145 @@ table.is-success thead tr th.is-desc {
   border-bottom-color: #2dcd75;
 }
 
+.action {
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  box-shadow: none;
+  position: relative;
+  border: none;
+  outline: 0;
+  white-space: nowrap;
+  width: auto;
+  background: transparent;
+  color: #081e30;
+  border-radius: 3px;
+  line-height: 1em;
+  padding: 0.6em 0.6em;
+  transition: all 250ms ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.action:focus, .action.is-focused, .action:active, .action.is-activated {
+  outline: none;
+}
+.action[disabled], .action.is-disabled {
+  cursor: default;
+}
+.action::-moz-focus-inner {
+  border: 0;
+}
+.action:hover {
+  background-color: #dde0e7;
+  color: #081e30;
+}
+.action.is-default {
+  background-color: #dde0e7;
+  color: #081e30;
+}
+.action.is-default:hover {
+  background-color: #c6ccd7;
+}
+.action:disabled, .action.is-disabled {
+  pointer-events: none;
+  user-select: none;
+  background: #f1f3f5 !important;
+  color: #afb8c6 !important;
+}
+.action:disabled:hover, .action.is-disabled:hover {
+  background: #f1f3f5 !important;
+  color: #afb8c6 !important;
+}
+.action.is-shade {
+  color: #898f98;
+}
+.action.is-shade:hover {
+  background-color: #f1f3f5;
+  color: #575f6c;
+}
+.action.is-shade.is-default {
+  background-color: #ebeced;
+  color: #575f6c;
+}
+.action.is-shade.is-default:hover {
+  background-color: #cdcfd3;
+}
+.action.is-primary {
+  color: #66aaa2;
+}
+.action.is-primary:hover {
+  background-color: #e5f3f2;
+  color: #24857a;
+}
+.action.is-primary.is-default {
+  background-color: #e5f0ef;
+  color: #24857a;
+}
+.action.is-primary.is-default:hover {
+  background-color: #bddad7;
+}
+.action.is-error {
+  color: #db4d4d;
+}
+.action.is-error:hover {
+  background-color: #f9e0e0;
+  color: #cc0000;
+}
+.action.is-error.is-default {
+  background-color: #f9e0e0;
+  color: #cc0000;
+}
+.action.is-error.is-default:hover {
+  background-color: #f0b3b3;
+}
+.action.is-warning {
+  color: #e1894d;
+}
+.action.is-warning:hover {
+  background-color: #fef7e0;
+  color: #d45700;
+}
+.action.is-warning.is-default {
+  background-color: #faebe0;
+  color: #d45700;
+}
+.action.is-warning.is-default:hover {
+  background-color: #f2cdb3;
+}
+.action.is-info {
+  color: #8b66bf;
+}
+.action.is-info:hover {
+  background-color: #f0e7fd;
+  color: #5924a3;
+}
+.action.is-info.is-default {
+  background-color: #ebe5f4;
+  color: #5924a3;
+}
+.action.is-info.is-default:hover {
+  background-color: #cdbde3;
+}
+.action.is-success {
+  color: #66c490;
+}
+.action.is-success:hover {
+  background-color: #e6f9ee;
+  color: #25ab61;
+}
+.action.is-success.is-default {
+  background-color: #e5f5ec;
+  color: #25ab61;
+}
+.action.is-success.is-default:hover {
+  background-color: #bee6d0;
+}
+
 .badge {
   display: inline-block;
   line-height: 1em;
@@ -866,6 +1003,32 @@ button.is-simple:hover,
   background-color: #c6ccd7;
   color: #0a0a0b;
 }
+input[type=button]:disabled, input[type=button].is-disabled,
+input[type=submit]:disabled,
+input[type=submit].is-disabled,
+input[type=reset]:disabled,
+input[type=reset].is-disabled,
+button:disabled,
+button.is-disabled,
+.button:disabled,
+.button.is-disabled {
+  pointer-events: none;
+  user-select: none;
+  background: #f1f3f5 !important;
+  color: #afb8c6 !important;
+}
+input[type=button]:disabled:hover, input[type=button].is-disabled:hover,
+input[type=submit]:disabled:hover,
+input[type=submit].is-disabled:hover,
+input[type=reset]:disabled:hover,
+input[type=reset].is-disabled:hover,
+button:disabled:hover,
+button.is-disabled:hover,
+.button:disabled:hover,
+.button.is-disabled:hover {
+  background: #f1f3f5 !important;
+  color: #afb8c6 !important;
+}
 input[type=button].is-shade,
 input[type=submit].is-shade,
 input[type=reset].is-shade,
@@ -895,7 +1058,7 @@ input[type=submit].is-shade.is-simple:hover,
 input[type=reset].is-shade.is-simple:hover,
 button.is-shade.is-simple:hover,
 .button.is-shade.is-simple:hover {
-  background-color: #575f6c;
+  background-color: #ebeced;
   color: #575f6c;
 }
 input[type=button].is-primary,
@@ -927,7 +1090,7 @@ input[type=submit].is-primary.is-simple:hover,
 input[type=reset].is-primary.is-simple:hover,
 button.is-primary.is-simple:hover,
 .button.is-primary.is-simple:hover {
-  background-color: #24857a;
+  background-color: #e5f0ef;
   color: #24857a;
 }
 input[type=button].is-error,
@@ -959,7 +1122,7 @@ input[type=submit].is-error.is-simple:hover,
 input[type=reset].is-error.is-simple:hover,
 button.is-error.is-simple:hover,
 .button.is-error.is-simple:hover {
-  background-color: #cc0000;
+  background-color: #f9e0e0;
   color: #cc0000;
 }
 input[type=button].is-warning,
@@ -991,7 +1154,7 @@ input[type=submit].is-warning.is-simple:hover,
 input[type=reset].is-warning.is-simple:hover,
 button.is-warning.is-simple:hover,
 .button.is-warning.is-simple:hover {
-  background-color: #d45700;
+  background-color: #faebe0;
   color: #d45700;
 }
 input[type=button].is-info,
@@ -1023,7 +1186,7 @@ input[type=submit].is-info.is-simple:hover,
 input[type=reset].is-info.is-simple:hover,
 button.is-info.is-simple:hover,
 .button.is-info.is-simple:hover {
-  background-color: #5924a3;
+  background-color: #ebe5f4;
   color: #5924a3;
 }
 input[type=button].is-success,
@@ -1055,7 +1218,7 @@ input[type=submit].is-success.is-simple:hover,
 input[type=reset].is-success.is-simple:hover,
 button.is-success.is-simple:hover,
 .button.is-success.is-simple:hover {
-  background-color: #25ab61;
+  background-color: #e5f5ec;
   color: #25ab61;
 }
 
@@ -5290,17 +5453,14 @@ button.is-success.is-simple:hover,
 }
 .input label {
   display: block;
-  width: 100%;
 }
 .input input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]),
 .input select,
 .input textarea {
   display: block;
-  width: 100%;
 }
 .input .errors {
   display: none;
-  width: 100%;
 }
 .input.is-required label::after {
   content: "*";

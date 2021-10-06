@@ -43,6 +43,18 @@ button,
         }
     }
 
+    &:disabled,
+    &.is-disabled {
+        @include locked();
+        background: _palette("shade", "50") !important;
+        color: _color("mute") !important;
+
+        &:hover {
+            background: _palette("shade", "50") !important;
+            color: _color("mute") !important;
+        }
+    }
+
     @each $label, $color in _colors(_var("button", "colors", ())) {
         &.is-#{$label} {
             background-color: $color;
