@@ -1070,8 +1070,6 @@ Gaper is displayed as `inline-flex` by default.
 
 - **is-fluid**: show gaper as block (flex).
 - **is-{device}-fluid**: show gaper as block for device (flex).
-- **is-wrapped**: make gaper wrapping.
-- **is-{device}-wrapped**: make gaper wrapping for device.
 - **is-stacked**: make gaper direction vertical.
 - **is-{device}-stacked**: make gaper direction vertical for device.
 - **is-stacked-reverse**: make gaper direction reverse-vertical.
@@ -1131,15 +1129,31 @@ Create a wrapper for input and errors.
 
 #### landscape
 
-Make a wrapped container for non-touch device and a container with horizontal scrolling for touch devices.
+Make a scroll snap container (block lever gaper with scrolling).
 
 ```html
 <div class="landscape is-normal-padded">
-  <div class="gaper">...</div>
+  <div class="card">...</div>
+  <div class="card">...</div>
+  <div class="card">...</div>
 </div>
 ```
 
-- **is-{gap}-padded** set landscape padding to registered iterable gaps.
+- **is-stacked**: make landscape direction vertical.
+- **is-{device}-stacked**: make landscape direction vertical for device.
+- **is-is-mandatory**: set scroll snap type to mandatory.
+- **is-gap-less**: remove landscape gap.
+- **is-{device}-gap-less**: remove landscape gap for device.
+- **is-{gap}-gaped**: set landscape gap to registered iterable gaps.
+- **is-{device}-{gap}-gaped**: set landscape gap to registered iterable gaps for device.
+- **is-center-snapped**: set snap align to center.
+- **is-{device}-center-snapped**: set snap align to center for device.
+- **is-end-snapped**: set snap align to end.
+- **is-{device}-end-snapped**: set snap align to end for device.
+
+| variable | description                                            | default |
+| :------- | :----------------------------------------------------- | :------ |
+| gaps     | list of non-iterable gaps to include in landscape gaps | `()`    |
 
 #### layout
 

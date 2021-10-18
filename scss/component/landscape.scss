@@ -1,32 +1,110 @@
 .landscape {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     box-sizing: border-box;
-    overflow-y: hidden;
+    overflow: hidden;
     overflow-x: auto;
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
+    margin: -(half-of(_gap("element")));
+    scroll-padding: _gap("element");
 
     > * {
-        flex-wrap: nowrap;
+        margin: half-of(_gap("element"));
+        scroll-snap-align: start;
+        flex-shrink: 0;
     }
 
-    &:not(:last-child) {
-        margin-bottom: _gap("container");
+    &.is-center-snapped {
+        > * {
+            scroll-snap-align: center;
+        }
     }
 
-    &:not(.is-padding-less) {
-        padding: _gap("container");
+    &.is-end-snapped {
+        > * {
+            scroll-snap-align: end;
+        }
+    }
 
-        @each $label, $gap in _gaps(_var("landscape", "gaps", ())) {
-            &.is-#{$label}-padded {
-                padding: $gap;
+    &.is-mandatory {
+        scroll-snap-type: x mandatory;
+    }
+
+    &.is-stacked {
+        flex-direction: column;
+        overflow: hidden;
+        overflow-y: auto;
+        scroll-snap-type: y proximity;
+        align-items: stretch;
+
+        &.is-mandatory {
+            scroll-snap-type: y mandatory;
+        }
+    }
+
+    &.is-gap-less {
+        margin: 0;
+        scroll-padding: 0;
+        > * {
+            margin: 0;
+        }
+    }
+
+    @each $label, $gap in _gaps(_var("landscape", "gaps", ())) {
+        &.is-#{$label}-gaped {
+            margin: -(half-of($gap));
+            scroll-padding: half-of($gap);
+            > * {
+                margin: half-of($gap);
             }
         }
     }
 
-    @media (hover: hover) {
-        overflow-x: hidden;
-        > * {
-            flex-wrap: wrap !important;
+    @each $device, $mq in _breakpoints() {
+        @media #{$mq} {
+            &.is-#{$device}-center-snapped {
+                > * {
+                    scroll-snap-align: center !important;
+                }
+            }
+
+            &.is-#{$device}-end-snapped {
+                > * {
+                    scroll-snap-align: end !important;
+                }
+            }
+
+            &.is-#{$device}-stacked {
+                flex-direction: column;
+                overflow: hidden;
+                overflow-y: auto;
+                scroll-snap-type: y proximity;
+                align-items: stretch;
+
+                &.is-mandatory {
+                    scroll-snap-type: y mandatory;
+                }
+            }
+
+            &.is-#{$device}-gap-less {
+                margin: 0;
+                scroll-padding: 0;
+                > * {
+                    margin: 0;
+                }
+            }
+
+            @each $label, $gap in _gaps(_var("landscape", "gaps", ())) {
+                &.is-#{$device}-#{$label}-gaped {
+                    scroll-padding: half-of($gap);
+                    margin: -(half-of($gap));
+                    > * {
+                        margin: half-of($gap);
+                    }
+                }
+            }
         }
     }
 }

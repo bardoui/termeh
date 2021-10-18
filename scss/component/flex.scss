@@ -66,9 +66,9 @@
 
     @each $label, $gap in _gaps(_var("flex", "gaps", ())) {
         &.is-#{$label}-gaped {
-            margin: -($gap / 2);
+            margin: -(half-of($gap));
             > .flex-item {
-                padding: ($gap / 2);
+                padding: half-of($gap);
             }
         }
     }
@@ -109,9 +109,9 @@
 
             @each $label, $gap in _gaps(_var("flex", "gaps", ())) {
                 &.is-#{$device}-#{$label}-gaped {
-                    margin: -($gap / 2) !important;
+                    margin: -(half-of($gap)) !important;
                     > .flex-item {
-                        padding: ($gap / 2) !important;
+                        padding: half-of($gap) !important;
                     }
                 }
             }

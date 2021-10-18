@@ -47,7 +47,7 @@ textarea {
     background: _color("input");
     border: 1px solid _color("separator");
     border-radius: _var("radius", "normal");
-    padding: (_gap("element") / 2) _gap("element");
+    padding: e-pad(_gap("element"));
 
     &::placeholder {
         color: _color("mute");

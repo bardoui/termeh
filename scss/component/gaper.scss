@@ -1,7 +1,6 @@
 .gaper {
     display: inline-flex;
     flex-direction: row;
-    flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
     box-sizing: border-box;
@@ -9,14 +8,11 @@
 
     > * {
         margin: half-of(_gap("element"));
+        flex-shrink: 0;
     }
 
     &.is-fluid {
         display: flex;
-    }
-
-    &.is-wrapped {
-        flex-wrap: wrap;
     }
 
     &.is-stacked {
@@ -38,10 +34,10 @@
 
     @each $label, $gap in _gaps(_var("gaper", "gaps", ())) {
         &.is-#{$label}-gaped {
-            margin: -($gap / 2);
+            margin: -(half-of($gap));
 
             > * {
-                margin: ($gap / 2);
+                margin: half-of($gap);
             }
         }
     }
@@ -67,10 +63,6 @@
                 display: flex !important;
             }
 
-            &.is-#{$device}-wrapped {
-                flex-wrap: wrap !important;
-            }
-
             &.is-#{$device}-stacked {
                 flex-direction: column !important;
                 align-items: stretch;
@@ -90,10 +82,10 @@
 
             @each $label, $gap in _gaps(_var("gaper", "gaps", ())) {
                 &.is-#{$device}-#{$label}-gaped {
-                    margin: -($gap / 2) !important;
+                    margin: -(half-of($gap)) !important;
 
                     > * {
-                        margin: ($gap / 2) !important;
+                        margin: half-of($gap) !important;
                     }
                 }
             }

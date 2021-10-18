@@ -4145,7 +4145,6 @@ button.is-success.is-simple:hover,
 .gaper {
   display: inline-flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
   box-sizing: border-box;
@@ -4153,12 +4152,10 @@ button.is-success.is-simple:hover,
 }
 .gaper > * {
   margin: 0.5rem;
+  flex-shrink: 0;
 }
 .gaper.is-fluid {
   display: flex;
-}
-.gaper.is-wrapped {
-  flex-wrap: wrap;
 }
 .gaper.is-stacked {
   flex-direction: column;
@@ -4252,9 +4249,6 @@ button.is-success.is-simple:hover,
 @media screen and (max-width: 768px) {
   .gaper.is-mobile-fluid {
     display: flex !important;
-  }
-  .gaper.is-mobile-wrapped {
-    flex-wrap: wrap !important;
   }
   .gaper.is-mobile-stacked {
     flex-direction: column !important;
@@ -4350,9 +4344,6 @@ button.is-success.is-simple:hover,
   .gaper.is-tablet-fluid {
     display: flex !important;
   }
-  .gaper.is-tablet-wrapped {
-    flex-wrap: wrap !important;
-  }
   .gaper.is-tablet-stacked {
     flex-direction: column !important;
     align-items: stretch;
@@ -4446,9 +4437,6 @@ button.is-success.is-simple:hover,
 @media screen and (min-width: 769px) and (max-width: 1023px) {
   .gaper.is-tablet-only-fluid {
     display: flex !important;
-  }
-  .gaper.is-tablet-only-wrapped {
-    flex-wrap: wrap !important;
   }
   .gaper.is-tablet-only-stacked {
     flex-direction: column !important;
@@ -4544,9 +4532,6 @@ button.is-success.is-simple:hover,
   .gaper.is-until-desktop-fluid {
     display: flex !important;
   }
-  .gaper.is-until-desktop-wrapped {
-    flex-wrap: wrap !important;
-  }
   .gaper.is-until-desktop-stacked {
     flex-direction: column !important;
     align-items: stretch;
@@ -4640,9 +4625,6 @@ button.is-success.is-simple:hover,
 @media screen and (min-width: 1024px) {
   .gaper.is-desktop-fluid {
     display: flex !important;
-  }
-  .gaper.is-desktop-wrapped {
-    flex-wrap: wrap !important;
   }
   .gaper.is-desktop-stacked {
     flex-direction: column !important;
@@ -4738,9 +4720,6 @@ button.is-success.is-simple:hover,
   .gaper.is-desktop-only-fluid {
     display: flex !important;
   }
-  .gaper.is-desktop-only-wrapped {
-    flex-wrap: wrap !important;
-  }
   .gaper.is-desktop-only-stacked {
     flex-direction: column !important;
     align-items: stretch;
@@ -4834,9 +4813,6 @@ button.is-success.is-simple:hover,
 @media screen and (max-width: 1215px) {
   .gaper.is-until-widescreen-fluid {
     display: flex !important;
-  }
-  .gaper.is-until-widescreen-wrapped {
-    flex-wrap: wrap !important;
   }
   .gaper.is-until-widescreen-stacked {
     flex-direction: column !important;
@@ -4932,9 +4908,6 @@ button.is-success.is-simple:hover,
   .gaper.is-widescreen-fluid {
     display: flex !important;
   }
-  .gaper.is-widescreen-wrapped {
-    flex-wrap: wrap !important;
-  }
   .gaper.is-widescreen-stacked {
     flex-direction: column !important;
     align-items: stretch;
@@ -5028,9 +5001,6 @@ button.is-success.is-simple:hover,
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
   .gaper.is-widescreen-only-fluid {
     display: flex !important;
-  }
-  .gaper.is-widescreen-only-wrapped {
-    flex-wrap: wrap !important;
   }
   .gaper.is-widescreen-only-stacked {
     flex-direction: column !important;
@@ -5126,9 +5096,6 @@ button.is-success.is-simple:hover,
   .gaper.is-until-fullhd-fluid {
     display: flex !important;
   }
-  .gaper.is-until-fullhd-wrapped {
-    flex-wrap: wrap !important;
-  }
   .gaper.is-until-fullhd-stacked {
     flex-direction: column !important;
     align-items: stretch;
@@ -5222,9 +5189,6 @@ button.is-success.is-simple:hover,
 @media screen and (min-width: 1408px) {
   .gaper.is-fullhd-fluid {
     display: flex !important;
-  }
-  .gaper.is-fullhd-wrapped {
-    flex-wrap: wrap !important;
   }
   .gaper.is-fullhd-stacked {
     flex-direction: column !important;
@@ -5482,48 +5446,909 @@ button.is-success.is-simple:hover,
 }
 
 .landscape {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   box-sizing: border-box;
-  overflow-y: hidden;
+  overflow: hidden;
   overflow-x: auto;
+  scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
+  margin: -0.5rem;
+  scroll-padding: 1rem;
 }
 .landscape > * {
-  flex-wrap: nowrap;
+  margin: 0.5rem;
+  scroll-snap-align: start;
+  flex-shrink: 0;
 }
-.landscape:not(:last-child) {
-  margin-bottom: 1.5rem;
+.landscape.is-center-snapped > * {
+  scroll-snap-align: center;
 }
-.landscape:not(.is-padding-less) {
-  padding: 1.5rem;
+.landscape.is-end-snapped > * {
+  scroll-snap-align: end;
 }
-.landscape:not(.is-padding-less).is-mini-padded {
-  padding: 0.5em;
+.landscape.is-mandatory {
+  scroll-snap-type: x mandatory;
 }
-.landscape:not(.is-padding-less).is-small-padded {
-  padding: 0.85em;
+.landscape.is-stacked {
+  flex-direction: column;
+  overflow: hidden;
+  overflow-y: auto;
+  scroll-snap-type: y proximity;
+  align-items: stretch;
 }
-.landscape:not(.is-padding-less).is-normal-padded {
-  padding: 1em;
+.landscape.is-stacked.is-mandatory {
+  scroll-snap-type: y mandatory;
 }
-.landscape:not(.is-padding-less).is-medium-padded {
-  padding: 1.5em;
+.landscape.is-gap-less {
+  margin: 0;
+  scroll-padding: 0;
 }
-.landscape:not(.is-padding-less).is-large-padded {
-  padding: 2em;
+.landscape.is-gap-less > * {
+  margin: 0;
 }
-.landscape:not(.is-padding-less).is-huge-padded {
-  padding: 2.5em;
+.landscape.is-mini-gaped {
+  margin: -0.25em;
+  scroll-padding: 0.25em;
 }
-.landscape:not(.is-padding-less).is-massive-padded {
-  padding: 3em;
+.landscape.is-mini-gaped > * {
+  margin: 0.25em;
 }
-@media (hover: hover) {
-  .landscape {
-    overflow-x: hidden;
+.landscape.is-small-gaped {
+  margin: -0.425em;
+  scroll-padding: 0.425em;
+}
+.landscape.is-small-gaped > * {
+  margin: 0.425em;
+}
+.landscape.is-normal-gaped {
+  margin: -0.5em;
+  scroll-padding: 0.5em;
+}
+.landscape.is-normal-gaped > * {
+  margin: 0.5em;
+}
+.landscape.is-medium-gaped {
+  margin: -0.75em;
+  scroll-padding: 0.75em;
+}
+.landscape.is-medium-gaped > * {
+  margin: 0.75em;
+}
+.landscape.is-large-gaped {
+  margin: -1em;
+  scroll-padding: 1em;
+}
+.landscape.is-large-gaped > * {
+  margin: 1em;
+}
+.landscape.is-huge-gaped {
+  margin: -1.25em;
+  scroll-padding: 1.25em;
+}
+.landscape.is-huge-gaped > * {
+  margin: 1.25em;
+}
+.landscape.is-massive-gaped {
+  margin: -1.5em;
+  scroll-padding: 1.5em;
+}
+.landscape.is-massive-gaped > * {
+  margin: 1.5em;
+}
+@media screen and (max-width: 768px) {
+  .landscape.is-mobile-center-snapped > * {
+    scroll-snap-align: center !important;
   }
-  .landscape > * {
-    flex-wrap: wrap !important;
+  .landscape.is-mobile-end-snapped > * {
+    scroll-snap-align: end !important;
+  }
+  .landscape.is-mobile-stacked {
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    align-items: stretch;
+  }
+  .landscape.is-mobile-stacked.is-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+  .landscape.is-mobile-gap-less {
+    margin: 0;
+    scroll-padding: 0;
+  }
+  .landscape.is-mobile-gap-less > * {
+    margin: 0;
+  }
+  .landscape.is-mobile-mini-gaped {
+    scroll-padding: 0.25em;
+    margin: -0.25em;
+  }
+  .landscape.is-mobile-mini-gaped > * {
+    margin: 0.25em;
+  }
+  .landscape.is-mobile-small-gaped {
+    scroll-padding: 0.425em;
+    margin: -0.425em;
+  }
+  .landscape.is-mobile-small-gaped > * {
+    margin: 0.425em;
+  }
+  .landscape.is-mobile-normal-gaped {
+    scroll-padding: 0.5em;
+    margin: -0.5em;
+  }
+  .landscape.is-mobile-normal-gaped > * {
+    margin: 0.5em;
+  }
+  .landscape.is-mobile-medium-gaped {
+    scroll-padding: 0.75em;
+    margin: -0.75em;
+  }
+  .landscape.is-mobile-medium-gaped > * {
+    margin: 0.75em;
+  }
+  .landscape.is-mobile-large-gaped {
+    scroll-padding: 1em;
+    margin: -1em;
+  }
+  .landscape.is-mobile-large-gaped > * {
+    margin: 1em;
+  }
+  .landscape.is-mobile-huge-gaped {
+    scroll-padding: 1.25em;
+    margin: -1.25em;
+  }
+  .landscape.is-mobile-huge-gaped > * {
+    margin: 1.25em;
+  }
+  .landscape.is-mobile-massive-gaped {
+    scroll-padding: 1.5em;
+    margin: -1.5em;
+  }
+  .landscape.is-mobile-massive-gaped > * {
+    margin: 1.5em;
+  }
+}
+@media screen and (min-width: 769px) {
+  .landscape.is-tablet-center-snapped > * {
+    scroll-snap-align: center !important;
+  }
+  .landscape.is-tablet-end-snapped > * {
+    scroll-snap-align: end !important;
+  }
+  .landscape.is-tablet-stacked {
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    align-items: stretch;
+  }
+  .landscape.is-tablet-stacked.is-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+  .landscape.is-tablet-gap-less {
+    margin: 0;
+    scroll-padding: 0;
+  }
+  .landscape.is-tablet-gap-less > * {
+    margin: 0;
+  }
+  .landscape.is-tablet-mini-gaped {
+    scroll-padding: 0.25em;
+    margin: -0.25em;
+  }
+  .landscape.is-tablet-mini-gaped > * {
+    margin: 0.25em;
+  }
+  .landscape.is-tablet-small-gaped {
+    scroll-padding: 0.425em;
+    margin: -0.425em;
+  }
+  .landscape.is-tablet-small-gaped > * {
+    margin: 0.425em;
+  }
+  .landscape.is-tablet-normal-gaped {
+    scroll-padding: 0.5em;
+    margin: -0.5em;
+  }
+  .landscape.is-tablet-normal-gaped > * {
+    margin: 0.5em;
+  }
+  .landscape.is-tablet-medium-gaped {
+    scroll-padding: 0.75em;
+    margin: -0.75em;
+  }
+  .landscape.is-tablet-medium-gaped > * {
+    margin: 0.75em;
+  }
+  .landscape.is-tablet-large-gaped {
+    scroll-padding: 1em;
+    margin: -1em;
+  }
+  .landscape.is-tablet-large-gaped > * {
+    margin: 1em;
+  }
+  .landscape.is-tablet-huge-gaped {
+    scroll-padding: 1.25em;
+    margin: -1.25em;
+  }
+  .landscape.is-tablet-huge-gaped > * {
+    margin: 1.25em;
+  }
+  .landscape.is-tablet-massive-gaped {
+    scroll-padding: 1.5em;
+    margin: -1.5em;
+  }
+  .landscape.is-tablet-massive-gaped > * {
+    margin: 1.5em;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+  .landscape.is-tablet-only-center-snapped > * {
+    scroll-snap-align: center !important;
+  }
+  .landscape.is-tablet-only-end-snapped > * {
+    scroll-snap-align: end !important;
+  }
+  .landscape.is-tablet-only-stacked {
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    align-items: stretch;
+  }
+  .landscape.is-tablet-only-stacked.is-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+  .landscape.is-tablet-only-gap-less {
+    margin: 0;
+    scroll-padding: 0;
+  }
+  .landscape.is-tablet-only-gap-less > * {
+    margin: 0;
+  }
+  .landscape.is-tablet-only-mini-gaped {
+    scroll-padding: 0.25em;
+    margin: -0.25em;
+  }
+  .landscape.is-tablet-only-mini-gaped > * {
+    margin: 0.25em;
+  }
+  .landscape.is-tablet-only-small-gaped {
+    scroll-padding: 0.425em;
+    margin: -0.425em;
+  }
+  .landscape.is-tablet-only-small-gaped > * {
+    margin: 0.425em;
+  }
+  .landscape.is-tablet-only-normal-gaped {
+    scroll-padding: 0.5em;
+    margin: -0.5em;
+  }
+  .landscape.is-tablet-only-normal-gaped > * {
+    margin: 0.5em;
+  }
+  .landscape.is-tablet-only-medium-gaped {
+    scroll-padding: 0.75em;
+    margin: -0.75em;
+  }
+  .landscape.is-tablet-only-medium-gaped > * {
+    margin: 0.75em;
+  }
+  .landscape.is-tablet-only-large-gaped {
+    scroll-padding: 1em;
+    margin: -1em;
+  }
+  .landscape.is-tablet-only-large-gaped > * {
+    margin: 1em;
+  }
+  .landscape.is-tablet-only-huge-gaped {
+    scroll-padding: 1.25em;
+    margin: -1.25em;
+  }
+  .landscape.is-tablet-only-huge-gaped > * {
+    margin: 1.25em;
+  }
+  .landscape.is-tablet-only-massive-gaped {
+    scroll-padding: 1.5em;
+    margin: -1.5em;
+  }
+  .landscape.is-tablet-only-massive-gaped > * {
+    margin: 1.5em;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .landscape.is-until-desktop-center-snapped > * {
+    scroll-snap-align: center !important;
+  }
+  .landscape.is-until-desktop-end-snapped > * {
+    scroll-snap-align: end !important;
+  }
+  .landscape.is-until-desktop-stacked {
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    align-items: stretch;
+  }
+  .landscape.is-until-desktop-stacked.is-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+  .landscape.is-until-desktop-gap-less {
+    margin: 0;
+    scroll-padding: 0;
+  }
+  .landscape.is-until-desktop-gap-less > * {
+    margin: 0;
+  }
+  .landscape.is-until-desktop-mini-gaped {
+    scroll-padding: 0.25em;
+    margin: -0.25em;
+  }
+  .landscape.is-until-desktop-mini-gaped > * {
+    margin: 0.25em;
+  }
+  .landscape.is-until-desktop-small-gaped {
+    scroll-padding: 0.425em;
+    margin: -0.425em;
+  }
+  .landscape.is-until-desktop-small-gaped > * {
+    margin: 0.425em;
+  }
+  .landscape.is-until-desktop-normal-gaped {
+    scroll-padding: 0.5em;
+    margin: -0.5em;
+  }
+  .landscape.is-until-desktop-normal-gaped > * {
+    margin: 0.5em;
+  }
+  .landscape.is-until-desktop-medium-gaped {
+    scroll-padding: 0.75em;
+    margin: -0.75em;
+  }
+  .landscape.is-until-desktop-medium-gaped > * {
+    margin: 0.75em;
+  }
+  .landscape.is-until-desktop-large-gaped {
+    scroll-padding: 1em;
+    margin: -1em;
+  }
+  .landscape.is-until-desktop-large-gaped > * {
+    margin: 1em;
+  }
+  .landscape.is-until-desktop-huge-gaped {
+    scroll-padding: 1.25em;
+    margin: -1.25em;
+  }
+  .landscape.is-until-desktop-huge-gaped > * {
+    margin: 1.25em;
+  }
+  .landscape.is-until-desktop-massive-gaped {
+    scroll-padding: 1.5em;
+    margin: -1.5em;
+  }
+  .landscape.is-until-desktop-massive-gaped > * {
+    margin: 1.5em;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .landscape.is-desktop-center-snapped > * {
+    scroll-snap-align: center !important;
+  }
+  .landscape.is-desktop-end-snapped > * {
+    scroll-snap-align: end !important;
+  }
+  .landscape.is-desktop-stacked {
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    align-items: stretch;
+  }
+  .landscape.is-desktop-stacked.is-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+  .landscape.is-desktop-gap-less {
+    margin: 0;
+    scroll-padding: 0;
+  }
+  .landscape.is-desktop-gap-less > * {
+    margin: 0;
+  }
+  .landscape.is-desktop-mini-gaped {
+    scroll-padding: 0.25em;
+    margin: -0.25em;
+  }
+  .landscape.is-desktop-mini-gaped > * {
+    margin: 0.25em;
+  }
+  .landscape.is-desktop-small-gaped {
+    scroll-padding: 0.425em;
+    margin: -0.425em;
+  }
+  .landscape.is-desktop-small-gaped > * {
+    margin: 0.425em;
+  }
+  .landscape.is-desktop-normal-gaped {
+    scroll-padding: 0.5em;
+    margin: -0.5em;
+  }
+  .landscape.is-desktop-normal-gaped > * {
+    margin: 0.5em;
+  }
+  .landscape.is-desktop-medium-gaped {
+    scroll-padding: 0.75em;
+    margin: -0.75em;
+  }
+  .landscape.is-desktop-medium-gaped > * {
+    margin: 0.75em;
+  }
+  .landscape.is-desktop-large-gaped {
+    scroll-padding: 1em;
+    margin: -1em;
+  }
+  .landscape.is-desktop-large-gaped > * {
+    margin: 1em;
+  }
+  .landscape.is-desktop-huge-gaped {
+    scroll-padding: 1.25em;
+    margin: -1.25em;
+  }
+  .landscape.is-desktop-huge-gaped > * {
+    margin: 1.25em;
+  }
+  .landscape.is-desktop-massive-gaped {
+    scroll-padding: 1.5em;
+    margin: -1.5em;
+  }
+  .landscape.is-desktop-massive-gaped > * {
+    margin: 1.5em;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .landscape.is-desktop-only-center-snapped > * {
+    scroll-snap-align: center !important;
+  }
+  .landscape.is-desktop-only-end-snapped > * {
+    scroll-snap-align: end !important;
+  }
+  .landscape.is-desktop-only-stacked {
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    align-items: stretch;
+  }
+  .landscape.is-desktop-only-stacked.is-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+  .landscape.is-desktop-only-gap-less {
+    margin: 0;
+    scroll-padding: 0;
+  }
+  .landscape.is-desktop-only-gap-less > * {
+    margin: 0;
+  }
+  .landscape.is-desktop-only-mini-gaped {
+    scroll-padding: 0.25em;
+    margin: -0.25em;
+  }
+  .landscape.is-desktop-only-mini-gaped > * {
+    margin: 0.25em;
+  }
+  .landscape.is-desktop-only-small-gaped {
+    scroll-padding: 0.425em;
+    margin: -0.425em;
+  }
+  .landscape.is-desktop-only-small-gaped > * {
+    margin: 0.425em;
+  }
+  .landscape.is-desktop-only-normal-gaped {
+    scroll-padding: 0.5em;
+    margin: -0.5em;
+  }
+  .landscape.is-desktop-only-normal-gaped > * {
+    margin: 0.5em;
+  }
+  .landscape.is-desktop-only-medium-gaped {
+    scroll-padding: 0.75em;
+    margin: -0.75em;
+  }
+  .landscape.is-desktop-only-medium-gaped > * {
+    margin: 0.75em;
+  }
+  .landscape.is-desktop-only-large-gaped {
+    scroll-padding: 1em;
+    margin: -1em;
+  }
+  .landscape.is-desktop-only-large-gaped > * {
+    margin: 1em;
+  }
+  .landscape.is-desktop-only-huge-gaped {
+    scroll-padding: 1.25em;
+    margin: -1.25em;
+  }
+  .landscape.is-desktop-only-huge-gaped > * {
+    margin: 1.25em;
+  }
+  .landscape.is-desktop-only-massive-gaped {
+    scroll-padding: 1.5em;
+    margin: -1.5em;
+  }
+  .landscape.is-desktop-only-massive-gaped > * {
+    margin: 1.5em;
+  }
+}
+@media screen and (max-width: 1215px) {
+  .landscape.is-until-widescreen-center-snapped > * {
+    scroll-snap-align: center !important;
+  }
+  .landscape.is-until-widescreen-end-snapped > * {
+    scroll-snap-align: end !important;
+  }
+  .landscape.is-until-widescreen-stacked {
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    align-items: stretch;
+  }
+  .landscape.is-until-widescreen-stacked.is-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+  .landscape.is-until-widescreen-gap-less {
+    margin: 0;
+    scroll-padding: 0;
+  }
+  .landscape.is-until-widescreen-gap-less > * {
+    margin: 0;
+  }
+  .landscape.is-until-widescreen-mini-gaped {
+    scroll-padding: 0.25em;
+    margin: -0.25em;
+  }
+  .landscape.is-until-widescreen-mini-gaped > * {
+    margin: 0.25em;
+  }
+  .landscape.is-until-widescreen-small-gaped {
+    scroll-padding: 0.425em;
+    margin: -0.425em;
+  }
+  .landscape.is-until-widescreen-small-gaped > * {
+    margin: 0.425em;
+  }
+  .landscape.is-until-widescreen-normal-gaped {
+    scroll-padding: 0.5em;
+    margin: -0.5em;
+  }
+  .landscape.is-until-widescreen-normal-gaped > * {
+    margin: 0.5em;
+  }
+  .landscape.is-until-widescreen-medium-gaped {
+    scroll-padding: 0.75em;
+    margin: -0.75em;
+  }
+  .landscape.is-until-widescreen-medium-gaped > * {
+    margin: 0.75em;
+  }
+  .landscape.is-until-widescreen-large-gaped {
+    scroll-padding: 1em;
+    margin: -1em;
+  }
+  .landscape.is-until-widescreen-large-gaped > * {
+    margin: 1em;
+  }
+  .landscape.is-until-widescreen-huge-gaped {
+    scroll-padding: 1.25em;
+    margin: -1.25em;
+  }
+  .landscape.is-until-widescreen-huge-gaped > * {
+    margin: 1.25em;
+  }
+  .landscape.is-until-widescreen-massive-gaped {
+    scroll-padding: 1.5em;
+    margin: -1.5em;
+  }
+  .landscape.is-until-widescreen-massive-gaped > * {
+    margin: 1.5em;
+  }
+}
+@media screen and (min-width: 1216px) {
+  .landscape.is-widescreen-center-snapped > * {
+    scroll-snap-align: center !important;
+  }
+  .landscape.is-widescreen-end-snapped > * {
+    scroll-snap-align: end !important;
+  }
+  .landscape.is-widescreen-stacked {
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    align-items: stretch;
+  }
+  .landscape.is-widescreen-stacked.is-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+  .landscape.is-widescreen-gap-less {
+    margin: 0;
+    scroll-padding: 0;
+  }
+  .landscape.is-widescreen-gap-less > * {
+    margin: 0;
+  }
+  .landscape.is-widescreen-mini-gaped {
+    scroll-padding: 0.25em;
+    margin: -0.25em;
+  }
+  .landscape.is-widescreen-mini-gaped > * {
+    margin: 0.25em;
+  }
+  .landscape.is-widescreen-small-gaped {
+    scroll-padding: 0.425em;
+    margin: -0.425em;
+  }
+  .landscape.is-widescreen-small-gaped > * {
+    margin: 0.425em;
+  }
+  .landscape.is-widescreen-normal-gaped {
+    scroll-padding: 0.5em;
+    margin: -0.5em;
+  }
+  .landscape.is-widescreen-normal-gaped > * {
+    margin: 0.5em;
+  }
+  .landscape.is-widescreen-medium-gaped {
+    scroll-padding: 0.75em;
+    margin: -0.75em;
+  }
+  .landscape.is-widescreen-medium-gaped > * {
+    margin: 0.75em;
+  }
+  .landscape.is-widescreen-large-gaped {
+    scroll-padding: 1em;
+    margin: -1em;
+  }
+  .landscape.is-widescreen-large-gaped > * {
+    margin: 1em;
+  }
+  .landscape.is-widescreen-huge-gaped {
+    scroll-padding: 1.25em;
+    margin: -1.25em;
+  }
+  .landscape.is-widescreen-huge-gaped > * {
+    margin: 1.25em;
+  }
+  .landscape.is-widescreen-massive-gaped {
+    scroll-padding: 1.5em;
+    margin: -1.5em;
+  }
+  .landscape.is-widescreen-massive-gaped > * {
+    margin: 1.5em;
+  }
+}
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .landscape.is-widescreen-only-center-snapped > * {
+    scroll-snap-align: center !important;
+  }
+  .landscape.is-widescreen-only-end-snapped > * {
+    scroll-snap-align: end !important;
+  }
+  .landscape.is-widescreen-only-stacked {
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    align-items: stretch;
+  }
+  .landscape.is-widescreen-only-stacked.is-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+  .landscape.is-widescreen-only-gap-less {
+    margin: 0;
+    scroll-padding: 0;
+  }
+  .landscape.is-widescreen-only-gap-less > * {
+    margin: 0;
+  }
+  .landscape.is-widescreen-only-mini-gaped {
+    scroll-padding: 0.25em;
+    margin: -0.25em;
+  }
+  .landscape.is-widescreen-only-mini-gaped > * {
+    margin: 0.25em;
+  }
+  .landscape.is-widescreen-only-small-gaped {
+    scroll-padding: 0.425em;
+    margin: -0.425em;
+  }
+  .landscape.is-widescreen-only-small-gaped > * {
+    margin: 0.425em;
+  }
+  .landscape.is-widescreen-only-normal-gaped {
+    scroll-padding: 0.5em;
+    margin: -0.5em;
+  }
+  .landscape.is-widescreen-only-normal-gaped > * {
+    margin: 0.5em;
+  }
+  .landscape.is-widescreen-only-medium-gaped {
+    scroll-padding: 0.75em;
+    margin: -0.75em;
+  }
+  .landscape.is-widescreen-only-medium-gaped > * {
+    margin: 0.75em;
+  }
+  .landscape.is-widescreen-only-large-gaped {
+    scroll-padding: 1em;
+    margin: -1em;
+  }
+  .landscape.is-widescreen-only-large-gaped > * {
+    margin: 1em;
+  }
+  .landscape.is-widescreen-only-huge-gaped {
+    scroll-padding: 1.25em;
+    margin: -1.25em;
+  }
+  .landscape.is-widescreen-only-huge-gaped > * {
+    margin: 1.25em;
+  }
+  .landscape.is-widescreen-only-massive-gaped {
+    scroll-padding: 1.5em;
+    margin: -1.5em;
+  }
+  .landscape.is-widescreen-only-massive-gaped > * {
+    margin: 1.5em;
+  }
+}
+@media screen and (max-width: 1407px) {
+  .landscape.is-until-fullhd-center-snapped > * {
+    scroll-snap-align: center !important;
+  }
+  .landscape.is-until-fullhd-end-snapped > * {
+    scroll-snap-align: end !important;
+  }
+  .landscape.is-until-fullhd-stacked {
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    align-items: stretch;
+  }
+  .landscape.is-until-fullhd-stacked.is-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+  .landscape.is-until-fullhd-gap-less {
+    margin: 0;
+    scroll-padding: 0;
+  }
+  .landscape.is-until-fullhd-gap-less > * {
+    margin: 0;
+  }
+  .landscape.is-until-fullhd-mini-gaped {
+    scroll-padding: 0.25em;
+    margin: -0.25em;
+  }
+  .landscape.is-until-fullhd-mini-gaped > * {
+    margin: 0.25em;
+  }
+  .landscape.is-until-fullhd-small-gaped {
+    scroll-padding: 0.425em;
+    margin: -0.425em;
+  }
+  .landscape.is-until-fullhd-small-gaped > * {
+    margin: 0.425em;
+  }
+  .landscape.is-until-fullhd-normal-gaped {
+    scroll-padding: 0.5em;
+    margin: -0.5em;
+  }
+  .landscape.is-until-fullhd-normal-gaped > * {
+    margin: 0.5em;
+  }
+  .landscape.is-until-fullhd-medium-gaped {
+    scroll-padding: 0.75em;
+    margin: -0.75em;
+  }
+  .landscape.is-until-fullhd-medium-gaped > * {
+    margin: 0.75em;
+  }
+  .landscape.is-until-fullhd-large-gaped {
+    scroll-padding: 1em;
+    margin: -1em;
+  }
+  .landscape.is-until-fullhd-large-gaped > * {
+    margin: 1em;
+  }
+  .landscape.is-until-fullhd-huge-gaped {
+    scroll-padding: 1.25em;
+    margin: -1.25em;
+  }
+  .landscape.is-until-fullhd-huge-gaped > * {
+    margin: 1.25em;
+  }
+  .landscape.is-until-fullhd-massive-gaped {
+    scroll-padding: 1.5em;
+    margin: -1.5em;
+  }
+  .landscape.is-until-fullhd-massive-gaped > * {
+    margin: 1.5em;
+  }
+}
+@media screen and (min-width: 1408px) {
+  .landscape.is-fullhd-center-snapped > * {
+    scroll-snap-align: center !important;
+  }
+  .landscape.is-fullhd-end-snapped > * {
+    scroll-snap-align: end !important;
+  }
+  .landscape.is-fullhd-stacked {
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    align-items: stretch;
+  }
+  .landscape.is-fullhd-stacked.is-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+  .landscape.is-fullhd-gap-less {
+    margin: 0;
+    scroll-padding: 0;
+  }
+  .landscape.is-fullhd-gap-less > * {
+    margin: 0;
+  }
+  .landscape.is-fullhd-mini-gaped {
+    scroll-padding: 0.25em;
+    margin: -0.25em;
+  }
+  .landscape.is-fullhd-mini-gaped > * {
+    margin: 0.25em;
+  }
+  .landscape.is-fullhd-small-gaped {
+    scroll-padding: 0.425em;
+    margin: -0.425em;
+  }
+  .landscape.is-fullhd-small-gaped > * {
+    margin: 0.425em;
+  }
+  .landscape.is-fullhd-normal-gaped {
+    scroll-padding: 0.5em;
+    margin: -0.5em;
+  }
+  .landscape.is-fullhd-normal-gaped > * {
+    margin: 0.5em;
+  }
+  .landscape.is-fullhd-medium-gaped {
+    scroll-padding: 0.75em;
+    margin: -0.75em;
+  }
+  .landscape.is-fullhd-medium-gaped > * {
+    margin: 0.75em;
+  }
+  .landscape.is-fullhd-large-gaped {
+    scroll-padding: 1em;
+    margin: -1em;
+  }
+  .landscape.is-fullhd-large-gaped > * {
+    margin: 1em;
+  }
+  .landscape.is-fullhd-huge-gaped {
+    scroll-padding: 1.25em;
+    margin: -1.25em;
+  }
+  .landscape.is-fullhd-huge-gaped > * {
+    margin: 1.25em;
+  }
+  .landscape.is-fullhd-massive-gaped {
+    scroll-padding: 1.5em;
+    margin: -1.5em;
+  }
+  .landscape.is-fullhd-massive-gaped > * {
+    margin: 1.5em;
   }
 }
 
