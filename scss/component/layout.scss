@@ -1,51 +1,55 @@
-// @todo fix overflow content wrapper on ios
+// @todo fix ios overflow
 .layout {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: stretch;
-    justify-content: stretch;
     box-sizing: border-box;
-    flex: 1;
-    align-self: stretch;
-    justify-self: stretch;
-    max-width: 100%;
+    width: 100%;
     height: 100%;
     overflow: hidden;
     z-index: 0;
     filter: grayscale(0%);
     transition: filter _var("transition", "duration") _var("transition", "ease");
 
-    > .attachment {
+    > :not(.content):not(.layout) {
         flex: none;
         box-sizing: border-box;
         max-width: 100%;
     }
 
+    > .layout {
+        flex: 1;
+    }
+
     > .content {
         flex: 1;
-        display: flex;
-        flex-direction: column;
         box-sizing: border-box;
         overflow: hidden;
         overflow-y: auto;
         @extend .is-scrollable;
         padding: _gap("container");
-        max-width: 100%;
+    }
 
-        > .wrapper {
-            display: block;
-            box-sizing: border-box;
-            max-width: 100%;
-        }
+    &.is-reverse {
+        flex-direction: column-reverse;
     }
 
     &.is-horizontal {
         flex-direction: row;
+
+        &-reverse {
+            flex-direction: row-reverse;
+        }
     }
 
-    &.is-centered > .content > * {
-        margin: auto;
+    &.is-centered {
+        > .content {
+            display: flex;
+            > * {
+                margin: auto;
+            }
+        }
     }
 
     &.is-deactivated {
@@ -53,14 +57,6 @@
 
         > .content {
             overflow-y: hidden;
-        }
-    }
-
-    &.is-stacked {
-        flex-direction: column;
-
-        &-reverse {
-            flex-direction: column-reverse;
         }
     }
 
@@ -80,11 +76,15 @@
 
     @each $device, $mq in _breakpoints() {
         @media #{$mq} {
-            &.is-#{$device}-stacked {
-                flex-direction: column !important;
+            &.is-#{$device}-reverse {
+                flex-direction: column-reverse;
+            }
+
+            &.is-#{$device}-horizontal {
+                flex-direction: row;
 
                 &-reverse {
-                    flex-direction: column-reverse !important;
+                    flex-direction: row-reverse;
                 }
             }
 

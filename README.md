@@ -1193,44 +1193,41 @@ Make a scroll snap container (block lever gaper with scrolling).
 
 #### layout
 
-Nice flex based layout generator with nesting layout, centering and scrolling support.
+Nice mobile first flex based layout generator with nesting layout, centering and scrolling support.
+
+Layout can have another nested layout as **direct** child.
+
+Layout has vertical direction by default.
+
+**Caution**: you must put content inside `.content` element.
 
 ```html
 <div
-  class="layout is-horizontal is-mobile-stacked-reverse is-desktop-only-stacked is-padding-less"
+  class="layout is-desktop-horizontal is-until-desktop-reverse is-padding-less"
 >
-  <div class="attachment">Sidebar</div>
-  <div class="content">
-    <div
-      class="layout is-massive-padded is-massive-padded is-mobile-normal-padded is-centered"
-    >
-      <div class="content">
-        <div class="wrapper">
-          <div class="card is-decorated">...</div>
-        </div>
+  <div>Sidebar</div>
+  <div class="layout is-massive-padded is-mobile-normal-padded is-centered">
+    <div class="content">
+      <div>
+        <div class="card is-decorated">...</div>
       </div>
     </div>
   </div>
 </div>
 ```
 
+- **is-reverse**: set layout direction to reverse vertical.
+- **is-{device}-reverse**: set layout direction to reverse vertical for device.
 - **is-horizontal**: make layout direction horizontal.
-- **is-centered**: make content child center aligned.
+- **is-{device}-horizontal**: make layout direction horizontal for device.
+- **is-horizontal-reverse**: make layout direction reverse horizontal.
+- **is-{device}-horizontal-reverse**: make layout direction reverse horizontal for device.
+- **is-centered**: make `.content` child center aligned.
 - **is-deactivated**: disable layout scrolling and add grayscale filter to ui.
-- **is-stacked**: set layout direction vertical.
-- **is-{device}-stacked**: set layout direction vertical for device.
-- **is-stacked-reverse**: set layout direction reverse-vertical.
-- **is-{device}-stacked-reverse**: set layout direction reverse-vertical for device.
 - **is-padding-less**: remove content padding.
-- **is-{device}-padding-less**: set content padding to registered iterable gap.
+- **is-{device}-padding-less**: remove content padding for device.
 - **is-{gap}-padded**: set content padding to registered iterable gap.
 - **is-{device}-{gap}-padded**: set content padding to registered iterable gap for device.
-
-Layout contains two child types:
-
-- **attachment**: fixed width and no padded (e.g. sidebar, header, footer, etc.).
-- **content**: main content wrapper. Fill layout space and have padding and scrolling.
-  - **wrapper**: all content must put inside wrapper child.
 
 | variable | description                                             | default |
 | :------- | :------------------------------------------------------ | :------ |
