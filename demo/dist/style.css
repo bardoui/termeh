@@ -4160,6 +4160,9 @@ button.is-success.is-simple:hover,
   margin: 0.5rem;
   flex-shrink: 0;
 }
+.gaper > .gap {
+  flex: 1;
+}
 .gaper.is-fluid {
   display: flex;
 }
@@ -5285,6 +5288,189 @@ button.is-success.is-simple:hover,
   .gaper.is-fullhd-space-evenly-justified {
     justify-content: space-evenly !important;
   }
+}
+
+.header {
+  display: block;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+}
+.header h1,
+.header h2,
+.header h3,
+.header h4,
+.header h5,
+.header h6 {
+  font-size: 1em;
+  margin: 0;
+}
+.header.is-left-decorated {
+  border-left: 2px solid #081e30;
+}
+.header.is-right-decorated {
+  border-right: 2px solid #081e30;
+}
+.header.is-small h1,
+.header.is-small h2,
+.header.is-small h3,
+.header.is-small h4,
+.header.is-small h5,
+.header.is-small h6 {
+  font-size: 0.85em;
+}
+.header.is-normal h1,
+.header.is-normal h2,
+.header.is-normal h3,
+.header.is-normal h4,
+.header.is-normal h5,
+.header.is-normal h6 {
+  font-size: 1em;
+}
+.header.is-medium h1,
+.header.is-medium h2,
+.header.is-medium h3,
+.header.is-medium h4,
+.header.is-medium h5,
+.header.is-medium h6 {
+  font-size: 1.25em;
+}
+.header.is-large h1,
+.header.is-large h2,
+.header.is-large h3,
+.header.is-large h4,
+.header.is-large h5,
+.header.is-large h6 {
+  font-size: 1.5em;
+}
+.header.is-big h1,
+.header.is-big h2,
+.header.is-big h3,
+.header.is-big h4,
+.header.is-big h5,
+.header.is-big h6 {
+  font-size: 2em;
+}
+.header.is-huge h1,
+.header.is-huge h2,
+.header.is-huge h3,
+.header.is-huge h4,
+.header.is-huge h5,
+.header.is-huge h6 {
+  font-size: 2.5em;
+}
+.header.is-massive h1,
+.header.is-massive h2,
+.header.is-massive h3,
+.header.is-massive h4,
+.header.is-massive h5,
+.header.is-massive h6 {
+  font-size: 3em;
+}
+.header.is-mini-padded {
+  padding: 0.25em 0.5em;
+}
+.header.is-small-padded {
+  padding: 0.425em 0.85em;
+}
+.header.is-normal-padded {
+  padding: 0.5em 1em;
+}
+.header.is-medium-padded {
+  padding: 0.75em 1.5em;
+}
+.header.is-large-padded {
+  padding: 1em 2em;
+}
+.header.is-huge-padded {
+  padding: 1.25em 2.5em;
+}
+.header.is-massive-padded {
+  padding: 1.5em 3em;
+}
+.header.is-shade h1,
+.header.is-shade h2,
+.header.is-shade h3,
+.header.is-shade h4,
+.header.is-shade h5,
+.header.is-shade h6 {
+  color: #575f6c;
+}
+.header.is-shade.is-left-decorated {
+  border-left-color: #8d99ae;
+}
+.header.is-shade.is-right-decorated {
+  border-right-color: #8d99ae;
+}
+.header.is-primary h1,
+.header.is-primary h2,
+.header.is-primary h3,
+.header.is-primary h4,
+.header.is-primary h5,
+.header.is-primary h6 {
+  color: #24857a;
+}
+.header.is-primary.is-left-decorated {
+  border-left-color: #2a9d8f;
+}
+.header.is-primary.is-right-decorated {
+  border-right-color: #2a9d8f;
+}
+.header.is-error h1,
+.header.is-error h2,
+.header.is-error h3,
+.header.is-error h4,
+.header.is-error h5,
+.header.is-error h6 {
+  color: #cc0000;
+}
+.header.is-error.is-left-decorated {
+  border-left-color: #cc0000;
+}
+.header.is-error.is-right-decorated {
+  border-right-color: #cc0000;
+}
+.header.is-warning h1,
+.header.is-warning h2,
+.header.is-warning h3,
+.header.is-warning h4,
+.header.is-warning h5,
+.header.is-warning h6 {
+  color: #d45700;
+}
+.header.is-warning.is-left-decorated {
+  border-left-color: #f5bc00;
+}
+.header.is-warning.is-right-decorated {
+  border-right-color: #f5bc00;
+}
+.header.is-info h1,
+.header.is-info h2,
+.header.is-info h3,
+.header.is-info h4,
+.header.is-info h5,
+.header.is-info h6 {
+  color: #5924a3;
+}
+.header.is-info.is-left-decorated {
+  border-left-color: #8236ec;
+}
+.header.is-info.is-right-decorated {
+  border-right-color: #8236ec;
+}
+.header.is-success h1,
+.header.is-success h2,
+.header.is-success h3,
+.header.is-success h4,
+.header.is-success h5,
+.header.is-success h6 {
+  color: #25ab61;
+}
+.header.is-success.is-left-decorated {
+  border-left-color: #2dcd75;
+}
+.header.is-success.is-right-decorated {
+  border-right-color: #2dcd75;
 }
 
 .icon {
@@ -6862,23 +7048,47 @@ button.is-success.is-simple:hover,
   color: #afb8c6;
   white-space: nowrap;
 }
+.meta.is-action {
+  cursor: pointer;
+}
+.meta.is-action:hover {
+  color: #081e30;
+}
 .meta.is-shade {
   color: #abafb6;
+}
+.meta.is-shade.is-action:hover {
+  color: #575f6c;
 }
 .meta.is-primary {
   color: #92c2bd;
 }
+.meta.is-primary.is-action:hover {
+  color: #24857a;
+}
 .meta.is-error {
   color: #e68080;
+}
+.meta.is-error.is-action:hover {
+  color: #cc0000;
 }
 .meta.is-warning {
   color: #eaab80;
 }
+.meta.is-warning.is-action:hover {
+  color: #d45700;
+}
 .meta.is-info {
   color: #ac92d1;
 }
+.meta.is-info.is-action:hover {
+  color: #5924a3;
+}
 .meta.is-success {
   color: #92d5b0;
+}
+.meta.is-success.is-action:hover {
+  color: #25ab61;
 }
 
 .attachment {

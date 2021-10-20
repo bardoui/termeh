@@ -6,6 +6,13 @@
     color: _color("mute");
     white-space: nowrap;
 
+    &.is-action {
+        cursor: pointer;
+        &:hover {
+            color: _color("foreground");
+        }
+    }
+
     @each $label, $color in _colors(_var("meta", "colors", ())) {
         &.is-#{$label} {
             $col: readable($color, _color("base"));
@@ -14,6 +21,10 @@
                 palette($col, "200"),
                 palette($col, "700")
             );
+
+            &.is-action:hover {
+                color: $col;
+            }
         }
     }
 }

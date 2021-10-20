@@ -11,6 +11,10 @@
         flex-shrink: 0;
     }
 
+    > .gap {
+        flex: 1;
+    }
+
     &.is-fluid {
         display: flex;
     }

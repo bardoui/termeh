@@ -1065,6 +1065,8 @@ Container for make gaps between elements.
 
 Gaper is displayed as `inline-flex` by default.
 
+**Note**: you can use `.gap` child inside gaper to make a long gap between items.
+
 ```html
 <div class="gaper">
   <button>First</button>
@@ -1092,6 +1094,35 @@ Gaper is displayed as `inline-flex` by default.
 | :------- | :------------------------------------------------- | :------ |
 | gaps     | list of non-iterable gaps to include in gaper gaps | `()`    |
 
+#### header
+
+Create a header container.
+
+You must use `<h1>...<h6>` tag for header title. Title get size and color from header container.
+
+```html
+<span class="header is-right-decorated is-primary">
+  <h1>Login</h1>
+  <div class="gaper">
+    <div class="meta">Today</div>
+    <div class="gap"></div>
+    <div class="meta is-action is-primary">Forget Password?</div>
+  </div>
+</span>
+```
+
+- **is-left-decorated** add decoration border to left of header.
+- **is-right-decorated** add decoration border to right of header.
+- **is-{gap}-padded** set header padding from registered iterable gaps.
+- **is-{size}** set title size from registered iterable sizes.
+- **is-{color}** colorize header by registered iterable colors.
+
+| variable | description                                             | default |
+| :------- | :------------------------------------------------------ | :------ |
+| sizes    | list of non-iterable sizes to include in header sizes   | `()`    |
+| paddings | list of non-iterable gaps to include in header paddings | `()`    |
+| colors   | list of non-iterable colors to include in header colors | `()`    |
+
 #### icon
 
 Create a nice wrapper for icons (svg and img wrapper).
@@ -1106,7 +1137,7 @@ Create a nice wrapper for icons (svg and img wrapper).
 ```
 
 - **is-action** make icon button (use _mute_ color for svg and grayscale img).
-- **is-{size}** set icon size by registered iterable sizes.
+- **is-{size}** set icon size from registered iterable sizes.
 - **is-{color}** colorize icon by registered iterable colors (svg only).
 
 | variable | description                                           | default |
@@ -1227,6 +1258,7 @@ Generate meta text (with muted color).
 <span class="meta is-ltr is-primary">10,000 Followers</span>
 ```
 
+- **is-action**: make meta clickable.
 - **is-{color}**: set meta color to registered iterable colors.
 
 | variable | description                                           | default |

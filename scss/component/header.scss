@@ -1,0 +1,64 @@
+.header {
+    display: block;
+    box-sizing: border-box;
+    padding: e-pad(_gap("element"));
+    margin-bottom: _gap("container");
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: _size("normal");
+        margin: 0;
+    }
+
+    &.is-left-decorated {
+        border-left: _var("decorator", "size", 2px) solid _color("foreground");
+    }
+
+    &.is-right-decorated {
+        border-right: _var("decorator", "size", 2px) solid _color("foreground");
+    }
+
+    @each $label, $size in _sizes(_var("header", "sizes", ())) {
+        &.is-#{$label} {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-size: $size;
+            }
+        }
+    }
+
+    @each $label, $gap in _gaps(_var("header", "paddings", ())) {
+        &.is-#{$label}-padded {
+            padding: e-pad($gap);
+        }
+    }
+
+    @each $name, $color in _colors(_var("header", "colors", ())) {
+        &.is-#{$name} {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: readable($color, _color("base"));
+            }
+
+            &.is-left-decorated {
+                border-left-color: $color;
+            }
+
+            &.is-right-decorated {
+                border-right-color: $color;
+            }
+        }
+    }
+}
