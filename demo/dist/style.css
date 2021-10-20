@@ -615,6 +615,12 @@ table {
 table tr {
   background: white;
 }
+table tr.is-even {
+  background: #f1f3f5;
+}
+table tr:not(.is-expanded).is-expandable + tr {
+  display: none;
+}
 table th,
 table td {
   width: 1px;

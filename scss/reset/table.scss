@@ -8,6 +8,14 @@ table {
 
     tr {
         background: _color("container");
+
+        &.is-even {
+            background: _color("section");
+        }
+
+        &:not(.is-expanded).is-expandable + tr {
+            display: none;
+        }
     }
 
     th,

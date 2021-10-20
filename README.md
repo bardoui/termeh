@@ -860,6 +860,11 @@ Style standard html tables.
 - **is-hoverable**: change `<tr>` background on hover.
 - **is-{color}**: set table color to registered iterable colors (colorize sorted `<th>`).
 
+Styling `<tr>`:
+
+- **is-even**: colorize row as even row.
+- **is-expandable**: hide next row (you can remove this class or add `is-expanded` class to show next row).
+
 Styling `<th>`:
 
 - **is-center-aligned**: set text align to center.
