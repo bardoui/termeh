@@ -802,6 +802,20 @@ by default following registered sizes used for heading font size.
 | h5  | normal    |
 | h6  | small     |
 
+#### input
+
+Style input tags (input, select, textarea).
+
+```html
+<input type="text" class="input" />
+```
+
+- **is-{color}**: set input color to registered iterable colors.
+
+| variable | description                                            | default |
+| :------- | :----------------------------------------------------- | :------ |
+| colors   | list of non-iterable colors to include in input colors | `()`    |
+
 #### image
 
 style img tags.
@@ -1146,14 +1160,14 @@ Create a nice wrapper for icons (svg and img wrapper).
 | sizes    | list of non-iterable sizes to include in icon sizes   | `()`    |
 | colors   | list of non-iterable colors to include in icon colors | `()`    |
 
-#### input
+#### field
 
 Create a wrapper for input and errors.
 
 ```html
-<div class="input is-required is-failed">
+<div class="field is-required is-failed">
   <label for="username">Username:</label>
-  <input type="text" id="username" />
+  <input type="text" class="input" id="username" />
   <div class="errors">
     <p>Username is required</p>
   </div>

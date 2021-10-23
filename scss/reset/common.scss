@@ -39,39 +39,6 @@ textarea {
     font-size: 1rem;
 }
 
-input:not([type="button"]):not([type="reset"]):not([type="submit"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
-select,
-textarea {
-    @include control();
-    display: block;
-    width: 100%;
-    background: _color("input");
-    border: 1px solid _color("separator");
-    border-radius: _var("radius", "normal");
-    padding: e-pad(_gap("element"));
-
-    &::placeholder {
-        color: _color("mute");
-    }
-
-    &:focus,
-    &:active {
-        border-color: _color("primary");
-    }
-
-    &:disabled,
-    &.is-disabled {
-        @include locked();
-        background: _palette("shade", "50");
-        border-color: _palette("shade", "100");
-        color: _color("mute");
-    }
-
-    &:invalid {
-        border-color: _color("error");
-    }
-}
-
 select {
     appearance: menulist;
     -moz-appearance: menulist;

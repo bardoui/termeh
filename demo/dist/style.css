@@ -3,7 +3,6 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  box-sizing: border-box;
 }
 
 html,
@@ -119,80 +118,6 @@ select,
 textarea {
   font-family: "calibri";
   font-size: 1rem;
-}
-
-input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]),
-select,
-textarea {
-  appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  box-sizing: border-box;
-  box-shadow: none;
-  position: relative;
-  border: none;
-  outline: 0;
-  white-space: nowrap;
-  display: block;
-  background: white;
-  border: 1px solid #dde0e7;
-  border-radius: 3px;
-  padding: 0.5rem 1rem;
-}
-input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]):focus, input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]).is-focused, input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]):active, input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]).is-activated,
-select:focus,
-select.is-focused,
-select:active,
-select.is-activated,
-textarea:focus,
-textarea.is-focused,
-textarea:active,
-textarea.is-activated {
-  outline: none;
-}
-input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox])[disabled], input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]).is-disabled,
-select[disabled],
-select.is-disabled,
-textarea[disabled],
-textarea.is-disabled {
-  cursor: default;
-}
-input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox])::-moz-focus-inner,
-select::-moz-focus-inner,
-textarea::-moz-focus-inner {
-  border: 0;
-}
-input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox])::placeholder,
-select::placeholder,
-textarea::placeholder {
-  color: #afb8c6;
-}
-input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]):focus, input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]):active,
-select:focus,
-select:active,
-textarea:focus,
-textarea:active {
-  border-color: #2a9d8f;
-}
-input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]):disabled, input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]).is-disabled,
-select:disabled,
-select.is-disabled,
-textarea:disabled,
-textarea.is-disabled {
-  pointer-events: none;
-  user-select: none;
-  background: #f1f3f5;
-  border-color: #dde0e7;
-  color: #afb8c6;
-}
-input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]):invalid,
-select:invalid,
-textarea:invalid {
-  border-color: #cc0000;
 }
 
 select {
@@ -578,6 +503,95 @@ h5 {
 
 h6 {
   font-size: 0.85em;
+}
+
+.input {
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  box-shadow: none;
+  position: relative;
+  border: none;
+  outline: 0;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+  background: white;
+  border: 1px solid #dde0e7;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+}
+.input:focus, .input.is-focused, .input:active, .input.is-activated {
+  outline: none;
+}
+.input[disabled], .input.is-disabled {
+  cursor: default;
+}
+.input::-moz-focus-inner {
+  border: 0;
+}
+.input::placeholder {
+  color: #afb8c6;
+}
+.input:focus, .input:active {
+  border-color: #2a9d8f;
+}
+.input:disabled, .input.is-disabled {
+  pointer-events: none;
+  user-select: none;
+  background: #f1f3f5;
+  border-color: #dde0e7;
+  color: #afb8c6;
+}
+.input:invalid {
+  border-color: #cc0000;
+}
+.input.is-shade:focus, .input.is-shade:active {
+  border-color: #8d99ae;
+}
+.input.is-shade::selection {
+  background-color: #8d99ae;
+  color: #070809;
+}
+.input.is-primary:focus, .input.is-primary:active {
+  border-color: #2a9d8f;
+}
+.input.is-primary::selection {
+  background-color: #2a9d8f;
+  color: #f4faf9;
+}
+.input.is-error:focus, .input.is-error:active {
+  border-color: #cc0000;
+}
+.input.is-error::selection {
+  background-color: #cc0000;
+  color: #fcf2f2;
+}
+.input.is-warning:focus, .input.is-warning:active {
+  border-color: #f5bc00;
+}
+.input.is-warning::selection {
+  background-color: #f5bc00;
+  color: #0c0900;
+}
+.input.is-info:focus, .input.is-info:active {
+  border-color: #8236ec;
+}
+.input.is-info::selection {
+  background-color: #8236ec;
+  color: #07030c;
+}
+.input.is-success:focus, .input.is-success:active {
+  border-color: #2dcd75;
+}
+.input.is-success::selection {
+  background-color: #2dcd75;
+  color: #f5fdf8;
 }
 
 img.is-centered {
@@ -5599,39 +5613,33 @@ button.is-success.is-simple:hover,
   color: #25ab61;
 }
 
-.input {
+.field {
   display: block;
 }
-.input:not(:last-child) {
+.field:not(:last-child) {
   margin-bottom: 1.5rem;
 }
-.input > :not(:last-child) {
+.field > :not(:last-child) {
   margin-bottom: 1rem;
 }
-.input label {
+.field label {
   display: block;
+  width: 100%;
 }
-.input input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]),
-.input select,
-.input textarea {
-  display: block;
-}
-.input .errors {
+.field .errors {
   display: none;
 }
-.input.is-required label::after {
+.field.is-required label::after {
   content: "*";
   color: #24857a;
 }
-.input.is-failed input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]):not([type=checkbox]),
-.input.is-failed select,
-.input.is-failed textarea {
+.field.is-failed > .input {
   border-color: #cc0000;
 }
-.input.is-failed .errors {
+.field.is-failed .errors {
   display: block;
 }
-.input.is-failed .errors > * {
+.field.is-failed .errors > * {
   display: block;
   margin: 0;
   padding: 0;
@@ -6557,10 +6565,6 @@ button.is-success.is-simple:hover,
   z-index: 0;
   filter: grayscale(0%);
   transition: filter 250ms ease;
-}
-.layout > *::before,
-.layout > *::after {
-  display: none;
 }
 .layout > :not(.content):not(.layout) {
   flex: none;

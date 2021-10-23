@@ -1,4 +1,4 @@
-.input {
+.field {
     display: block;
 
     &:not(:last-child) {
@@ -10,13 +10,6 @@
     }
 
     label {
-        display: block;
-        width: 100%;
-    }
-
-    input:not([type="button"]):not([type="reset"]):not([type="submit"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
-    select,
-    textarea {
         display: block;
         width: 100%;
     }
@@ -33,9 +26,7 @@
     }
 
     &.is-failed {
-        input:not([type="button"]):not([type="reset"]):not([type="submit"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
-        select,
-        textarea {
+        > .input {
             border-color: _color("error");
         }
 
