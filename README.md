@@ -1262,6 +1262,17 @@ Generate nice animated link.
 | :------- | :---------------------------------------------------- | :------ |
 | colors   | list of non-iterable colors to include in link colors | `()`    |
 
+#### loader
+
+Simple container for disable on loading state.
+
+```html
+<div class="loader is-loading">...</div>
+```
+
+- **is-loading**: enable loading state.
+- **is-animated**: animate container opacity.
+
 #### meta
 
 Generate meta text (with muted color).

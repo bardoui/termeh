@@ -1887,66 +1887,99 @@ button.is-success.is-simple:hover,
   width: 100%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-full {
     flex: none !important;
     width: 100% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-full {
     flex: none !important;
     width: 100% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-full {
     flex: none !important;
     width: 100% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-full {
     flex: none !important;
     width: 100% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-full {
     flex: none !important;
     width: 100% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-full {
     flex: none !important;
     width: 100% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-full {
     flex: none !important;
     width: 100% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-full {
     flex: none !important;
     width: 100% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-full {
     flex: none !important;
     width: 100% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-full {
     flex: none !important;
     width: 100% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-full {
     flex: none !important;
     width: 100% !important;
@@ -1957,66 +1990,99 @@ button.is-success.is-simple:hover,
   width: 50%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-half {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-half {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-half {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-half {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-half {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-half {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-half {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-half {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-half {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-half {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-half {
     flex: none !important;
     width: 50% !important;
@@ -2027,66 +2093,99 @@ button.is-success.is-simple:hover,
   width: 33.3333%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-1-of-3 {
     flex: none !important;
     width: 33.3333% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-1-of-3 {
     flex: none !important;
     width: 33.3333% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-1-of-3 {
     flex: none !important;
     width: 33.3333% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-1-of-3 {
     flex: none !important;
     width: 33.3333% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-1-of-3 {
     flex: none !important;
     width: 33.3333% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-1-of-3 {
     flex: none !important;
     width: 33.3333% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-1-of-3 {
     flex: none !important;
     width: 33.3333% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-1-of-3 {
     flex: none !important;
     width: 33.3333% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-1-of-3 {
     flex: none !important;
     width: 33.3333% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-1-of-3 {
     flex: none !important;
     width: 33.3333% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-1-of-3 {
     flex: none !important;
     width: 33.3333% !important;
@@ -2097,66 +2196,99 @@ button.is-success.is-simple:hover,
   width: 66.6666%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-2-of-3 {
     flex: none !important;
     width: 66.6666% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-2-of-3 {
     flex: none !important;
     width: 66.6666% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-2-of-3 {
     flex: none !important;
     width: 66.6666% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-2-of-3 {
     flex: none !important;
     width: 66.6666% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-2-of-3 {
     flex: none !important;
     width: 66.6666% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-2-of-3 {
     flex: none !important;
     width: 66.6666% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-2-of-3 {
     flex: none !important;
     width: 66.6666% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-2-of-3 {
     flex: none !important;
     width: 66.6666% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-2-of-3 {
     flex: none !important;
     width: 66.6666% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-2-of-3 {
     flex: none !important;
     width: 66.6666% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-2-of-3 {
     flex: none !important;
     width: 66.6666% !important;
@@ -2167,66 +2299,99 @@ button.is-success.is-simple:hover,
   width: 25%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-1-of-4 {
     flex: none !important;
     width: 25% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-1-of-4 {
     flex: none !important;
     width: 25% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-1-of-4 {
     flex: none !important;
     width: 25% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-1-of-4 {
     flex: none !important;
     width: 25% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-1-of-4 {
     flex: none !important;
     width: 25% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-1-of-4 {
     flex: none !important;
     width: 25% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-1-of-4 {
     flex: none !important;
     width: 25% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-1-of-4 {
     flex: none !important;
     width: 25% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-1-of-4 {
     flex: none !important;
     width: 25% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-1-of-4 {
     flex: none !important;
     width: 25% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-1-of-4 {
     flex: none !important;
     width: 25% !important;
@@ -2237,66 +2402,99 @@ button.is-success.is-simple:hover,
   width: 50%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-2-of-4 {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-2-of-4 {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-2-of-4 {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-2-of-4 {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-2-of-4 {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-2-of-4 {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-2-of-4 {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-2-of-4 {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-2-of-4 {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-2-of-4 {
     flex: none !important;
     width: 50% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-2-of-4 {
     flex: none !important;
     width: 50% !important;
@@ -2307,66 +2505,99 @@ button.is-success.is-simple:hover,
   width: 75%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-3-of-4 {
     flex: none !important;
     width: 75% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-3-of-4 {
     flex: none !important;
     width: 75% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-3-of-4 {
     flex: none !important;
     width: 75% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-3-of-4 {
     flex: none !important;
     width: 75% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-3-of-4 {
     flex: none !important;
     width: 75% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-3-of-4 {
     flex: none !important;
     width: 75% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-3-of-4 {
     flex: none !important;
     width: 75% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-3-of-4 {
     flex: none !important;
     width: 75% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-3-of-4 {
     flex: none !important;
     width: 75% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-3-of-4 {
     flex: none !important;
     width: 75% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-3-of-4 {
     flex: none !important;
     width: 75% !important;
@@ -2377,66 +2608,99 @@ button.is-success.is-simple:hover,
   width: 20%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-1-of-5 {
     flex: none !important;
     width: 20% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-1-of-5 {
     flex: none !important;
     width: 20% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-1-of-5 {
     flex: none !important;
     width: 20% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-1-of-5 {
     flex: none !important;
     width: 20% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-1-of-5 {
     flex: none !important;
     width: 20% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-1-of-5 {
     flex: none !important;
     width: 20% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-1-of-5 {
     flex: none !important;
     width: 20% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-1-of-5 {
     flex: none !important;
     width: 20% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-1-of-5 {
     flex: none !important;
     width: 20% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-1-of-5 {
     flex: none !important;
     width: 20% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-1-of-5 {
     flex: none !important;
     width: 20% !important;
@@ -2447,66 +2711,99 @@ button.is-success.is-simple:hover,
   width: 40%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-2-of-5 {
     flex: none !important;
     width: 40% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-2-of-5 {
     flex: none !important;
     width: 40% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-2-of-5 {
     flex: none !important;
     width: 40% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-2-of-5 {
     flex: none !important;
     width: 40% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-2-of-5 {
     flex: none !important;
     width: 40% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-2-of-5 {
     flex: none !important;
     width: 40% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-2-of-5 {
     flex: none !important;
     width: 40% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-2-of-5 {
     flex: none !important;
     width: 40% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-2-of-5 {
     flex: none !important;
     width: 40% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-2-of-5 {
     flex: none !important;
     width: 40% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-2-of-5 {
     flex: none !important;
     width: 40% !important;
@@ -2517,66 +2814,99 @@ button.is-success.is-simple:hover,
   width: 60%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-3-of-5 {
     flex: none !important;
     width: 60% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-3-of-5 {
     flex: none !important;
     width: 60% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-3-of-5 {
     flex: none !important;
     width: 60% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-3-of-5 {
     flex: none !important;
     width: 60% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-3-of-5 {
     flex: none !important;
     width: 60% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-3-of-5 {
     flex: none !important;
     width: 60% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-3-of-5 {
     flex: none !important;
     width: 60% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-3-of-5 {
     flex: none !important;
     width: 60% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-3-of-5 {
     flex: none !important;
     width: 60% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-3-of-5 {
     flex: none !important;
     width: 60% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-3-of-5 {
     flex: none !important;
     width: 60% !important;
@@ -2587,66 +2917,99 @@ button.is-success.is-simple:hover,
   width: 80%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-4-of-5 {
     flex: none !important;
     width: 80% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-4-of-5 {
     flex: none !important;
     width: 80% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-4-of-5 {
     flex: none !important;
     width: 80% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-4-of-5 {
     flex: none !important;
     width: 80% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-4-of-5 {
     flex: none !important;
     width: 80% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-4-of-5 {
     flex: none !important;
     width: 80% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-4-of-5 {
     flex: none !important;
     width: 80% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-4-of-5 {
     flex: none !important;
     width: 80% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-4-of-5 {
     flex: none !important;
     width: 80% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-4-of-5 {
     flex: none !important;
     width: 80% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-4-of-5 {
     flex: none !important;
     width: 80% !important;
@@ -2657,66 +3020,99 @@ button.is-success.is-simple:hover,
   width: 14.2857%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-1-of-7 {
     flex: none !important;
     width: 14.2857% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-1-of-7 {
     flex: none !important;
     width: 14.2857% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-1-of-7 {
     flex: none !important;
     width: 14.2857% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-1-of-7 {
     flex: none !important;
     width: 14.2857% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-1-of-7 {
     flex: none !important;
     width: 14.2857% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-1-of-7 {
     flex: none !important;
     width: 14.2857% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-1-of-7 {
     flex: none !important;
     width: 14.2857% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-1-of-7 {
     flex: none !important;
     width: 14.2857% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-1-of-7 {
     flex: none !important;
     width: 14.2857% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-1-of-7 {
     flex: none !important;
     width: 14.2857% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-1-of-7 {
     flex: none !important;
     width: 14.2857% !important;
@@ -2727,66 +3123,99 @@ button.is-success.is-simple:hover,
   width: 28.5714%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-2-of-7 {
     flex: none !important;
     width: 28.5714% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-2-of-7 {
     flex: none !important;
     width: 28.5714% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-2-of-7 {
     flex: none !important;
     width: 28.5714% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-2-of-7 {
     flex: none !important;
     width: 28.5714% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-2-of-7 {
     flex: none !important;
     width: 28.5714% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-2-of-7 {
     flex: none !important;
     width: 28.5714% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-2-of-7 {
     flex: none !important;
     width: 28.5714% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-2-of-7 {
     flex: none !important;
     width: 28.5714% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-2-of-7 {
     flex: none !important;
     width: 28.5714% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-2-of-7 {
     flex: none !important;
     width: 28.5714% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-2-of-7 {
     flex: none !important;
     width: 28.5714% !important;
@@ -2797,66 +3226,99 @@ button.is-success.is-simple:hover,
   width: 42.8571%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-3-of-7 {
     flex: none !important;
     width: 42.8571% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-3-of-7 {
     flex: none !important;
     width: 42.8571% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-3-of-7 {
     flex: none !important;
     width: 42.8571% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-3-of-7 {
     flex: none !important;
     width: 42.8571% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-3-of-7 {
     flex: none !important;
     width: 42.8571% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-3-of-7 {
     flex: none !important;
     width: 42.8571% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-3-of-7 {
     flex: none !important;
     width: 42.8571% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-3-of-7 {
     flex: none !important;
     width: 42.8571% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-3-of-7 {
     flex: none !important;
     width: 42.8571% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-3-of-7 {
     flex: none !important;
     width: 42.8571% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-3-of-7 {
     flex: none !important;
     width: 42.8571% !important;
@@ -2867,66 +3329,99 @@ button.is-success.is-simple:hover,
   width: 57.1428%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-4-of-7 {
     flex: none !important;
     width: 57.1428% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-4-of-7 {
     flex: none !important;
     width: 57.1428% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-4-of-7 {
     flex: none !important;
     width: 57.1428% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-4-of-7 {
     flex: none !important;
     width: 57.1428% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-4-of-7 {
     flex: none !important;
     width: 57.1428% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-4-of-7 {
     flex: none !important;
     width: 57.1428% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-4-of-7 {
     flex: none !important;
     width: 57.1428% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-4-of-7 {
     flex: none !important;
     width: 57.1428% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-4-of-7 {
     flex: none !important;
     width: 57.1428% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-4-of-7 {
     flex: none !important;
     width: 57.1428% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-4-of-7 {
     flex: none !important;
     width: 57.1428% !important;
@@ -2937,66 +3432,99 @@ button.is-success.is-simple:hover,
   width: 71.4285%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-5-of-7 {
     flex: none !important;
     width: 71.4285% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-5-of-7 {
     flex: none !important;
     width: 71.4285% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-5-of-7 {
     flex: none !important;
     width: 71.4285% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-5-of-7 {
     flex: none !important;
     width: 71.4285% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-5-of-7 {
     flex: none !important;
     width: 71.4285% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-5-of-7 {
     flex: none !important;
     width: 71.4285% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-5-of-7 {
     flex: none !important;
     width: 71.4285% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-5-of-7 {
     flex: none !important;
     width: 71.4285% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-5-of-7 {
     flex: none !important;
     width: 71.4285% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-5-of-7 {
     flex: none !important;
     width: 71.4285% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-5-of-7 {
     flex: none !important;
     width: 71.4285% !important;
@@ -3007,66 +3535,99 @@ button.is-success.is-simple:hover,
   width: 85.7142%;
 }
 @media screen and (max-width: 768px) {
+  .flex > .flex-item.is-mobile-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-mobile-6-of-7 {
     flex: none !important;
     width: 85.7142% !important;
   }
 }
 @media screen and (min-width: 769px) {
+  .flex > .flex-item.is-tablet-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-6-of-7 {
     flex: none !important;
     width: 85.7142% !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .flex > .flex-item.is-tablet-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-tablet-only-6-of-7 {
     flex: none !important;
     width: 85.7142% !important;
   }
 }
 @media screen and (max-width: 1023px) {
+  .flex > .flex-item.is-until-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-desktop-6-of-7 {
     flex: none !important;
     width: 85.7142% !important;
   }
 }
 @media screen and (min-width: 1024px) {
+  .flex > .flex-item.is-desktop-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-6-of-7 {
     flex: none !important;
     width: 85.7142% !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .flex > .flex-item.is-desktop-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-desktop-only-6-of-7 {
     flex: none !important;
     width: 85.7142% !important;
   }
 }
 @media screen and (max-width: 1215px) {
+  .flex > .flex-item.is-until-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-widescreen-6-of-7 {
     flex: none !important;
     width: 85.7142% !important;
   }
 }
 @media screen and (min-width: 1216px) {
+  .flex > .flex-item.is-widescreen-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-6-of-7 {
     flex: none !important;
     width: 85.7142% !important;
   }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .flex > .flex-item.is-widescreen-only-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-widescreen-only-6-of-7 {
     flex: none !important;
     width: 85.7142% !important;
   }
 }
 @media screen and (max-width: 1407px) {
+  .flex > .flex-item.is-until-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-until-fullhd-6-of-7 {
     flex: none !important;
     width: 85.7142% !important;
   }
 }
 @media screen and (min-width: 1408px) {
+  .flex > .flex-item.is-fullhd-fit {
+    flex: none;
+  }
   .flex > .flex-item.is-fullhd-6-of-7 {
     flex: none !important;
     width: 85.7142% !important;
@@ -7074,6 +7635,27 @@ button.is-success.is-simple:hover,
 }
 .link.is-success {
   color: #2dcd75 !important;
+}
+
+.loader {
+  display: block;
+}
+.loader.is-loading {
+  pointer-events: none;
+  user-select: none;
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+.loader.is-loading.is-animated {
+  animation: loader-animation 3s infinite ease-in-out;
+}
+@keyframes loader-animation {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .meta {

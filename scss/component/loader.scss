@@ -1,0 +1,24 @@
+.loader {
+    display: block;
+
+    &.is-loading {
+        @include locked;
+        filter: grayscale(1);
+        opacity: 0.5;
+
+        &.is-animated {
+            animation: loader-animation 3s infinite ease-in-out;
+            @at-root {
+                @keyframes loader-animation {
+                    0%,
+                    100% {
+                        opacity: 0.1;
+                    }
+                    50% {
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+    }
+}
