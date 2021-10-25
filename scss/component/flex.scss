@@ -38,6 +38,10 @@
 
             @each $device, $mq in _breakpoints() {
                 @media #{$mq} {
+                    &.is-#{$device}-fit {
+                        flex: none;
+                    }
+
                     &.is-#{$device}-#{$label} {
                         flex: none !important;
                         width: $unit !important;

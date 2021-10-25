@@ -1064,6 +1064,7 @@ Flex contains two child types:
 
 - **flex-item**: make a column.
   - **is-fit**: set column size to content size.
+  - **is-{device}-fit**: set column size to content size for device.
   - **is-{unit}**: set column size to registered iterable unit.
   - **is-{device}-{unit}**: set column size to registered iterable unit for device.
 - **break**: end current row and start new row.
