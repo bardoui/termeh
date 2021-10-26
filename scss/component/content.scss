@@ -6,6 +6,32 @@
     @extend .is-scrollable;
     padding: _gap("container");
 
+    > .overlay {
+        display: flex;
+        position: absolute;
+        box-sizing: border-box;
+        padding: _gap("container");
+        overflow: hidden;
+        overflow-y: auto;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: _color("overlay");
+        color: foreground(_color("overlay"));
+        backdrop-filter: _var("overlay", "filter");
+        transition: all _var("transition", "duration")
+            _var("transition", "ease");
+        opacity: 0;
+        z-index: -1;
+        @extend .is-scrollable;
+
+        & > * {
+            margin: auto;
+            max-width: 100%;
+        }
+    }
+
     &.is-full {
         width: 100%;
         height: 100%;
@@ -28,9 +54,20 @@
         );
     }
 
+    &.is-overlaid:not(.is-loading) {
+        > .overlay {
+            z-index: 2;
+            opacity: 1;
+        }
+    }
+
     @each $label, $gap in _gaps(_var("content", "gaps", ())) {
         &.is-#{$label}-padded {
             padding: $gap;
+
+            > .overlay {
+                padding: $gap;
+            }
         }
     }
 
@@ -42,6 +79,15 @@
                 _palette("shade", "300"),
                 $color
             );
+
+            > .overlay {
+                @include scrollbar(
+                    $width: _var("scroll", "size", 1rem),
+                    $track: _palette("shade", "50"),
+                    $thumb: _palette("shade", "300"),
+                    $thumb-hover: $color
+                );
+            }
 
             &.is-loading {
                 @include spinner(

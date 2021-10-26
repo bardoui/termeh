@@ -1038,17 +1038,23 @@ Content wrapper with scrollbar and loading state.
 ```html
 <div class="layout">
   <div class="my-sidebar">...</div>
-  <div class="content"></div>
+  <div class="content is-overlaid">
+    <p>...</p>
+    <div class="overlay"></div>
+  </div>
 </div>
 ```
 
 - **is-full**: make width and height 100% (useful when use out of flex container).
 - **is-centered**: make content center aligned.
 - **is-loading**: add loading ui to content.
+- **is-overlaid**: show overlay content.
 - **is-{device}-padding-less**: remove content padding for device.
 - **is-{gap}-padded**: set content padding to registered iterable gap.
 - **is-{device}-{gap}-padded**: set content padding to registered iterable gap for device.
 - **is-{color}** colorize content by registered iterable colors (loader and scrollbar).
+
+Content can contains `.overlay` child to show when card has `.is-overlaid` class.
 
 | variable | description                                                | default |
 | :------- | :--------------------------------------------------------- | :------ |
