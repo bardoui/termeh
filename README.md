@@ -1031,6 +1031,30 @@ Container width is `100%` for **tablet** and **mobile**, `960px` for **desktop**
 | :------- | :--------------------------------------------------------- | :------ |
 | gaps     | list of non-iterable gaps to include in container paddings | `()`    |
 
+#### content
+
+Content wrapper with scrollbar and loading state.
+
+```html
+<div class="layout">
+  <div class="my-sidebar">...</div>
+  <div class="content"></div>
+</div>
+```
+
+- **is-full**: make width and height 100% (useful when use out of flex container).
+- **is-centered**: make content center aligned.
+- **is-loading**: add loading ui to content.
+- **is-{device}-padding-less**: remove content padding for device.
+- **is-{gap}-padded**: set content padding to registered iterable gap.
+- **is-{device}-{gap}-padded**: set content padding to registered iterable gap for device.
+- **is-{color}** colorize content by registered iterable colors (loader and scrollbar).
+
+| variable | description                                                | default |
+| :------- | :--------------------------------------------------------- | :------ |
+| gaps     | list of non-iterable gaps to include in container paddings | `()`    |
+| colors   | list of non-iterable colors to include in content colors   | `()`    |
+
 #### flex
 
 Flex-box based grid system.
@@ -1214,7 +1238,7 @@ Layout can have another nested layout as **direct** child.
 
 Layout has vertical direction by default.
 
-**Caution**: you must put content inside `.content` element.
+**Caution** you must use `.content` for content container.
 
 ```html
 <div

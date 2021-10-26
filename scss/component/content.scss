@@ -1,0 +1,69 @@
+.content {
+    flex: 1;
+    box-sizing: border-box;
+    overflow: hidden;
+    overflow-y: auto;
+    @extend .is-scrollable;
+    padding: _gap("container");
+
+    &.is-full {
+        width: 100%;
+        height: 100%;
+    }
+
+    &.is-centered {
+        display: flex;
+        > * {
+            margin: auto;
+        }
+    }
+
+    &.is-loading {
+        overflow-y: hidden;
+        @include overlay(_color("overlay"));
+        @include spinner(
+            $size: _var("spinner", "size", 2rem),
+            $color: foreground(_color("overlay")),
+            $width: _var("decorator", "size", 2px)
+        );
+    }
+
+    @each $label, $gap in _gaps(_var("content", "gaps", ())) {
+        &.is-#{$label}-padded {
+            padding: $gap;
+        }
+    }
+
+    @each $name, $color in _colors(_var("content", "colors", ())) {
+        &.is-#{$name} {
+            @include scrollbar(
+                _var("scroll", "size", 1rem),
+                _palette("shade", "50"),
+                _palette("shade", "300"),
+                $color
+            );
+
+            &.is-loading {
+                @include spinner(
+                    $size: _var("spinner", "size", 2rem),
+                    $color: $color,
+                    $width: _var("decorator", "size", 2px)
+                );
+            }
+        }
+    }
+
+    @each $device, $mq in _breakpoints() {
+        @media #{$mq} {
+            &.is-#{$device}-padding-less {
+                padding: 0 !important;
+            }
+
+            @each $label, $gap in _gaps(_var("content", "gaps", ())) {
+                &.is-#{$device}-#{$label}-padded {
+                    padding: $gap !important;
+                }
+            }
+        }
+    }
+}

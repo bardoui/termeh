@@ -22,15 +22,6 @@
         flex: 1;
     }
 
-    > .content {
-        flex: 1;
-        box-sizing: border-box;
-        overflow: hidden;
-        overflow-y: auto;
-        @extend .is-scrollable;
-        padding: _gap("container");
-    }
-
     &.is-reverse {
         flex-direction: column-reverse;
     }
