@@ -1182,6 +1182,7 @@ Create a nice wrapper for icons (svg and img wrapper).
 ```
 
 - **is-action** make icon button (use _mute_ color for svg and grayscale img).
+- **is-disabled** style as disabled icon.
 - **is-{size}** set icon size from registered iterable sizes.
 - **is-{color}** colorize icon by registered iterable colors (svg only).
 

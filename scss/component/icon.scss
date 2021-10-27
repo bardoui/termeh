@@ -43,6 +43,24 @@
         }
     }
 
+    &:disabled,
+    &.is-disabled {
+        @include locked();
+        color: _color("mute") !important;
+
+        > img {
+            filter: grayscale(1) !important;
+        }
+
+        &:hover {
+            color: _color("mute") !important;
+
+            > img {
+                filter: grayscale(1) !important;
+            }
+        }
+    }
+
     @each $label, $size in _sizes(_var("icon", "sizes", ())) {
         &.is-#{$label} {
             height: $size;
