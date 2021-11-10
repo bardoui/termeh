@@ -509,7 +509,9 @@ h6 {
   font-size: 0.85em;
 }
 
-input.input {
+input.input,
+select.input,
+textarea.input {
   appearance: none;
   -webkit-tap-highlight-color: transparent;
   display: inline-flex;
@@ -530,82 +532,144 @@ input.input {
   border-radius: 3px;
   padding: 0.5rem 1rem;
 }
-input.input:focus, input.input.is-focused, input.input:active, input.input.is-activated {
+input.input:focus, input.input.is-focused, input.input:active, input.input.is-activated,
+select.input:focus,
+select.input.is-focused,
+select.input:active,
+select.input.is-activated,
+textarea.input:focus,
+textarea.input.is-focused,
+textarea.input:active,
+textarea.input.is-activated {
   outline: none;
 }
-input.input[disabled], input.input.is-disabled {
+input.input[disabled], input.input.is-disabled,
+select.input[disabled],
+select.input.is-disabled,
+textarea.input[disabled],
+textarea.input.is-disabled {
   cursor: default;
 }
-input.input::-moz-focus-inner {
+input.input::-moz-focus-inner,
+select.input::-moz-focus-inner,
+textarea.input::-moz-focus-inner {
   border: 0;
 }
-input.input::placeholder {
+input.input::placeholder,
+select.input::placeholder,
+textarea.input::placeholder {
   color: #afb8c6;
 }
-input.input:focus, input.input:active {
+input.input:focus, input.input:active,
+select.input:focus,
+select.input:active,
+textarea.input:focus,
+textarea.input:active {
   border-color: #2a9d8f;
 }
-input.input:disabled, input.input.is-disabled {
+input.input:disabled, input.input.is-disabled,
+select.input:disabled,
+select.input.is-disabled,
+textarea.input:disabled,
+textarea.input.is-disabled {
   pointer-events: none;
   user-select: none;
   background: #f1f3f5;
   border-color: #dde0e7;
   color: #afb8c6;
 }
-input.input:invalid {
+input.input:invalid,
+select.input:invalid,
+textarea.input:invalid {
   border-color: #cc0000;
 }
-input.input.is-shade:focus, input.input.is-shade:active {
+input.input.is-shade:focus, input.input.is-shade:active,
+select.input.is-shade:focus,
+select.input.is-shade:active,
+textarea.input.is-shade:focus,
+textarea.input.is-shade:active {
   border-color: #8d99ae;
 }
-input.input.is-shade::selection {
+input.input.is-shade::selection,
+select.input.is-shade::selection,
+textarea.input.is-shade::selection {
   background-color: #8d99ae;
   color: #070809;
 }
-input.input.is-primary:focus, input.input.is-primary:active {
+input.input.is-primary:focus, input.input.is-primary:active,
+select.input.is-primary:focus,
+select.input.is-primary:active,
+textarea.input.is-primary:focus,
+textarea.input.is-primary:active {
   border-color: #2a9d8f;
 }
-input.input.is-primary::selection {
+input.input.is-primary::selection,
+select.input.is-primary::selection,
+textarea.input.is-primary::selection {
   background-color: #2a9d8f;
   color: #f4faf9;
 }
-input.input.is-error:focus, input.input.is-error:active {
+input.input.is-error:focus, input.input.is-error:active,
+select.input.is-error:focus,
+select.input.is-error:active,
+textarea.input.is-error:focus,
+textarea.input.is-error:active {
   border-color: #cc0000;
 }
-input.input.is-error::selection {
+input.input.is-error::selection,
+select.input.is-error::selection,
+textarea.input.is-error::selection {
   background-color: #cc0000;
   color: #fcf2f2;
 }
-input.input.is-warning:focus, input.input.is-warning:active {
+input.input.is-warning:focus, input.input.is-warning:active,
+select.input.is-warning:focus,
+select.input.is-warning:active,
+textarea.input.is-warning:focus,
+textarea.input.is-warning:active {
   border-color: #f5bc00;
 }
-input.input.is-warning::selection {
+input.input.is-warning::selection,
+select.input.is-warning::selection,
+textarea.input.is-warning::selection {
   background-color: #f5bc00;
   color: #0c0900;
 }
-input.input.is-info:focus, input.input.is-info:active {
+input.input.is-info:focus, input.input.is-info:active,
+select.input.is-info:focus,
+select.input.is-info:active,
+textarea.input.is-info:focus,
+textarea.input.is-info:active {
   border-color: #8236ec;
 }
-input.input.is-info::selection {
+input.input.is-info::selection,
+select.input.is-info::selection,
+textarea.input.is-info::selection {
   background-color: #8236ec;
   color: #07030c;
 }
-input.input.is-success:focus, input.input.is-success:active {
+input.input.is-success:focus, input.input.is-success:active,
+select.input.is-success:focus,
+select.input.is-success:active,
+textarea.input.is-success:focus,
+textarea.input.is-success:active {
   border-color: #2dcd75;
 }
-input.input.is-success::selection {
+input.input.is-success::selection,
+select.input.is-success::selection,
+textarea.input.is-success::selection {
   background-color: #2dcd75;
   color: #f5fdf8;
 }
 
-.input:not(input) {
+.input:not(input):not(select):not(textarea) {
   display: block;
   background: white;
   border: 1px solid #dde0e7;
   border-radius: 3px;
   overflow: hidden;
 }
-.input:not(input) input {
+.input:not(input):not(select):not(textarea) input {
   appearance: none;
   -webkit-tap-highlight-color: transparent;
   display: inline-flex;
@@ -626,78 +690,78 @@ input.input.is-success::selection {
   border-radius: 0;
   padding: 0.5rem 1rem;
 }
-.input:not(input) input:focus, .input:not(input) input.is-focused, .input:not(input) input:active, .input:not(input) input.is-activated {
+.input:not(input):not(select):not(textarea) input:focus, .input:not(input):not(select):not(textarea) input.is-focused, .input:not(input):not(select):not(textarea) input:active, .input:not(input):not(select):not(textarea) input.is-activated {
   outline: none;
 }
-.input:not(input) input[disabled], .input:not(input) input.is-disabled {
+.input:not(input):not(select):not(textarea) input[disabled], .input:not(input):not(select):not(textarea) input.is-disabled {
   cursor: default;
 }
-.input:not(input) input::-moz-focus-inner {
+.input:not(input):not(select):not(textarea) input::-moz-focus-inner {
   border: 0;
 }
-.input:not(input) input::placeholder {
+.input:not(input):not(select):not(textarea) input::placeholder {
   color: #afb8c6;
 }
-.input:not(input) input:focus, .input:not(input) input:active {
+.input:not(input):not(select):not(textarea) input:focus, .input:not(input):not(select):not(textarea) input:active {
   border: none;
 }
-.input:not(input) input:disabled, .input:not(input) input.is-disabled {
+.input:not(input):not(select):not(textarea) input:disabled, .input:not(input):not(select):not(textarea) input.is-disabled {
   background: none;
   border-color: none;
   color: #afb8c6;
 }
-.input:not(input) input:invalid {
+.input:not(input):not(select):not(textarea) input:invalid {
   border: none;
 }
-.input:not(input):focus-within {
+.input:not(input):not(select):not(textarea):focus-within {
   border-color: #2a9d8f;
 }
-.input:not(input):disabled, .input:not(input).is-disabled {
+.input:not(input):not(select):not(textarea):disabled, .input:not(input):not(select):not(textarea).is-disabled {
   pointer-events: none;
   user-select: none;
   background: #f1f3f5;
   border-color: #dde0e7;
   color: #afb8c6;
 }
-.input:not(input).is-shade:focus-within {
+.input:not(input):not(select):not(textarea).is-shade:focus-within {
   border-color: #8d99ae;
 }
-.input:not(input).is-shade::selection {
+.input:not(input):not(select):not(textarea).is-shade::selection {
   background-color: #8d99ae;
   color: #070809;
 }
-.input:not(input).is-primary:focus-within {
+.input:not(input):not(select):not(textarea).is-primary:focus-within {
   border-color: #2a9d8f;
 }
-.input:not(input).is-primary::selection {
+.input:not(input):not(select):not(textarea).is-primary::selection {
   background-color: #2a9d8f;
   color: #f4faf9;
 }
-.input:not(input).is-error:focus-within {
+.input:not(input):not(select):not(textarea).is-error:focus-within {
   border-color: #cc0000;
 }
-.input:not(input).is-error::selection {
+.input:not(input):not(select):not(textarea).is-error::selection {
   background-color: #cc0000;
   color: #fcf2f2;
 }
-.input:not(input).is-warning:focus-within {
+.input:not(input):not(select):not(textarea).is-warning:focus-within {
   border-color: #f5bc00;
 }
-.input:not(input).is-warning::selection {
+.input:not(input):not(select):not(textarea).is-warning::selection {
   background-color: #f5bc00;
   color: #0c0900;
 }
-.input:not(input).is-info:focus-within {
+.input:not(input):not(select):not(textarea).is-info:focus-within {
   border-color: #8236ec;
 }
-.input:not(input).is-info::selection {
+.input:not(input):not(select):not(textarea).is-info::selection {
   background-color: #8236ec;
   color: #07030c;
 }
-.input:not(input).is-success:focus-within {
+.input:not(input):not(select):not(textarea).is-success:focus-within {
   border-color: #2dcd75;
 }
-.input:not(input).is-success::selection {
+.input:not(input):not(select):not(textarea).is-success::selection {
   background-color: #2dcd75;
   color: #f5fdf8;
 }

@@ -1,7 +1,7 @@
 .input {
     @at-root input#{&},
-        @at-root select#{&},
-        @at-root textarea#{&} {
+        select#{&},
+        textarea#{&} {
         @include control();
         display: block;
         width: 100%;
