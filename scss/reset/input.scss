@@ -1,5 +1,7 @@
 .input {
-    @at-root input#{&} {
+    @at-root input#{&},
+        @at-root select#{&},
+        @at-root textarea#{&} {
         @include control();
         display: block;
         width: 100%;
@@ -44,7 +46,7 @@
         }
     }
 
-    &:not(input) {
+    &:not(input):not(select):not(textarea) {
         display: block;
         background: _color("input");
         border: 1px solid _color("separator");
