@@ -804,10 +804,19 @@ by default following registered sizes used for heading font size.
 
 #### input
 
-Style input tags (input, select, textarea).
+Style input tags (input, select, textarea) or make a wrapper for input.
 
 ```html
 <input type="text" class="input" />
+
+<div class="input">
+  <div class="stack is-fluid">
+    <div class="gap"></div>
+    <div>$</div>
+    <div class="divider"></div>
+    <input type="text" />
+  </div>
+</div>
 ```
 
 - **is-{color}**: set input color to registered iterable colors.
@@ -1318,3 +1327,45 @@ Generate meta text (with muted color).
 | variable | description                                           | default |
 | :------- | :---------------------------------------------------- | :------ |
 | colors   | list of non-iterable colors to include in meta colors | `()`    |
+
+#### stack
+
+One direction not wrapped container with manual gap and divider.
+
+Gaper is displayed as `inline-flex` and center vertical aligned by default.
+
+**Note**: you can use `.gap` child inside gaper to make a long gap between items.
+
+```html
+<div class="stack">
+  <button>First</button>
+  <div class="divider"></div>
+  <button>Second</button>
+  <button>Third</button>
+  <div class="gap"></div>
+  <div class="filler">...</div>
+</div>
+```
+
+Stack has three type of child:
+
+- **filler** child with this class fill unused space.
+- **divider** make a divider line.
+- **gap** make a gap between two items.
+
+Stack has following classes:
+
+- **is-fluid**: show stack as block (flex).
+- **is-{device}-fluid**: show stack as block for device (flex).
+- **is-stacked**: make stack direction vertical.
+- **is-{device}-stacked**: make stack direction vertical for device.
+- **is-stacked-reverse**: make stack direction reverse-vertical.
+- **is-{device}-stacked-reverse**: make stack direction reverse-vertical for device.
+- **is-gap-less**: remove stack gap.
+- **is-{device}-gap-less**: remove stack gap for device.
+- **is-{gap}-gaped**: set gaper gap to registered iterable gaps.
+- **is-{device}-{gap}-gaped**: set gaper gap to registered iterable gaps for device.
+
+| variable | description                                        | default |
+| :------- | :------------------------------------------------- | :------ |
+| gaps     | list of non-iterable gaps to include in stack gaps | `()`    |
