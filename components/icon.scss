@@ -1,0 +1,104 @@
+@use "../termeh" as T;
+
+$-sizes: T.var("icon", "sizes", ());
+$-colors: T.var("icon", "colors", ());
+
+.icon {
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    transition: all T.transition-params();
+
+    img {
+        display: block;
+        max-height: 100%;
+        max-width: 100%;
+        transition: all T.transition-params();
+    }
+
+    svg {
+        width: 100%;
+        fill: currentColor;
+        transition: all T.transition-params();
+
+        > * {
+            fill: currentColor;
+        }
+    }
+
+    &.is-outline {
+        svg {
+            fill: unset;
+            stroke: currentColor;
+
+            > * {
+                fill: unset;
+                stroke: currentColor;
+            }
+        }
+    }
+
+    &.is-action {
+        cursor: pointer;
+        color: T.muted(T.color("background"), T.color("shade"));
+
+        > img {
+            filter: T.var("icon", "action-filter", grayscale(0.5));
+        }
+
+        &:hover {
+            color: T.color("foreground");
+
+            > img {
+                filter: T.var("icon", "action-hover-filter", grayscale(0));
+            }
+        }
+    }
+
+    &.is-loading {
+        @include T.locked();
+        @include T.loader(1em, T.color("shade"), T.var("decorator", "size"));
+
+        > * {
+            opacity: 0;
+        }
+    }
+
+    @each $name, $size in T.sizes($-sizes) {
+        &.is-#{$name} {
+            height: $size;
+            width: $size;
+        }
+    }
+
+    @each $name, $color in T.colors($-colors) {
+        &.is-#{$name} {
+            color: T.readable(T.color("background"), $color);
+
+            &.is-action {
+                color: T.muted(T.color("background"), T.color("shade"));
+                &:hover {
+                    color: T.readable(T.color("background"), $color);
+                }
+            }
+
+            &.is-loading {
+                @include T.loader-color($color);
+            }
+        }
+    }
+
+    &:disabled,
+    &.is-disabled {
+        @include T.locked();
+        color: T.disabled(T.color("background"), true) !important;
+
+        > img {
+            filter: grayscale(1) !important;
+            opacity: 0.25;
+        }
+    }
+}

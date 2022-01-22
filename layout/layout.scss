@@ -1,0 +1,54 @@
+@use "../termeh" as T;
+
+.layout {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+
+    > .attachment {
+        flex: 0 0 auto;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    > :not(.attachment) {
+        width: unset;
+        height: unset;
+        flex: 1 1 0;
+        box-sizing: border-box;
+    }
+
+    &.is-reverse {
+        flex-direction: column-reverse;
+    }
+
+    &.is-horizontal {
+        flex-direction: row;
+
+        &-reverse {
+            flex-direction: row-reverse;
+        }
+    }
+
+    @each $device, $query in T.media-queries() {
+        @media #{$query} {
+            &.is-#{$device}-reverse {
+                flex-direction: column-reverse;
+            }
+        
+            &.is-#{$device}-horizontal {
+                flex-direction: row;
+        
+                &-reverse {
+                    flex-direction: row-reverse;
+                }
+            }
+        }
+    }
+}

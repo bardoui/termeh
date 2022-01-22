@@ -1,0 +1,37 @@
+@use "../termeh" as T;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    &:not(.is-marginless):not(:last-child) {
+        margin-bottom: T.gap("element");
+    }
+}
+
+h1 {
+    font-size: T.size("huge");
+}
+
+h2 {
+    font-size: T.size("big");
+}
+
+h3 {
+    font-size: T.size("large");
+}
+
+h4 {
+    font-size: T.size("medium");
+}
+
+h5 {
+    font-size: T.size("normal");
+}
+
+h6 {
+    font-size: T.size("small");
+}

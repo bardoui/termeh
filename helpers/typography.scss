@@ -1,0 +1,50 @@
+@use "../termeh" as T;
+
+.is-italic {
+    font-style: italic !important;
+}
+
+.is-underline {
+    text-decoration: underline !important;
+}
+
+.is-undecorated {
+    text-decoration: none;
+}
+
+.is-capitalized {
+    text-transform: capitalize !important;
+}
+
+.is-lowercase {
+    text-transform: lowercase !important;
+}
+
+.is-uppercase {
+    text-transform: uppercase !important;
+}
+
+@each $label, $size in T.sizes() {
+    .is-#{$label}-sized {
+        font-size: $size !important;
+    }
+}
+
+@each $label, $weight in T.font-weights() {
+    .is-#{$label}-weighted {
+        font-weight: $weight !important;
+    }
+}
+
+$text-aligns: left right center justify;
+@each $align in $text-aligns {
+    .is-#{$align}-aligned {
+        text-align: $align !important;
+    }
+}
+
+@each $label, $color in T.colors() {
+    .is-#{$label}-colored {
+        color: T.readable(T.color("background"), $color);
+    }
+}

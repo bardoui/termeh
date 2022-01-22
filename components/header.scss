@@ -1,0 +1,74 @@
+@use "../termeh" as T;
+
+$-sizes: T.var("header", "sizes", ());
+$-gaps: T.var("header", "gaps", ());
+$-colors: T.var("header", "colors", ());
+$-decorator: T.var("decorator", "size", 2px);
+
+.header {
+    display: block;
+    box-sizing: border-box;
+    padding: T.el-pad(T.gap("element"));
+
+    &:not(.is-marginless) {
+        margin-bottom: T.gap("element");
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: T.size("normal");
+        margin: 0;
+    }
+
+    &.is-left-decorated {
+        border-left: $-decorator solid T.color("shade");
+    }
+
+    &.is-right-decorated {
+        border-right: $-decorator solid T.color("shade");
+    }
+
+    @each $name, $size in T.sizes($-sizes) {
+        &.is-#{$name} {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-size: $size;
+            }
+        }
+    }
+
+    @each $name, $gap in T.gaps($-gaps) {
+        &.is-#{$name}-padded {
+            padding: T.el-pad($gap);
+        }
+    }
+
+    @each $name, $color in T.colors($-colors) {
+        &.is-#{$name} {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: T.readable(T.color("background"), $color);
+            }
+
+            &.is-left-decorated {
+                border-left-color: $color;
+            }
+
+            &.is-right-decorated {
+                border-right-color: $color;
+            }
+        }
+    }
+}

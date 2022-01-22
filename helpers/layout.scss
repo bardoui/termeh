@@ -1,0 +1,48 @@
+@use "../termeh" as T;
+
+.is-clearfix {
+    @include T.clearfix();
+}
+
+.is-ltr {
+    direction: ltr !important;
+}
+
+.is-rtl {
+    direction: rtl !important;
+}
+
+.is-clipped {
+    overflow: hidden !important;
+}
+
+.is-radiusless {
+    border-radius: 0 !important;
+}
+
+.is-shadowless {
+    box-shadow: none !important;
+}
+
+.is-clickable {
+    cursor: pointer !important;
+    pointer-events: all !important;
+}
+
+.is-unselectable {
+    @include T.unselectable();
+}
+
+.is-selectable {
+    @include T.selectable();
+}
+
+.is-locked {
+    @include T.locked();
+}
+
+.is-scrollable {
+    overflow: hidden;
+    overflow-y: auto;
+    @include T.scrollable(T.color("primary"));
+}

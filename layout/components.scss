@@ -1,0 +1,43 @@
+@use "../termeh" as T;
+
+$-separator: T.var("base", "separator", 1px);
+$-aligns: stretch, flex-start, flex-end, center, baseline;
+$-justifies: flex-start, flex-end, center, space-between, space-around,
+    space-evenly;
+
+.components {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    box-sizing: border-box;
+
+    > * {
+        flex: 0 0 auto;
+        margin: 0 !important;
+    }
+
+    > .filler {
+        flex: 1 1 0;
+    }
+
+    > .divider {
+        display: block;
+        align-self: stretch;
+        width: $-separator;
+        background-color: T.color("separator");
+    }
+
+    @each $align in $-aligns {
+        &.is-#{$align}-aligned {
+            align-items: $align;
+        }
+    }
+
+    @each $justify in $-justifies {
+        &.is-#{$justify}-justified {
+            justify-content: $justify;
+        }
+    }
+}

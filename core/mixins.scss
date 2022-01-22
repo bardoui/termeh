@@ -1,0 +1,318 @@
+@use "sass:map";
+@use "sass:selector";
+@use "func";
+@use "getter";
+@use "utils";
+
+@mixin unify-parent($child) {
+    @at-root #{selector.unify(&, $child)} {
+        @content;
+    }
+}
+
+@mixin clearfix() {
+    &::after {
+        clear: both;
+        content: " ";
+        display: table;
+    }
+}
+
+@mixin overflow-touch() {
+    -webkit-overflow-scrolling: touch;
+}
+
+@mixin locked() {
+    pointer-events: none;
+    user-select: none;
+}
+
+@mixin unselectable() {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin selectable() {
+    -webkit-touch-callout: all;
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+}
+
+@mixin reset() {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    box-shadow: none;
+    background: none;
+    position: relative;
+    border: none;
+    color: currentColor;
+    font-family: inherit;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    line-height: 1em;
+    font-size: 1em;
+    overflow: hidden;
+}
+
+@mixin control() {
+    @include reset();
+    // States
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active {
+        outline: none;
+    }
+
+    &[disabled],
+    fieldset[disabled] &,
+    &.is-disabled {
+        cursor: default;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    &:invalid {
+        outline: none;
+    }
+
+    &::-moz-focus-inner {
+        border: 0;
+    }
+}
+
+@mixin placeholder {
+    $placeholders: ":-moz" ":-webkit-input" "-moz" "-ms-input";
+    @each $placeholder in $placeholders {
+        &:#{$placeholder}-placeholder {
+            @content;
+        }
+    }
+}
+
+@mixin scrollbar($width, $track: null, $thumb: null, $thumb-hover: null) {
+    $width: func.number-of($width, "scrollbar", "width");
+    $track: func.color-of($track, "scrollbar", "track");
+    $thumb: func.color-of($thumb, "scrollbar", "thumb");
+    $thumb-hover: func.color-of($thumb-hover, "scrollbar", "thumb-hover");
+
+    &::-webkit-scrollbar {
+        width: $width;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $track;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $thumb;
+        transition: all 200ms linear;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: $thumb-hover;
+    }
+}
+
+@mixin scrollable($color) {
+    $color: func.color-of($color, "scrollable", "color");
+    $background: getter.color("background");
+    $foreground: getter.color("foreground");
+    $separator: getter.color("separator");
+    $mute: utils.muted($background, $foreground);
+
+    @include scrollbar(
+        getter.var("scroll", "size", 1erm),
+        getter.var("scroll", "track", $separator),
+        getter.var("scroll", "thumb", $mute),
+        $color
+    );
+}
+
+@mixin scroll-color($color) {
+    $color: func.color-of($color, "scroll-color", "color");
+    &::-webkit-scrollbar-thumb:hover {
+        background: $color;
+    }
+}
+
+@mixin spinner($size, $color, $width) {
+    $size: func.number-of($size, "spinner", "size");
+    $color: func.color-of($color, "spinner", "color");
+    $width: func.number-of($width, "spinner", "width");
+    text-rendering: optimizeLegibility;
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    content: " ";
+    width: $size;
+    height: $size;
+    border: $width solid $color;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 500ms infinite linear;
+}
+
+@mixin spinner-color($color) {
+    $color: func.color-of($color, "spinner-color", "color");
+    border-left-color: $color;
+    border-bottom-color: $color;
+}
+
+@mixin loader($size, $color, $width) {
+    $size: func.number-of($size, "loader", "size");
+    $color: func.color-of($color, "loader", "color");
+    $width: func.number-of($width, "loader", "width");
+    position: relative;
+    z-index: 0;
+
+    &::after {
+        @include spinner($size, $color, $width);
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        z-index: 2;
+    }
+}
+
+@mixin loader-color($color) {
+    $color: func.color-of($color, "loader-color", "color");
+    &::after {
+        border-left-color: $color;
+        border-bottom-color: $color;
+    }
+}
+
+@mixin overlay($color, $filter) {
+    $color: func.color-of($color, "overlay", "color");
+    position: relative;
+    z-index: 0;
+
+    &::before {
+        content: " ";
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: $color;
+        backdrop-filter: $filter;
+    }
+}
+
+@mixin ltr() {
+    @if getter.var("base", "direction", null) == ltr {
+        @content;
+    }
+}
+
+@mixin rtl() {
+    @if getter.var("base", "direction", null) == rtl {
+        @content;
+    }
+}
+
+// responsive
+@mixin from($device) {
+    $device: func.string-of($device, "from", "device");
+    $unit: getter.breakpoint($device);
+    @media screen and (min-width: $unit) {
+        @content;
+    }
+}
+
+@mixin until($device) {
+    $device: func.string-of($device, "until", "device");
+    $unit: getter.breakpoint($device);
+    @media screen and (max-width: ($unit - 1px)) {
+        @content;
+    }
+}
+
+@mixin non-touch() {
+    @media (hover: hover) {
+        @content;
+    }
+}
+
+@mixin touch() {
+    @media (hover: none) {
+        @content;
+    }
+}
+
+@mixin mobile() {
+    @media #{getter.media-query("mobile")} {
+        @content;
+    }
+}
+
+@mixin tablet() {
+    @media #{getter.media-query("tablet")} {
+        @content;
+    }
+}
+
+@mixin tablet-only() {
+    @media #{getter.media-query("tablet-only")} {
+        @content;
+    }
+}
+
+@mixin until-desktop() {
+    @media #{getter.media-query("until-desktop")} {
+        @content;
+    }
+}
+
+@mixin desktop() {
+    @media #{getter.media-query("desktop")} {
+        @content;
+    }
+}
+
+@mixin desktop-only() {
+    @media #{getter.media-query("desktop-only")} {
+        @content;
+    }
+}
+
+@mixin until-widescreen() {
+    @media #{getter.media-query("until-widescreen")} {
+        @content;
+    }
+}
+
+@mixin widescreen() {
+    @media #{getter.media-query("widescreen")} {
+        @content;
+    }
+}
+
+@mixin widescreen-only() {
+    @media #{getter.media-query("widescreen-only")} {
+        @content;
+    }
+}
+
+@mixin until-fullhd() {
+    @media #{getter.media-query("until-fullhd")} {
+        @content;
+    }
+}
+
+@mixin fullhd() {
+    @media #{getter.media-query("fullhd")} {
+        @content;
+    }
+}

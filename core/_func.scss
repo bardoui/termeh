@@ -1,0 +1,59 @@
+@use "sass:meta";
+@use "sass:string";
+
+@function throw($v, $func, $param, $type) {
+    @return '#{$func}: #{$param} type should #{$type}, "#{$v}" passed!';
+}
+
+@function number-of($v, $f, $p) {
+    @if meta.type-of($v) != number {
+        @error throw($v, $f ,$p , "number");
+    }
+    @return $v;
+}
+
+@function string-of($v, $f, $p) {
+    @if meta.type-of($v) != string {
+        @error throw($v, $f ,$p , "string");
+    }
+    @return string.quote($v);
+}
+
+@function color-of($v, $f, $p) {
+    @if meta.type-of($v) != color {
+        @error throw($v, $f ,$p , "color");
+    }
+    @return $v;
+}
+
+@function list-of($v, $f, $p) {
+    @if meta.type-of($v) != list {
+        @error throw($v, $f ,$p , "list");
+    }
+    @return $v;
+}
+
+@function map-of($v, $f, $p) {
+    @if meta.type-of($v) != map {
+        @error throw($v, $f ,$p , "map");
+    }
+    @return $v;
+}
+
+@function bool-of($v, $f, $p) {
+    @if meta.type-of($v) != bool {
+        @error throw($v, $f ,$p , "bool");
+    }
+    @return $v;
+}
+
+@function function-of($v, $f, $p) {
+    @if meta.type-of($v) != function {
+        @error throw($v, $f ,$p , "function");
+    }
+    @return $v;
+}
+
+@function map-from($k, $v) {
+    @return ($k: $v);
+}

@@ -1,0 +1,103 @@
+@use "../termeh" as T;
+
+.is-hidden {
+    display: none !important;
+}
+
+@include T.until-fullhd() {
+    .is-until-fullhd-hidden {
+        display: none !important;
+    }
+}
+
+@include T.until-widescreen() {
+    .is-until-widescreen-hidden {
+        display: none !important;
+    }
+}
+
+@include T.until-desktop() {
+    .is-until-desktop-hidden {
+        display: none !important;
+    }
+}
+
+@include T.tablet() {
+    .is-mobile-only,
+    .is-tablet-hidden,
+    .is-desktop-only,
+    .is-widescreen-only,
+    .is-fullhd-only {
+        display: none !important;
+    }
+}
+
+@include T.desktop() {
+    .is-mobile-only,
+    .is-tablet-only,
+    .is-desktop-hidden,
+    .is-widescreen-only,
+    .is-fullhd-only {
+        display: none !important;
+    }
+}
+
+@include T.widescreen() {
+    .is-mobile-only,
+    .is-tablet-only,
+    .is-desktop-only,
+    .is-widescreen-hidden,
+    .is-fullhd-only {
+        display: none !important;
+    }
+}
+
+@include T.fullhd() {
+    .is-mobile-only,
+    .is-tablet-only,
+    .is-desktop-only,
+    .is-widescreen-only,
+    .is-fullhd-hidden {
+        display: none !important;
+    }
+}
+
+@include T.mobile() {
+    .is-mobile-hidden,
+    .is-tablet-only,
+    .is-desktop-only,
+    .is-widescreen-only,
+    .is-fullhd-only {
+        display: none !important;
+    }
+}
+
+@include T.tablet-only() {
+    .is-tablet-only-hidden {
+        display: none !important;
+    }
+}
+
+@include T.desktop-only() {
+    .is-desktop-only-hidden {
+        display: none !important;
+    }
+}
+
+@include T.widescreen-only() {
+    .is-widescreen-only-hidden {
+        display: none !important;
+    }
+}
+
+@include T.non-touch() {
+    .is-touch-only {
+        display: none !important;
+    }
+}
+
+@include T.touch() {
+    .is-touch-hidden {
+        display: none !important;
+    }
+}

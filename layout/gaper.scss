@@ -1,0 +1,189 @@
+@use "sass:math";
+@use "../termeh" as T;
+
+$-gaps: T.var("gaper", "gaps", ());
+$-separator: T.var("base", "separator", 1px);
+$-aligns: stretch, flex-start, flex-end, center, baseline;
+$-justifies: flex-start, flex-end, center, space-between, space-around,
+    space-evenly;
+
+.gaper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+
+    > * {
+        flex: 0 0 auto;
+    }
+
+    > .filler {
+        flex: 1 1 0;
+    }
+
+    > .divider {
+        display: block;
+        align-self: stretch;
+        width: $-separator;
+        background-color: T.color("separator");
+    }
+
+    &.is-stacked {
+        flex-direction: column;
+        &-reverse {
+            flex-direction: column-reverse;
+        }
+    }
+
+    &.is-stacked,
+    &.is-stacked-reverse {
+        > .divider {
+            height: $-separator;
+            width: unset;
+        }
+    }
+
+    @each $align in $-aligns {
+        &.is-#{$align}-aligned {
+            align-items: $align;
+        }
+    }
+
+    @each $justify in $-justifies {
+        &.is-#{$justify}-justified {
+            justify-content: $justify;
+        }
+    }
+
+    &.is-auto {
+        margin: T.negate(math.div(T.gap("element"), 2));
+
+        > * {
+            margin: math.div(T.gap("element"), 2);
+        }
+
+        > .gutter {
+            display: none;
+        }
+
+        @each $name, $gap in T.gaps($-gaps) {
+            &.is-#{$name}-gaped {
+                margin: T.negate(math.div($gap, 2));
+
+                > * {
+                    margin: math.div($gap, 2);
+                }
+            }
+        }
+    }
+
+    &:not(.is-auto) {
+        > .divider {
+            margin: 0 T.gap("element");
+        }
+
+        > .gutter {
+            display: block;
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            width: T.gap("element");
+        }
+
+        &.is-stacked,
+        &.is-stacked-reverse {
+            > .divider {
+                margin: T.gap("element") 0;
+            }
+
+            > .gutter {
+                height: T.gap("element");
+                width: unset;
+            }
+        }
+
+        @each $name, $gap in T.gaps($-gaps) {
+            &.is-#{$name}-gaped {
+                > .divider {
+                    margin: 0 $gap;
+                }
+
+                > .gutter {
+                    width: $gap;
+                }
+
+                &.is-stacked,
+                &.is-stacked-reverse {
+                    > .divider {
+                        margin: $gap 0;
+                    }
+
+                    > .gutter {
+                        height: $gap;
+                    }
+                }
+            }
+        }
+    }
+
+    @each $device, $query in T.media-queries() {
+        @media #{$query} {
+            &.is-#{$device}-stacked {
+                flex-direction: column;
+                &-reverse {
+                    flex-direction: column-reverse;
+                }
+            }
+
+            &.is-#{$device}-stacked,
+            &.is-#{$device}-stacked-reverse {
+                > .divider {
+                    height: $-separator;
+                    width: unset;
+                }
+            }
+
+            @each $align in $-aligns {
+                &.is-#{$device}-#{$align}-aligned {
+                    align-items: $align;
+                }
+            }
+
+            @each $justify in $-justifies {
+                &.is-#{$device}-#{$justify}-justified {
+                    justify-content: $justify;
+                }
+            }
+
+            &:not(.is-auto) {
+                &.is-#{$device}-stacked,
+                &.is-#{$device}-stacked-reverse {
+                    > .divider {
+                        margin: T.gap("element") 0;
+                    }
+
+                    > .gutter {
+                        height: T.gap("element");
+                        width: unset;
+                    }
+                }
+
+                @each $name, $gap in T.gaps($-gaps) {
+                    &.is-#{$name}-gaped {
+                        &.is-#{$device}-stacked,
+                        &.is-#{$device}-stacked-reverse {
+                            > .divider {
+                                margin: $gap 0;
+                            }
+
+                            > .gutter {
+                                height: $gap;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

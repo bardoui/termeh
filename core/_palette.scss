@@ -1,0 +1,101 @@
+@use "sass:math";
+@use "sass:list";
+@use "sass:map";
+@use "sass:color";
+@use "sass:string";
+@use "func";
+
+// define color and hues
+// see http://www.workwithcolor.com/
+//
+// name from to dark light
+$-color-maps: (
+    red 355deg 360deg 0deg 355deg,
+    red 0deg 11deg 0deg 11deg,
+    red_orange 11deg 21deg 10deg 21deg,
+    orange 21deg 40deg 20deg 41deg,
+    orange_yellow 41deg 51deg 35deg 51deg,
+    yellow 51deg 61deg 40deg 61deg,
+    yellow_green 61deg 81deg 55deg 81deg,
+    green 81deg 121deg 121deg 80deg,
+    green 121deg 141deg 120deg 141deg,
+    green_cyan 141deg 170deg 141deg 170deg,
+    cyan 170deg 201deg 201deg 170deg,
+    cyan_blue 201deg 221deg 221deg 201deg,
+    blue 221deg 241deg 241deg 221deg,
+    blue_magenta 241deg 281deg 250deg 281deg,
+    magenta 281deg 321deg 280deg 321deg,
+    magenta_pink 321deg 331deg 315deg 331deg,
+    pink 331deg 342deg 328deg 342deg,
+    pink_red 342deg 355deg 359deg 342deg
+);
+
+$-mix: (
+    "50": 95% brightest,
+    "100": 85% brightest,
+    "200": 60% brightest,
+    "300": 35% brightest,
+    "400": 20% brightest,
+    "600": 20% darkest,
+    "700": 40% darkest,
+    "800": 75% darkest,
+    "900": 90% darkest,
+);
+
+@function -between($v, $min, $max) {
+    @return $v >= $min and $v <= $max;
+}
+
+@function -find($color) {
+    $hue: color.hue($color);
+    @each $col-map in $-color-maps {
+        $from: list.nth($col-map, 2);
+        $to: list.nth($col-map, 3);
+        @if -between($hue, $from, $to) {
+            @return $col-map;
+        }
+    }
+    @return null;
+}
+
+@function -darkest($color) {
+    $record: -find($color);
+    $hue: list.nth($record, 4);
+    // get with full color version
+    $sat: if(color.saturation($color) > 40%, 100%, 50%);
+    $sat: if(color.saturation($color) == 0%, 0%, $sat);
+    // get darkest version of color
+    $lgh: if(color.lightness($color) >= 50%, 40%, 17%);
+    @return hsl($hue, $sat, $lgh);
+}
+
+@function -brightest($color) {
+    $record: -find($color);
+    $hue: list.nth($record, 5);
+    @return hsl($hue, color.saturation($color), 95%);
+}
+
+@function -validate($var) {
+    $valids: "50" "100" "200" "300" "400" "500" "600" "700" "800" "900";
+    $var: func.string-of($var, "palette", "variant");
+    @if list.index($valids, $var) == null {
+        @error func.throw($var, "palette", "variant", "variant");
+    }
+    @return $var;
+}
+
+@function palette-of($color, $variant) {
+    $color: func.color-of($color, "palette-of", "color");
+    $variant: -validate($variant);
+    $data: map.get($-mix, $variant);
+    @if $data != null {
+        $amount: list.nth($data, 1);
+        $base: if(
+            list.nth($data, 2) == brightest,
+            -brightest($color),
+            -darkest($color)
+        );
+        @return color.mix($base, $color, $amount);
+    }
+    @return $color;
+}

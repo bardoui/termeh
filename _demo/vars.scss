@@ -1,0 +1,13 @@
+@use "../termeh" as T;
+
+@include T.define("font", "family", "calibri");
+@include T.define("font", "size", 15px);
+// @include T.define-color("primary", #560bad, true);
+
+
+// @include T.define-color("background", #001219, false);
+// @include T.define-color("alternative", #003049, false);
+// @include T.define-color("box", #003049, false);
+// @include T.define-color("input", #003049, false);
+// @include T.define-color("foreground", #e1e6ea, false);
+// @include T.define-color("separator", #15323d, false);

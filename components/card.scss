@@ -1,0 +1,172 @@
+@use "../termeh" as T;
+
+$-gaps: T.var("card", "gaps", ());
+$-colors: T.var("card", "colors", ());
+$-overlay: T.var("overlay", "background");
+$-filter: T.var("overlay", "filter");
+$-spinner: T.var("spinner", "size");
+$-decorator: T.var("decorator", "size");
+
+.card {
+    $gap: T.gap("container");
+    $fg: T.readable(T.color("box"), T.color("foreground"));
+
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    max-width: 100%;
+    padding: $gap;
+    border-radius: T.var("radius", "normal");
+    background-color: T.color("box");
+    color: $fg;
+    border: T.var("card", "border");
+    box-shadow: T.var(
+        "card",
+        "shadow",
+        (
+            T.shadow(0, 3px, T.color("shade"), false),
+            T.shadow(0, 6px, T.color("shade"), true)
+        )
+    );
+
+    > .separator {
+        display: block;
+        height: 1px;
+        background: T.color("separator");
+
+        &.is-attached {
+            margin: 0 T.negate($gap);
+        }
+    }
+
+    > .section {
+        display: block;
+        margin: 0 T.negate($gap);
+        padding: 0;
+        z-index: 1;
+
+        &:first-child,
+        &.is-header {
+            margin-top: T.negate($gap);
+        }
+
+        &:last-child,
+        &.is-footer {
+            margin-bottom: T.negate($gap);
+        }
+
+        &:not(.is-attached) {
+            padding: $gap;
+        }
+
+        &.is-secondary {
+            background: T.color("alternative");
+            color: T.readable(T.color("alternative"), T.color("foreground"));
+        }
+    }
+
+    > .overlay {
+        display: flex;
+        position: absolute;
+        box-sizing: border-box;
+        padding: $gap;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: $-overlay;
+        color: T.foreground($-overlay);
+        backdrop-filter: $-filter;
+        transition: all T.transition-params();
+        opacity: 0;
+        z-index: -1;
+        overflow: hidden;
+        overflow-y: auto;
+        @include T.scrollable(T.color("primary"));
+
+        & > * {
+            margin: auto;
+            max-width: 100%;
+        }
+    }
+
+    &.is-top-decorated {
+        border-top: $-decorator solid T.color("shade");
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    &.is-bottom-decorated {
+        border-bottom: $-decorator solid T.color("shade");
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &.is-loading {
+        @include T.overlay($-overlay, $-filter);
+        @include T.loader($-spinner, T.color("shade"), $-decorator);
+    }
+
+    &.is-overlaid:not(.is-loading) {
+        > .overlay {
+            z-index: 2;
+            opacity: 1;
+        }
+    }
+
+    @each $name, $gap in T.gaps($-gaps) {
+        &.is-#{$name}-padded {
+            padding: $gap;
+
+            > .separator.is-attached {
+                margin: 0 (-$gap);
+            }
+
+            > .section {
+                margin: 0 T.negate($gap);
+
+                &:first-child,
+                &.is-header {
+                    margin-top: T.negate($gap);
+                }
+
+                &:last-child,
+                &.is-footer {
+                    margin-bottom: T.negate($gap);
+                }
+
+                &:not(.is-attached) {
+                    padding: $gap;
+                }
+            }
+
+            > .overlay {
+                padding: $gap;
+            }
+        }
+    }
+
+    @each $name, $color in T.colors($-colors) {
+        &.is-#{$name} {
+            border: T.var("card", "border-#{$name}");
+            box-shadow: T.var("card", "shadow-#{$name}");
+
+            > .overlay {
+                @include T.scroll-color($color);
+            }
+
+            &.is-top-decorated {
+                border-top-color: $color;
+            }
+
+            &.is-bottom-decorated {
+                border-bottom-color: $color;
+            }
+
+            &.is-loading {
+                @include T.loader-color(T.readable($-overlay, $color));
+            }
+        }
+    }
+}

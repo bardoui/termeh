@@ -1,0 +1,131 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:list";
+@use "contrast";
+@use "func";
+
+@function -strip-unit($value) {
+    @return math.div($value, $value * 0 + 1);
+}
+
+@function -contrast($fg, $bg) {
+    $ratio: contrast.contrast-ratio($fg, $bg);
+    @return math.div(math.round($ratio * 100), 100);
+}
+
+@function -validate-font-size($size, $base: 16) {
+    $units: "em" "rem" "px" "";
+    $unit: math.unit($size);
+    @if list.index($units, $unit) != null {
+        @if $unit == "em" or $unit == "rem" {
+            @return -strip-unit($size * -strip-unit($base));
+        }
+        @if $unit == "px" {
+            @return -strip-unit($size);
+        }
+        @if $unit == "" {
+            @return $size;
+        }
+    } @else {
+        @error func.throw($size, "validate-font-size" , "size" , "number");
+    }
+}
+
+@function -validate-level($level) {
+    $levels: "AA" "AAA";
+    $level: func.string-of($level, "a11y", "level");
+    @if list.index($levels, $level) == null {
+        @error func.throw($level, "validate-level" , "level" , "WCAG Level");
+    }
+    @return $level;
+}
+
+@function a11y-ratio($level: "AA", $size: 16, $base: 16, $bold: false) {
+    $ratio: if($level == "AAA", 7, 4.5);
+    $size: -validate-font-size($size, $base);
+    @if $size < 24 {
+        @if $size >= 19 and $bold == true {
+            $ratio: if($level == "AAA", 4.5, 3);
+        }
+    } @else {
+        $ratio: if($level == "AAA", 4.5, 3);
+    }
+    @return $ratio;
+}
+
+@function a11y(
+    $color,
+    $background,
+    $level: "AA",
+    $size: 16,
+    $base: 16,
+    $bold: false
+) {
+    // validate
+    $color: func.color-of($color, "a11y", "color");
+    $background: func.color-of($background, "a11y", "background");
+    $size: func.number-of($size, "a11y", "size");
+    $base: func.number-of($base, "a11y", "base");
+    $bold: func.bool-of($bold, "a11y", "bold");
+    $level: -validate-level($level);
+
+    $ratio: a11y-ratio($level, $size, $base, $bold);
+
+    // return if color already readable
+    @if -contrast($color, $background) >= $ratio {
+        @return $color;
+    }
+
+    // calc readable a11y
+    $isBlackBG: -contrast(#000, $background) >= $ratio;
+    $isWhiteBG: -contrast(#fff, $background) >= $ratio;
+    $minHexDiff: math.div(100, 255);
+    $lightness: color.lightness($color);
+    $minLightness: 0;
+    $maxLightness: 100;
+    $isDark: false;
+
+    // If our colour passes contrast on black
+    @if $isBlackBG and $isWhiteBG {
+        @if $lightness >= 50 {
+            $minLightness: $lightness;
+        } @else {
+            $maxLightness: $lightness;
+            $isDark: true;
+        }
+    } @else if $isBlackBG {
+        $maxLightness: $lightness;
+        $isDark: true;
+    } @else {
+        $minLightness: $lightness;
+    }
+
+    $col: null;
+
+    @while ($col == null) {
+        $midLightness: math.div($minLightness + $maxLightness, 2);
+        $midColor: hsl(
+            color.hue($color),
+            color.saturation($color),
+            $midLightness
+        );
+        $rColor: color.mix($midColor, $midColor);
+
+        @if -contrast($rColor, $background) >= $ratio {
+            @if $maxLightness - $minLightness < $minHexDiff {
+                $col: $rColor;
+            }
+            @if $isDark {
+                $minLightness: $midLightness;
+            } @else {
+                $maxLightness: $midLightness;
+            }
+        } @else if $isDark {
+            $maxLightness: $midLightness;
+        } @else {
+            $minLightness: $midLightness;
+        }
+    }
+
+    @return $col;
+}

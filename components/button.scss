@@ -1,0 +1,119 @@
+@use "../termeh" as T;
+
+$-colors: T.var("button", "colors", ());
+$-background: T.color("background");
+$-foreground: T.color("foreground");
+$-decorator: T.var("decorator", "size");
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button,
+.button {
+    @include T.unselectable();
+    @include T.control();
+    width: auto;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    padding: T.el-pad(T.gap("element"));
+    border-radius: T.var("radius", "normal");
+    transition: all T.transition-params();
+
+    &:not(.is-simple) {
+        $--bg: T.muted($-background, T.color("shade"), false);
+        $--fg: T.readable($--bg, $-foreground);
+        background-color: $--bg;
+        color: $--fg;
+
+        &:hover {
+            $bg: T.state($-background, $--bg);
+            background-color: $bg;
+            color: T.readable($bg, $-foreground);
+        }
+
+        &.is-loading {
+            @include T.locked();
+            color: $--bg;
+            @include T.loader(1em, $--fg, $-decorator);
+        }
+    }
+
+    &.is-simple {
+        color: T.color("foreground");
+
+        &:hover {
+            $bg: T.muted($-background, T.color("shade"), false);
+            background-color: $bg;
+            color: T.readable($bg, $-foreground);
+        }
+
+        &.is-loading {
+            @include T.locked();
+            color: transparent;
+            @include T.loader(1em, T.color("shade"), $-decorator);
+        }
+    }
+
+    &.is-rounded {
+        border-radius: T.var("radius", "rounded");
+    }
+
+    &:focus,
+    &:active {
+        box-shadow: T.shadow(0, 6px, T.color("shade"), true);
+    }
+
+    @each $name, $color in T.colors($-colors) {
+        &.is-#{$name} {
+            &:not(.is-simple) {
+                background-color: $color;
+                color: T.foreground($color);
+
+                &:hover {
+                    $bg: T.state($-background, $color);
+                    background-color: $bg;
+                    color: T.foreground($color);
+                }
+
+                &.is-loading {
+                    color: $color;
+                    @include T.loader-color(T.foreground($color));
+                }
+            }
+
+            &.is-simple {
+                color: T.readable($-background, $color);
+
+                &:hover {
+                    $bg: T.muted($-background, $color, false);
+                    background-color: $bg;
+                    color: T.readable($bg, $color);
+                }
+
+                &.is-loading {
+                    color: transparent;
+                    @include T.loader-color(T.readable($-background, $color));
+                }
+            }
+
+            &:focus,
+            &:active {
+                box-shadow: T.shadow(
+                    0,
+                    6px,
+                    T.readable($-background, $color),
+                    true
+                );
+            }
+        }
+    }
+
+    &:disabled,
+    &.is-disabled,
+    fieldset[disabled] & {
+        @include T.locked();
+        background: T.disabled($-background) !important;
+        color: T.muted($-background, T.color("foreground")) !important;
+    }
+}

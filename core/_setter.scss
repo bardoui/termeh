@@ -1,0 +1,39 @@
+@use "sass:map";
+@use "func";
+@use "store";
+
+@mixin define($component, $property, $value) {
+    $component: func.string-of($component, "define", "component");
+    $property: func.string-of($property, "define", "property");
+    $c-vars: store.component-vars($component);
+    $c-vars: map.merge($c-vars, func.map-from($property, $value));
+    @include store.merge-vars(func.map-from($component, $c-vars));
+}
+
+@mixin define-gap($name, $size, $iterable: true) {
+    $name: func.string-of($name, "define-gap", "name");
+    $size: func.number-of($size, "define-gap", "size");
+    $iterable: func.bool-of($iterable, "define-gap", "iterable");
+    @include store.merge-gaps(func.map-from($name, $size $iterable));
+}
+
+@mixin define-unit($name, $unit, $iterable: true) {
+    $name: func.string-of($name, "define-unit", "name");
+    $unit: func.number-of($unit, "define-unit", "unit");
+    $iterable: func.bool-of($iterable, "define-unit", "iterable");
+    @include store.merge-units(func.map-from($name, $unit $iterable));
+}
+
+@mixin define-color($name, $color, $iterable: true) {
+    $name: func.string-of($name, "define-color", "name");
+    $color: func.color-of($color, "define-color", "color");
+    $iterable: func.bool-of($iterable, "define-color", "iterable");
+    @include store.merge-colors(func.map-from($name, $color $iterable));
+}
+
+@mixin define-size($name, $size, $iterable: true) {
+    $name: func.string-of($name, "define-size", "name");
+    $size: func.number-of($size, "define-size", "size");
+    $iterable: func.bool-of($iterable, "define-size", "iterable");
+    @include store.merge-sizes(func.map-from($name, $size $iterable));
+}

@@ -1,0 +1,58 @@
+@use "../termeh" as T;
+
+$-colors: T.var("input", "colors", ());
+
+.field {
+    display: block;
+
+    &:not(:last-child):not(.is-marginless) {
+        margin-bottom: T.gap("container");
+    }
+
+    > :not(:last-child):not(.is-marginless) {
+        margin-bottom: T.gap("element");
+    }
+
+    > label,
+    .help {
+        line-height: 1em;
+        display: block;
+    }
+
+    > label {
+        width: 100%;
+    }
+
+    .error {
+        display: none;
+        line-height: 1em;
+        color: T.readable(T.color("background"), T.color("error"));
+    }
+
+    &.is-required {
+        > label::after {
+            content: "*";
+            color: T.readable(T.color("background"), T.color("primary"));
+        }
+    }
+
+    @each $name, $color in T.colors($-colors) {
+        &.is-#{$name} {
+            &.is-required {
+                > label::after {
+                    color: T.readable(T.color("background"), $color);
+                }
+            }
+        }
+    }
+
+    &.is-failed {
+        .input {
+            border-color: T.color("error");
+        }
+
+        .error {
+            display: block;
+        }
+    }
+}

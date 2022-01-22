@@ -1,0 +1,31 @@
+@use "../termeh" as T;
+
+$-colors: T.var("meta", "colors", ());
+
+.meta {
+    @include T.unselectable();
+
+    display: inline-block;
+    text-decoration: none;
+    background: none;
+    white-space: nowrap;
+    color: T.muted(T.color("background"), T.color("foreground"));
+
+    &.is-action {
+        cursor: pointer;
+
+        &:hover {
+            color: T.color("foreground");
+        }
+    }
+
+    @each $name, $color in T.colors($-colors) {
+        &.is-#{$name} {
+            color: T.muted(T.color("background"), $color);
+
+            &.is-action:hover {
+                color: T.readable(T.color("background"), $color);
+            }
+        }
+    }
+}

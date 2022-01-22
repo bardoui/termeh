@@ -1,0 +1,13 @@
+@use "../termeh" as T;
+
+img {
+    &.is-centered {
+        margin: auto;
+    }
+    $include: T.var("image", "sizes", ());
+    @each $name, $size in T.sizes($include) {
+        &.is-#{$name} {
+            width: $size;
+        }
+    }
+}

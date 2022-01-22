@@ -1,0 +1,152 @@
+@use "../termeh" as T;
+
+.table-container {
+    display: block;
+    overflow-x: auto;
+    @include T.overflow-touch();
+    @include T.scrollable(T.color("primary"));
+}
+
+table {
+    table-layout: auto;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+
+    tr {
+        background: T.color("background");
+        transition: all T.transition-params();
+
+        &.is-even {
+            background: T.color("alternative");
+        }
+
+        &:not(.is-expanded) .extra {
+            display: none;
+        }
+    }
+
+    th,
+    td {
+        width: 1px;
+        vertical-align: middle;
+        padding: T.el-pad(T.gap("element"));
+        font-weight: normal;
+        color: T.color("foreground");
+        transition: all T.transition-params();
+
+        &.is-center-aligned {
+            text-align: center;
+        }
+
+        &.is-right-aligned {
+            text-align: right;
+        }
+
+        &.is-left-aligned {
+            text-align: left;
+        }
+
+        &.is-filler {
+            width: auto;
+        }
+
+        &:not(.is-multiline) {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        &.is-sorted {
+            background-color: T.var(
+                "table",
+                "sort-background",
+                rgba(T.color("shade"), 0.1)
+            );
+        }
+    }
+
+    thead {
+        padding: 0;
+        margin: 0;
+        border-bottom: 1px solid T.color("shade");
+
+        tr {
+            border-top: 1px solid T.color("separator");
+
+            th {
+                font-weight: T.var("strong", "weight", bold);
+
+                &.is-sortable {
+                    cursor: pointer;
+                }
+
+                &.is-sorted {
+                    color: T.readable(
+                        T.color("background"),
+                        T.color("primary"),
+                        T.var("strong", "weight", bold) == bold
+                    );
+                }
+
+                &.is-asc {
+                    border-top: 1px solid T.color("primary");
+                }
+
+                &.is-desc {
+                    border-bottom: 1px solid T.color("primary");
+                }
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            &:not(:last-child) {
+                border-bottom: 1px solid T.color("separator");
+            }
+
+            &:last-child {
+                border-bottom: 1px solid T.color("shade");
+            }
+        }
+    }
+
+    &.is-fullwidth {
+        width: 100%;
+    }
+
+    &.is-stripped > tbody > tr:nth-child(even) {
+        background: T.color("alternative");
+    }
+
+    &.is-hoverable > tbody > tr:hover {
+        background-color: T.var(
+            "table",
+            "hover-background",
+            rgba(T.color("shade"), 0.25)
+        );
+    }
+
+    $include: T.var("table", "colors", ());
+    @each $name, $color in T.colors($include) {
+        &.is-#{$name} {
+            thead tr th {
+                &.is-sorted {
+                    color: T.readable(
+                        T.color("background"),
+                        $color,
+                        T.var("strong", "weight", bold) == bold
+                    );
+                }
+
+                &.is-asc {
+                    border-top-color: $color;
+                }
+
+                &.is-desc {
+                    border-bottom-color: $color;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+@use "../termeh" as T;
+
+$-gaps: T.var("content", "gaps", ());
+$-colors: T.var("content", "colors", ());
+$-overlay: T.var("overlay", "background");
+$-filter: T.var("overlay", "filter");
+$-spinner: T.var("spinner", "size");
+$-decorator: T.var("decorator", "size");
+
+.content {
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+    @include T.scrollable(T.color("primary"));
+
+    > .overlay {
+        display: flex;
+        position: absolute;
+        box-sizing: border-box;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: $-overlay;
+        color: T.readable($-overlay, T.color("foreground"));
+        backdrop-filter: $-filter;
+        transition: all T.transition-params();
+        opacity: 0;
+        z-index: -1;
+        overflow: hidden;
+        overflow-y: auto;
+        @include T.scrollable(T.color("primary"));
+
+        > * {
+            margin: auto;
+            max-width: 100%;
+        }
+    }
+
+    &.is-centered {
+        display: flex;
+        > * {
+            margin: auto;
+        }
+    }
+
+    &.is-loading {
+        overflow-y: hidden;
+        @include T.overlay($-overlay, $-filter);
+        @include T.loader($-spinner, T.color("shade"), $-decorator);
+    }
+
+    &.is-overlaid:not(.is-loading) {
+        > .overlay {
+            z-index: 2;
+            opacity: 1;
+        }
+    }
+
+    &:not(.is-paddingless) {
+        padding: T.gap("element");
+
+        > .overlay {
+            padding: T.gap("element");
+        }
+
+        @each $name, $gap in T.gaps($-gaps) {
+            &.is-#{$name}-padded {
+                padding: $gap;
+
+                > .overlay {
+                    padding: $gap;
+                }
+            }
+        }
+    }
+
+    @each $name, $color in T.colors($-colors) {
+        &.is-#{$name} {
+            @include T.scroll-color($color);
+
+            > .overlay {
+                @include T.scroll-color($color);
+            }
+
+            &.is-loading {
+                @include T.loader-color($color);
+            }
+        }
+    }
+}

@@ -1,0 +1,99 @@
+@use "sass:map";
+
+$--vars: () !default;
+@function vars() {
+    @return $--vars;
+}
+@function component-vars($name) {
+    @return if(map.has-key($--vars, $name), map.get($--vars, $name), ());
+}
+@mixin set-vars($v) {
+    $--vars: $v !global;
+}
+@mixin merge-vars($v) {
+    $--vars: map.merge($--vars, $v) !global;
+}
+
+$--gaps: () !default;
+@function gaps() {
+    @return $--gaps;
+}
+@mixin set-gaps($v) {
+    $--gaps: $v !global;
+}
+@mixin merge-gaps($v) {
+    $--gaps: map.merge($--gaps, $v) !global;
+}
+
+$--units: () !default;
+@function units() {
+    @return $--units;
+}
+@mixin set-units($v) {
+    $--units: $v !global;
+}
+@mixin merge-units($v) {
+    $--units: map.merge($--units, $v) !global;
+}
+
+$--colors: () !default;
+@function colors() {
+    @return $--colors;
+}
+@mixin set-colors($v) {
+    $--colors: $v !global;
+}
+@mixin merge-colors($v) {
+    $--colors: map.merge($--colors, $v) !global;
+}
+
+$--sizes: () !default;
+@function sizes() {
+    @return $--sizes;
+}
+@mixin set-sizes($v) {
+    $--sizes: $v !global;
+}
+@mixin merge-sizes($v) {
+    $--sizes: map.merge($--sizes, $v) !global;
+}
+
+$--breakpoints: (
+    "tablet": 769px,
+    "desktop": 1024px,
+    "widescreen": 1216px,
+    "fullhd": 1408px,
+) !default;
+@function breakpoints() {
+    @return $--breakpoints;
+}
+
+$--queries: (
+    "until-fullhd": "screen and (max-width: 1407px)",
+    "until-widescreen": "screen and (max-width: 1215px)",
+    "until-desktop": "screen and (max-width: 1023px)",
+    "tablet": "screen and (min-width: 769px)",
+    "desktop": "screen and (min-width: 1024px)",
+    "widescreen": "screen and (min-width: 1216px)",
+    "fullhd": "screen and (min-width: 1408px)",
+    "mobile": "screen and (max-width: 768px)",
+    "tablet-only": "screen and (min-width: 769px) and (max-width: 1023px)",
+    "desktop-only": "screen and (min-width: 1024px) and (max-width: 1215px)",
+    "widescreen-only": "screen and (min-width: 1216px) and (max-width: 1407px)",
+) !default;
+@function media-queries() {
+    @return $--queries;
+}
+
+$--weights: (
+    "lighter": 100,
+    "light": 300,
+    "normal": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+    "bolder": 900,
+) !default;
+@function font-weights() {
+    @return $--weights;
+}

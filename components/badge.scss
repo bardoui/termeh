@@ -1,0 +1,75 @@
+@use "../termeh" as T;
+
+$-colors: T.var("badge", "colors", ());
+$-background: T.color("background");
+$-foreground: T.color("foreground");
+$-decorator: T.var("decorator", "size");
+
+.badge {
+    @include T.unselectable();
+    display: inline-flex;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 1em;
+    text-decoration: none;
+    text-align: center;
+    padding: T.el-pad(T.gap("element"));
+    border-radius: T.var("radius", "normal");
+    background-color: T.color("shade");
+    color: T.readable(T.color("shade"), $-foreground);
+
+    > * {
+        margin: auto;
+    }
+
+    &.is-loading {
+        color: T.color("shade");
+        @include T.loader(
+            1em,
+            T.readable(T.color("shade"), $-foreground),
+            $-decorator
+        );
+    }
+
+    &.is-light {
+        $bg: T.muted($-background, T.color("shade"), false);
+        $fg: T.readable($bg, $-foreground);
+
+        background-color: $bg;
+        color: $fg;
+
+        &.is-loading {
+            color: $bg;
+            @include T.loader-color($fg);
+        }
+    }
+
+    &.is-rounded {
+        border-radius: T.var("radius", "rounded");
+    }
+
+    @each $name, $color in T.colors($-colors) {
+        &.is-#{$name} {
+            background-color: $color;
+            color: T.foreground($color);
+
+            &.is-loading {
+                color: $color;
+                @include T.loader-color(T.foreground($color));
+            }
+
+            &.is-light {
+                $bg: T.muted($-background, $color, false);
+
+                background-color: $bg;
+                color: T.readable($bg, $color);
+
+                &.is-loading {
+                    color: $bg;
+                    @include T.loader-color(T.readable($bg, $color));
+                }
+            }
+        }
+    }
+}

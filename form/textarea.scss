@@ -1,0 +1,68 @@
+@use "sass:math";
+@use "../termeh" as T;
+
+$-gaps: T.var("input", "gaps", ());
+$-colors: T.var("input", "colors", ());
+
+textarea {
+    @include T.control();
+    max-width: 100%;
+    width: 100%;
+    resize: vertical;
+    padding: T.gap("element");
+    background-color: T.color("input");
+    border: 1px solid T.color("separator");
+    border-radius: T.var("radius", "normal");
+
+    &:not([rows]) {
+        max-height: 40em;
+        min-height: 8em;
+    }
+
+    &[rows] {
+        height: initial;
+    }
+
+    @include T.placeholder {
+        color: T.muted(T.color("input"), T.color("foreground"));
+    }
+
+    &:focus,
+    &.is-focused {
+        border-color: T.color("primary");
+    }
+
+    &.is-failed,
+    &:invalid {
+        border-color: T.color("error");
+    }
+
+    @each $name, $gap in T.gaps($-gaps) {
+        &.is-#{$name}-padded {
+            padding: $gap;
+        }
+    }
+
+    @each $name, $color in T.colors($-colors) {
+        &.is-#{$name} {
+            &:focus,
+            &.is-focused {
+                border-color: $color;
+            }
+
+            &::selection {
+                background-color: $color;
+                color: T.foreground($color);
+            }
+        }
+    }
+
+    &[disabled],
+    fieldset[disabled] &,
+    &.is-disabled {
+        @include T.locked();
+        background: T.disabled(T.color("input")) !important;
+        border-color: T.disabled(T.color("input"), true) !important;
+        color: T.muted(T.color("input"), T.color("foreground")) !important;
+    }
+}

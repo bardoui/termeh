@@ -1,0 +1,161 @@
+@use "../termeh" as T;
+
+:root {
+    font-size: T.var("font", "size", 12px);
+}
+
+::selection {
+    background-color: T.color("primary");
+    color: T.foreground(T.color("primary"));
+}
+
+html {
+    text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    direction: T.var("base", "direction", ltr);
+    min-width: T.var("base", "min-width", 300px);
+    background-color: T.color("background");
+    font-family: T.var("font", "family");
+    font-size: 1rem;
+    height: 100%;
+    overflow: hidden;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+    display: block;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea,
+select option {
+    font-family: T.var("font", "family");
+    font-size: 1rem;
+}
+
+select {
+    appearance: menulist;
+    -moz-appearance: menulist;
+    -webkit-appearance: menulist;
+}
+
+code,
+pre {
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: auto;
+    font-family: T.var("font", "code-family");
+}
+
+body {
+    color: T.color("foreground");
+    line-height: T.var("base", "line-height", 1.6em);
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    @include T.scrollable(T.color("primary"));
+}
+
+a {
+    color: T.readable(T.color("background"), T.color("primary"));
+    cursor: pointer;
+    text-decoration: none;
+    strong {
+        color: T.readable(T.color("background"), T.color("primary"), true);
+    }
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+code {
+    direction: ltr;
+    padding: T.gap("element");
+    font-size: T.var("font", "code-size");
+    font-family: T.var("font", "code-family");
+    color: T.readable(T.color("alternative"), T.color("foreground"));
+    background-color: T.color("alternative");
+}
+
+hr {
+    display: block;
+    border: none;
+    height: T.var("base", "separator", 1px);
+    background-color: T.color("separator");
+
+    &:not(.is-marginless) {
+        margin: T.gap("element") 0;
+    }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    vertical-align: baseline;
+    accent-color: T.color("primary");
+}
+
+small {
+    font-size: T.size("small");
+}
+
+span {
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+strong {
+    color: T.var("strong", "color");
+    font-weight: T.var("strong", "weight");
+}
+
+fieldset {
+    border: none;
+}
+
+pre {
+    @include T.overflow-touch();
+    direction: ltr;
+    padding: T.gap("element");
+    font-size: T.var("font", "code-size");
+    font-family: T.var("font", "code-family");
+    color: T.readable(T.color("alternative"), T.color("foreground"));
+    background-color: T.color("alternative");
+    white-space: pre;
+    word-wrap: normal;
+    overflow-x: auto;
+    @include T.scrollable(T.color("primary"));
+
+    code {
+        background-color: none;
+        color: currentColor;
+        font-size: 1em;
+        padding: 0;
+    }
+}
+
+table {
+    td,
+    th {
+        vertical-align: top;
+        &:not([align]) {
+            text-align: inherit;
+        }
+        th {
+            color: T.var("strong", "color");
+        }
+    }
+}
+
+p:not(:last-child):not(.is-marginless) {
+    margin-bottom: T.gap("element");
+}

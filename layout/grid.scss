@@ -1,0 +1,97 @@
+@use "sass:math";
+@use "../termeh" as T;
+
+$-units: T.var("grid", "units", ());
+$-gaps: T.var("grid", "gaps", ());
+$-aligns: stretch, flex-start, flex-end, center, baseline;
+$-justifies: flex-start, flex-end, center, space-between, space-around,
+    space-evenly;
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    box-sizing: border-box;
+
+    > .break {
+        display: block;
+        flex-basis: 100%;
+        height: 0;
+    }
+
+    > .column {
+        display: block;
+        flex: 1 1 0;
+        max-width: 100%;
+        box-sizing: border-box;
+
+        &.is-fit {
+            flex: 0 0 auto;
+        }
+
+        @each $name, $unit in T.units($-units) {
+            &.is-#{$name} {
+                flex: 0 0 auto;
+                width: $unit;
+            }
+        }
+    }
+
+    &:not(.is-gapless) {
+        $--g: math.div(T.gap("container"), 2);
+        margin: T.negate($--g);
+        > .column {
+            padding: $--g;
+        }
+
+        @each $name, $gap in T.gaps($-gaps) {
+            &.is-#{$name}-gaped {
+                margin: T.negate(math.div($gap, 2));
+                > .column {
+                    padding: math.div($gap, 2);
+                }
+            }
+        }
+    }
+
+    @each $align in $-aligns {
+        &.is-#{$align}-aligned {
+            align-items: $align;
+        }
+    }
+
+    @each $justify in $-justifies {
+        &.is-#{$justify}-justified {
+            justify-content: $justify;
+        }
+    }
+
+    @each $device, $query in T.media-queries() {
+        @media #{$query} {
+            > .column {
+                &.is-#{$device}-fit {
+                    flex: 0 0 auto;
+                }
+
+                @each $name, $unit in T.units($-units) {
+                    &.is-#{$device}-#{$name} {
+                        flex: 0 0 auto;
+                        width: $unit;
+                    }
+                }
+            }
+
+            @each $align in $-aligns {
+                &.is-#{$device}-#{$align}-aligned {
+                    align-items: $align;
+                }
+            }
+
+            @each $justify in $-justifies {
+                &.is-#{$device}-#{$justify}-justified {
+                    justify-content: $justify;
+                }
+            }
+        }
+    }
+}
