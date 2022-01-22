@@ -1,6 +1,6 @@
 {
     "name": "@bardoui/termeh",
-    "version": "3.0.0rc",
+    "version": "3.0.0-rc.1",
     "private": false,
     "description": "Modern modular CSS framework",
     "license": "ISC",
@@ -18,7 +18,7 @@
         "layout",
         "styles.scss",
         "termeh.scss",
-        "var.scss"
+        "varinit.scss"
     ],
     "keywords": [
         "css",
