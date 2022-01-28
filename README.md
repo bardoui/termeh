@@ -66,8 +66,11 @@ You can use `all.scss` file inside sub-directory to import all directory content
 ```scss
 // A11y
 
-// get ratio for a11y contrast ratio
-@function a11y-ratio($level: "AA", $size: 16, $base: 16, $bold: false);
+// get rounded contrast
+@function wcag-contrast($back, $color);
+
+// get WCAG 2.1 contrast ratio
+@function wcag-ratio($level: "AA", $size: 16, $base: 16, $bold: false);
 
 // get nearest color for background
 // $level: "AA" or "AAA"

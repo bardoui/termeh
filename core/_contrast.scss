@@ -34,29 +34,22 @@
     @return if(luminance($color1) > luminance($color2), $color1, $color2);
 }
 
-@function contrast-ratio($foreground, $background) {
-    $foreground: func.color-of($foreground, "contrast-ratio", "foreground");
-    $background: func.color-of($background, "contrast-ratio", "background");
-    $luminance1: luminance($foreground) + 0.05;
-    $luminance2: luminance($background) + 0.05;
-    $ratio: math.div($luminance1, $luminance2);
-    @if $luminance2 > $luminance1 {
-        $ratio: math.div(1, $ratio);
-    }
-    @return $ratio;
+@function contrast-ratio($back, $color) {
+    $back: func.color-of($back, "contrast-ratio", "back");
+    $color: func.color-of($color, "contrast-ratio", "color");
+    $backLum: luminance($back) + 0.05;
+    $colorLum: luminance($color) + 0.05;
+    @return math.div(
+        math.max($backLum, $colorLum),
+        math.min($backLum, $colorLum)
+    );
 }
 
 @function tone($color) {
     $color: func.color-of($color, "tone", "color");
     $minCnt: 3.1;
-    $lightCnt: contrast-ratio(
-        darkest-of($color, white),
-        brightest-of($color, white)
-    );
-    $darkCnt: contrast-ratio(
-        darkest-of($color, rgba(black, 0.87)),
-        brightest-of($color, rgba(black, 0.87))
-    );
+    $lightCnt: contrast-ratio($color, white);
+    $darkCnt: contrast-ratio($color, rgba(black, 0.87));
     @if ($lightCnt < $minCnt) and ($darkCnt > $lightCnt) {
         @return "light";
     } @else {

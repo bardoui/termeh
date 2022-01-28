@@ -8,8 +8,10 @@
     @return math.div($value, $value * 0 + 1);
 }
 
-@function -contrast($fg, $bg) {
-    $ratio: contrast.contrast-ratio($fg, $bg);
+@function wcag-contrast($back, $color) {
+    $back: func.color-of($back, "wcag-contrast", "back");
+    $color: func.color-of($color, "wcag-contrast", "color");
+    $ratio: contrast.contrast-ratio($back, $color);
     @return math.div(math.round($ratio * 100), 100);
 }
 
@@ -40,9 +42,13 @@
     @return $level;
 }
 
-@function a11y-ratio($level: "AA", $size: 16, $base: 16, $bold: false) {
-    $ratio: if($level == "AAA", 7, 4.5);
+@function wcag-ratio($level: "AA", $size: 16, $base: 16, $bold: false) {
+    $level: -validate-level($level);
+    $base: func.number-of($base, "wcag-ratio", "base");
     $size: -validate-font-size($size, $base);
+    $bold: func.bool-of($bold, "wcag-ratio", "bold");
+
+    $ratio: if($level == "AAA", 7, 4.5);
     @if $size < 24 {
         @if $size >= 19 and $bold == true {
             $ratio: if($level == "AAA", 4.5, 3);
@@ -69,16 +75,16 @@
     $bold: func.bool-of($bold, "a11y", "bold");
     $level: -validate-level($level);
 
-    $ratio: a11y-ratio($level, $size, $base, $bold);
+    $ratio: wcag-ratio($level, $size, $base, $bold);
 
     // return if color already readable
-    @if -contrast($color, $background) >= $ratio {
+    @if wcag-contrast($color, $background) >= $ratio {
         @return $color;
     }
 
     // calc readable a11y
-    $isBlackBG: -contrast(#000, $background) >= $ratio;
-    $isWhiteBG: -contrast(#fff, $background) >= $ratio;
+    $isBlackBG: wcag-contrast(#000, $background) >= $ratio;
+    $isWhiteBG: wcag-contrast(#fff, $background) >= $ratio;
     $minHexDiff: math.div(100, 255);
     $lightness: color.lightness($color);
     $minLightness: 0;
@@ -111,7 +117,7 @@
         );
         $rColor: color.mix($midColor, $midColor);
 
-        @if -contrast($rColor, $background) >= $ratio {
+        @if wcag-contrast($rColor, $background) >= $ratio {
             @if $maxLightness - $minLightness < $minHexDiff {
                 $col: $rColor;
             }

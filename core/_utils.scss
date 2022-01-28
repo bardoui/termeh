@@ -42,16 +42,11 @@
     $bold: func.bool-of($bold, "foreground", "bold");
     $size: func.number-of(if($size == null, $rem, $size), "foreground", "size");
 
-    $ratio: a11y.a11y-ratio("AA", $size, $rem, $bold);
-    $white: color.mix(white, $color, 90%);
-    $black: color.mix(black, $color, 90%);
-
-    $contrast: contrast.contrast-ratio($white, $color);
-    $contrast: math.div(math.round($contrast * 100), 100);
-    @if $contrast >= $ratio {
-        @return $white;
+    $ratio: 3;
+    @if a11y.wcag-contrast($color, white) >= $ratio {
+        @return white;
     } @else {
-        @return $black;
+        @return color.mix(black, $color, 95%);
     }
 }
 
