@@ -31,11 +31,11 @@ $-colors: T.var("icon", "colors", ());
 
     &.is-outline {
         svg {
-            fill: unset;
+            fill: none;
             stroke: currentColor;
 
             > * {
-                fill: unset;
+                fill: none;
                 stroke: currentColor;
             }
         }
