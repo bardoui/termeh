@@ -282,7 +282,7 @@ You can use `all.scss` file inside sub-directory to import all directory content
 - **Modifiers** _[card]_: `is-top-decorated`, `is-bottom-decorated`, `is-loading`, `is-overlaid`, `is-{gap}-padded`, `is-{color}`
 - **Modifiers** _[separator]_: `is-attached`
 - **Modifiers** _[section]_: `is-header`, `is-footer`, `is-attached`, `is-secondary`
-- **Variables** _[card]_: `gaps`, `colors`, `sizes ('is-small' 20em, 'is-large' 30em)`, `border`, `shadow`, `border-{name}`, `shadow-{name}`
+- **Variables** _[card]_: `gaps`, `colors`, `sizes ('small' 20em, 'large' 30em)`, `border`, `shadow`, `border-{name}`, `shadow-{name}`
 
 ### Header (`.header`)
 
