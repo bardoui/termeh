@@ -1,7 +1,9 @@
+@use "sass:list";
 @use "../termeh" as T;
 
 $-gaps: T.var("card", "gaps", ());
 $-colors: T.var("card", "colors", ());
+$-sizes: T.var("card", "sizes", ());
 $-overlay: T.var("overlay", "background");
 $-filter: T.var("overlay", "filter");
 $-spinner: T.var("spinner", "size");
@@ -167,6 +169,14 @@ $-decorator: T.var("decorator", "size");
             &.is-loading {
                 @include T.loader-color(T.readable($-overlay, $color));
             }
+        }
+    }
+
+    @each $size in $-sizes {
+        $name: list.nth($size, 1);
+        $width: list.nth($size, 2);
+        &.is-#{$name} {
+            width: $width;
         }
     }
 }

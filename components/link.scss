@@ -24,6 +24,7 @@ $-colors: T.var("link", "colors", ());
     }
 
     &:hover::after {
+        text-decoration: none;
         width: 100%;
     }
 

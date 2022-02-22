@@ -50,6 +50,7 @@ $-colors: T.var("icon", "colors", ());
         }
 
         &:hover {
+            text-decoration: none;
             color: T.color("foreground");
 
             > img {

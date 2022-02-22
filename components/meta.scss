@@ -15,6 +15,7 @@ $-colors: T.var("meta", "colors", ());
         cursor: pointer;
 
         &:hover {
+            text-decoration: none;
             color: T.color("foreground");
         }
     }

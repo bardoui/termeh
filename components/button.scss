@@ -28,6 +28,7 @@ button,
 
         &:hover {
             $bg: T.state($-background, $--bg);
+            text-decoration: none;
             background-color: $bg;
             color: T.readable($bg, $-foreground);
         }
@@ -44,6 +45,7 @@ button,
 
         &:hover {
             $bg: T.muted($-background, T.color("shade"), false);
+            text-decoration: none;
             background-color: $bg;
             color: T.readable($bg, $-foreground);
         }
