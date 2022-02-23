@@ -170,7 +170,7 @@ code {
   font-size: 1rem;
   font-family: monospace;
   color: #081e30;
-  background-color: #ebeff1;
+  background-color: #f8f9fa;
 }
 
 hr {
@@ -213,7 +213,7 @@ pre {
   font-size: 1rem;
   font-family: monospace;
   color: #081e30;
-  background-color: #ebeff1;
+  background-color: #f8f9fa;
   white-space: pre;
   word-wrap: normal;
   overflow-x: auto;
@@ -354,7 +354,7 @@ table tr {
   transition: all 250ms ease;
 }
 table tr.is-even {
-  background: #ebeff1;
+  background: #f8f9fa;
 }
 table tr:not(.is-expanded) .extra {
   display: none;
@@ -426,7 +426,7 @@ table.is-fullwidth {
   width: 100%;
 }
 table.is-stripped > tbody > tr:nth-child(even) {
-  background: #ebeff1;
+  background: #f8f9fa;
 }
 table.is-hoverable > tbody > tr:hover {
   background-color: rgba(141, 153, 174, 0.25);
@@ -478,7 +478,6 @@ table.is-success thead tr th.is-desc {
   width: auto;
   white-space: nowrap;
   overflow: hidden;
-  line-height: 1em;
   text-decoration: none;
   text-align: center;
   padding: 0.5rem 1rem;
@@ -638,7 +637,6 @@ button,
   margin: 0;
   padding: 0;
   outline: 0;
-  line-height: 1em;
   font-size: 1em;
   overflow: hidden;
   width: auto;
@@ -712,6 +710,7 @@ input[type=submit]:not(.is-simple):hover,
 input[type=reset]:not(.is-simple):hover,
 button:not(.is-simple):hover,
 .button:not(.is-simple):hover {
+  text-decoration: none;
   background-color: #b2bed7;
   color: #081e30;
 }
@@ -760,6 +759,7 @@ input[type=submit].is-simple:hover,
 input[type=reset].is-simple:hover,
 button.is-simple:hover,
 .button.is-simple:hover {
+  text-decoration: none;
   background-color: #d2d9e7;
   color: #081e30;
 }
@@ -1157,7 +1157,7 @@ fieldset[disabled] .button {
   padding: 1.5rem;
 }
 .card > .section.is-secondary {
-  background: #ebeff1;
+  background: #f8f9fa;
   color: #081e30;
 }
 .card > .overlay {
@@ -1625,11 +1625,11 @@ fieldset[disabled] .button {
   fill: currentColor;
 }
 .icon.is-outline svg {
-  fill: unset;
+  fill: none;
   stroke: currentColor;
 }
 .icon.is-outline svg > * {
-  fill: unset;
+  fill: none;
   stroke: currentColor;
 }
 .icon.is-action {
@@ -1640,6 +1640,7 @@ fieldset[disabled] .button {
   filter: grayscale(0.5);
 }
 .icon.is-action:hover {
+  text-decoration: none;
   color: #081e30;
 }
 .icon.is-action:hover > img {
@@ -1776,9 +1777,9 @@ fieldset[disabled] .button {
   margin: 0;
   padding: 0;
   outline: 0;
-  line-height: 1em;
   font-size: 1em;
   overflow: hidden;
+  line-height: 1em;
   cursor: pointer;
   text-shadow: none;
   display: inline-block;
@@ -1811,6 +1812,7 @@ fieldset[disabled] .button {
   background: currentColor;
 }
 .link:hover::after {
+  text-decoration: none;
   width: 100%;
 }
 .link.is-shade {
@@ -1842,6 +1844,7 @@ fieldset[disabled] .button {
   cursor: pointer;
 }
 .meta.is-action:hover {
+  text-decoration: none;
   color: #081e30;
 }
 .meta.is-shade {
@@ -1906,7 +1909,6 @@ fieldset[disabled] .button {
   margin: 0;
   padding: 0;
   outline: 0;
-  line-height: 1em;
   font-size: 1em;
   overflow: hidden;
   display: block;
@@ -2058,7 +2060,6 @@ textarea {
   margin: 0;
   padding: 0;
   outline: 0;
-  line-height: 1em;
   font-size: 1em;
   overflow: hidden;
   max-width: 100%;
@@ -2179,7 +2180,6 @@ select {
   margin: 0;
   padding: 0;
   outline: 0;
-  line-height: 1em;
   font-size: 1em;
   overflow: hidden;
   display: block;

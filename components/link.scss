@@ -5,6 +5,7 @@ $-colors: T.var("link", "colors", ());
 
 .link {
     @include T.control();
+    line-height: 1em;
     cursor: pointer;
     text-shadow: none;
     display: inline-block;
