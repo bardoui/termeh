@@ -1,5 +1,6 @@
 @use "../termeh" as T;
 
+$-gaps: T.var("badge", "gaps", ());
 $-colors: T.var("badge", "colors", ());
 $-background: T.color("background");
 $-foreground: T.color("foreground");
@@ -46,6 +47,12 @@ $-decorator: T.var("decorator", "size");
 
     &.is-rounded {
         border-radius: T.var("radius", "rounded");
+    }
+
+    @each $name, $gap in T.gaps($-gaps) {
+        &.is-#{$name}-padded {
+            padding: T.el-pad($gap);
+        }
     }
 
     @each $name, $color in T.colors($-colors) {

@@ -268,13 +268,13 @@ You can use `all.scss` file inside sub-directory to import all directory content
 
 ### Badge (`.badge`)
 
-- **Modifiers**: `is-loading`, `is-light`, `is-rounded`, `is-{color}`
-- **Variables** _[badge]_: `colors`
+- **Modifiers**: `is-loading`, `is-light`, `is-rounded`, `is-{gap}-padded`, `is-{color}`
+- **Variables** _[badge]_: `colors`, `gaps`
 
 ### Button (`.button`, `button`, `input[type=button|submit|reset]`)
 
-- **Modifiers**: `is-simple`, `is-loading`, `is-rounded`, `is-{color}`, `is-disabled`
-- **Variables** _[button]_: `colors`
+- **Modifiers**: `is-simple`, `is-loading`, `is-rounded`, `is-{name}-padded`, `is-{color}`, `is-disabled`
+- **Variables** _[button]_: `colors`, `gaps`
 
 ### Card (`.card`)
 

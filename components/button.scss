@@ -1,5 +1,6 @@
 @use "../termeh" as T;
 
+$-gaps: T.var("button", "gaps", ());
 $-colors: T.var("button", "colors", ());
 $-background: T.color("background");
 $-foreground: T.color("foreground");
@@ -64,6 +65,12 @@ button,
     &:focus,
     &:active {
         box-shadow: T.shadow(0, 6px, T.color("shade"), true);
+    }
+
+    @each $name, $gap in T.gaps($-gaps) {
+        &.is-#{$name}-padded {
+            padding: T.el-pad($gap);
+        }
     }
 
     @each $name, $color in T.colors($-colors) {
