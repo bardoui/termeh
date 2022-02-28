@@ -1,0 +1,39 @@
+@use "sass:math";
+@use "../termeh" as T;
+
+$-gaps: T.var("breadcrumb", "gaps", ());
+
+.breadcrumb {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    line-height: 1em;
+    padding: math.div(T.gap("element"), 2);
+
+    > * {
+        margin: math.div(T.gap("element"), 2);
+        line-height: 1em !important;
+    }
+
+    .separator {
+        padding: 0 math.div(T.gap("element"), 2);
+        color: T.color("separator");
+    }
+
+    @each $name, $gap in T.gaps($-gaps) {
+        &.is-#{$name}-padded {
+            padding: math.div($gap, 2);
+
+            > * {
+                margin: math.div($gap, 2);
+            }
+
+            .separator {
+                padding: 0 math.div($gap, 2);
+            }
+        }
+    }
+}

@@ -196,6 +196,12 @@ You can use `all.scss` file inside sub-directory to import all directory content
 
 ## Layout
 
+### Breadcrumb (`.breadcrumb`)
+
+- **Childs**: `separator`
+- **Modifiers**: `is-{gap}-padded`
+- **Variables** _[breadcrumb]_: `gaps`
+
 ### Components (`.components`)
 
 - **Childs**: `filler`, `divider`

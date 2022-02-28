@@ -525,6 +525,27 @@ table.is-success thead tr th.is-desc {
 .badge.is-rounded {
   border-radius: 290486px;
 }
+.badge.is-mini-padded {
+  padding: 0.25em 0.5em;
+}
+.badge.is-small-padded {
+  padding: 0.425em 0.85em;
+}
+.badge.is-normal-padded {
+  padding: 0.5em 1em;
+}
+.badge.is-medium-padded {
+  padding: 0.75em 1.5em;
+}
+.badge.is-large-padded {
+  padding: 1em 2em;
+}
+.badge.is-huge-padded {
+  padding: 1.25em 2.5em;
+}
+.badge.is-massive-padded {
+  padding: 1.5em 3em;
+}
 .badge.is-shade {
   background-color: #8d99ae;
   color: #070809;
@@ -813,6 +834,55 @@ button:active,
 .button:focus,
 .button:active {
   box-shadow: 0 6px 18px -6px rgba(141, 153, 174, 0.15);
+}
+input[type=button].is-mini-padded,
+input[type=submit].is-mini-padded,
+input[type=reset].is-mini-padded,
+button.is-mini-padded,
+.button.is-mini-padded {
+  padding: 0.25em 0.5em;
+}
+input[type=button].is-small-padded,
+input[type=submit].is-small-padded,
+input[type=reset].is-small-padded,
+button.is-small-padded,
+.button.is-small-padded {
+  padding: 0.425em 0.85em;
+}
+input[type=button].is-normal-padded,
+input[type=submit].is-normal-padded,
+input[type=reset].is-normal-padded,
+button.is-normal-padded,
+.button.is-normal-padded {
+  padding: 0.5em 1em;
+}
+input[type=button].is-medium-padded,
+input[type=submit].is-medium-padded,
+input[type=reset].is-medium-padded,
+button.is-medium-padded,
+.button.is-medium-padded {
+  padding: 0.75em 1.5em;
+}
+input[type=button].is-large-padded,
+input[type=submit].is-large-padded,
+input[type=reset].is-large-padded,
+button.is-large-padded,
+.button.is-large-padded {
+  padding: 1em 2em;
+}
+input[type=button].is-huge-padded,
+input[type=submit].is-huge-padded,
+input[type=reset].is-huge-padded,
+button.is-huge-padded,
+.button.is-huge-padded {
+  padding: 1.25em 2.5em;
+}
+input[type=button].is-massive-padded,
+input[type=submit].is-massive-padded,
+input[type=reset].is-massive-padded,
+button.is-massive-padded,
+.button.is-massive-padded {
+  padding: 1.5em 3em;
 }
 input[type=button].is-shade:not(.is-simple),
 input[type=submit].is-shade:not(.is-simple),
@@ -1811,7 +1881,10 @@ fieldset[disabled] .button {
   transition: all 250ms ease;
   background: currentColor;
 }
-.link:hover::after {
+.link:hover {
+  text-decoration: none;
+}
+.link:hover ::after {
   text-decoration: none;
   width: 100%;
 }
@@ -2761,6 +2834,88 @@ fieldset[disabled] label.radio input {
   border-top-right-radius: 0 !important;
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  line-height: 1em;
+  padding: 0.5rem;
+}
+.breadcrumb > * {
+  margin: 0.5rem;
+  line-height: 1em !important;
+}
+.breadcrumb .separator {
+  padding: 0 0.5rem;
+  color: #e1e6ea;
+}
+.breadcrumb.is-mini-padded {
+  padding: 0.25em;
+}
+.breadcrumb.is-mini-padded > * {
+  margin: 0.25em;
+}
+.breadcrumb.is-mini-padded .separator {
+  padding: 0 0.25em;
+}
+.breadcrumb.is-small-padded {
+  padding: 0.425em;
+}
+.breadcrumb.is-small-padded > * {
+  margin: 0.425em;
+}
+.breadcrumb.is-small-padded .separator {
+  padding: 0 0.425em;
+}
+.breadcrumb.is-normal-padded {
+  padding: 0.5em;
+}
+.breadcrumb.is-normal-padded > * {
+  margin: 0.5em;
+}
+.breadcrumb.is-normal-padded .separator {
+  padding: 0 0.5em;
+}
+.breadcrumb.is-medium-padded {
+  padding: 0.75em;
+}
+.breadcrumb.is-medium-padded > * {
+  margin: 0.75em;
+}
+.breadcrumb.is-medium-padded .separator {
+  padding: 0 0.75em;
+}
+.breadcrumb.is-large-padded {
+  padding: 1em;
+}
+.breadcrumb.is-large-padded > * {
+  margin: 1em;
+}
+.breadcrumb.is-large-padded .separator {
+  padding: 0 1em;
+}
+.breadcrumb.is-huge-padded {
+  padding: 1.25em;
+}
+.breadcrumb.is-huge-padded > * {
+  margin: 1.25em;
+}
+.breadcrumb.is-huge-padded .separator {
+  padding: 0 1.25em;
+}
+.breadcrumb.is-massive-padded {
+  padding: 1.5em;
+}
+.breadcrumb.is-massive-padded > * {
+  margin: 1.5em;
+}
+.breadcrumb.is-massive-padded .separator {
+  padding: 0 1.5em;
 }
 
 .components {
