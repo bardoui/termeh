@@ -24,9 +24,12 @@ $-colors: T.var("link", "colors", ());
         background: currentColor;
     }
 
-    &:hover::after {
+    &:hover {
         text-decoration: none;
-        width: 100%;
+        ::after {
+            text-decoration: none;
+            width: 100%;
+        }
     }
 
     @each $name, $color in T.colors($-colors) {
