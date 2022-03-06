@@ -9,65 +9,65 @@
 .attachment {
     padding: 1rem;
     text-align: right;
-    background: T.disabled(T.color("background"), false);
+    background: T.variant("shade", "mute");
 }
 
 .sidebar {
     min-width: 10rem;
     min-height: 5rem;
-    background: T.disabled(T.color("background"), true);
+    background: T.variant("shade", "section");
 }
 
 .content {
-    background: T.palette("shade", "50");
+    background: T.variant("base", "section");
 }
 
 .lorem {
     padding: 2rem;
 }
 
-.test {
-    padding: 2rem;
-    background: blue;
-    @include T.until-desktop() {
-        background: red;
-    }
-    @include T.mobile() {
-        background: green;
-    }
+// .test {
+//     padding: 2rem;
+//     background: blue;
+//     @include T.until-desktop() {
+//         background: red;
+//     }
+//     @include T.mobile() {
+//         background: green;
+//     }
 
-    @each $name, $color in T.colors() {
-        &.is-#{$name} {
-            color: T.a11y(
-                $color,
-                white,
-                "AA",
-                T.var("font", "size"),
-                T.var("font", "size"),
-                false
-            );
-            color: T.a11y(
-                $color,
-                black,
-                "AA",
-                T.var("font", "size"),
-                T.var("font", "size"),
-                true
-            );
-            @each $var
-                in "50"
-                "100"
-                "200"
-                "300"
-                "400"
-                "500"
-                "600"
-                "700"
-                "800"
-                "900"
-            {
-                color-#{$var}: T.palette-of($color, $var);
-            }
-        }
-    }
-}
+//     @each $name, $color in T.colors() {
+//         &.is-#{$name} {
+//             color: T.a11y(
+//                 $color,
+//                 white,
+//                 "AA",
+//                 T.var("font", "size"),
+//                 T.var("font", "size"),
+//                 false
+//             );
+//             color: T.a11y(
+//                 $color,
+//                 black,
+//                 "AA",
+//                 T.var("font", "size"),
+//                 T.var("font", "size"),
+//                 true
+//             );
+//             @each $var
+//                 in "50"
+//                 "100"
+//                 "200"
+//                 "300"
+//                 "400"
+//                 "500"
+//                 "600"
+//                 "700"
+//                 "800"
+//                 "900"
+//             {
+//                 color-#{$var}: T.palette-of($color, $var);
+//             }
+//         }
+//     }
+// }

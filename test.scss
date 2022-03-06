@@ -1,39 +1,29 @@
 @use "termeh" as T;
+@use "styles.scss";
 
-// $col: #2b2d42;
-// $col2: #525466;
-// $variants: "50" "100" "200" "300" "400" "500" "600" "700" "800" "900";
-// @each $v in $variants {
-//     @debug T.palette-of($col, $v);
+
+// @debug T.variant("base", "border");
+// @debug T.variant("base", "disabled");
+
+// @each $name, $color in T.colors() {
+//     @debug $name, $color;
+//     @debug "color", T.variant($name, "--color");
+//     @debug "inverse", T.variant($name, "inverse");
+//     @debug "active", T.variant($name, "active");
+//     @debug "active-inverse", T.variant($name, "active-inverse");
+//     @debug "light", T.variant($name, "light");
+//     @debug "light-inverse", T.variant($name, "light-inverse");
+//     @debug "readable", T.variant($name, "readable");
+//     @debug "readable-inverse", T.variant($name, "readable-inverse");
+//     @debug "mute", T.variant($name, "mute");
+//     @debug "mute-inverse", T.variant($name, "mute-inverse");
+//     @debug "foreground", T.variant($name, "foreground");
+//     @debug "foreground-inverse", T.variant($name, "foreground-inverse");
+//     @debug "decorator", T.variant($name, "decorator");
+//     @debug "decorator-inverse", T.variant($name, "decorator-inverse");
+//     @debug "----------------------------------";
 // }
 
-// @debug T.muted(T.color("base"), T.palette("shade", "300"));
-// @debug T.muted(T.color("base"), T.palette("shade", "50"));
-// @debug T.muted(T.color("base"), T.palette("shade", "100"));
-// @debug T.readable(#202020, #233333);
-
-// @debug T.muted(#000000, #d62828);
-// @debug T.disabled(#000000);
-// @debug T.disabled(#000000, true);
-// @debug T.muted(#14213d, #fff);
-// @debug T.disabled(#14213d);
-// @debug T.disabled(#14213d, true);
-// @debug T.muted(#272640, #ffba08);
-// @debug T.disabled(#272640);
-// @debug T.disabled(#272640, true);
-// @debug T.muted(#e5e5e5, #000000);
-// @debug T.disabled(#e5e5e5);
-// @debug T.disabled(#e5e5e5, true);
-// @debug T.muted(#ffffff, #212f45);
-// @debug T.disabled(#ffffff);
-// @debug T.disabled(#ffffff, true);
-// @debug T.muted(#99d98c, #d62828);
-// @debug T.disabled(#99d98c);
-// @debug T.disabled(#99d98c, true);
-// @debug T.muted(#ffffff, #081e30);
-// @debug T.disabled(#ffffff);
-// @debug T.disabled(#ffffff, true);
-
-@each $name, $color in T.colors() {
-    @debug $name, $color;
+body{
+    @include T.spinner(1em, red, 2px);
 }

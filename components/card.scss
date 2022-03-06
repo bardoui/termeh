@@ -1,27 +1,14 @@
 @use "sass:list";
 @use "../termeh" as T;
 
-$-gaps: T.var("card", "gaps", ());
-$-colors: T.var("card", "colors", ());
-$-sizes: T.var("card", "sizes", ());
-$-overlay: T.var("overlay", "background");
-$-filter: T.var("overlay", "filter");
-$-spinner: T.var("spinner", "size");
-$-decorator: T.var("decorator", "size");
-
 .card {
-    $gap: T.gap("container");
-    $fg: T.readable(T.color("box"), T.color("foreground"));
-
     display: block;
     position: relative;
     box-sizing: border-box;
-    overflow: hidden;
     max-width: 100%;
-    padding: $gap;
+    padding: T.gap("macro");
     border-radius: T.var("radius", "normal");
-    background-color: T.color("box");
-    color: $fg;
+    background-color: T.variant("base", "box", white);
     border: T.var("card", "border");
     box-shadow: T.var(
         "card",
@@ -35,36 +22,35 @@ $-decorator: T.var("decorator", "size");
     > .separator {
         display: block;
         height: 1px;
-        background: T.color("separator");
+        background: T.variant("base", "separator");
 
         &.is-attached {
-            margin: 0 T.negate($gap);
+            margin: 0 T.negate(T.gap("macro"));
         }
     }
 
     > .section {
         display: block;
-        margin: 0 T.negate($gap);
+        margin: 0 T.negate(T.gap("macro"));
         padding: 0;
         z-index: 1;
 
         &:first-child,
         &.is-header {
-            margin-top: T.negate($gap);
+            margin-top: T.negate(T.gap("macro"));
         }
 
         &:last-child,
         &.is-footer {
-            margin-bottom: T.negate($gap);
+            margin-bottom: T.negate(T.gap("macro"));
         }
 
         &:not(.is-attached) {
-            padding: $gap;
+            padding: T.gap("macro");
         }
 
         &.is-secondary {
-            background: T.color("alternative");
-            color: T.readable(T.color("alternative"), T.color("foreground"));
+            background: T.variant("base", "section");
         }
     }
 
@@ -72,19 +58,19 @@ $-decorator: T.var("decorator", "size");
         display: flex;
         position: absolute;
         box-sizing: border-box;
-        padding: $gap;
         left: 0;
         top: 0;
         bottom: 0;
         right: 0;
-        background: $-overlay;
-        color: T.foreground($-overlay);
-        backdrop-filter: $-filter;
-        transition: all T.transition-params();
         opacity: 0;
         z-index: -1;
         overflow: hidden;
         overflow-y: auto;
+        padding: T.gap("macro");
+        color: T.var("overlay", "color");
+        background: T.var("overlay", "background");
+        backdrop-filter: T.var("overlay", "filter");
+        @include T.transition(all);
         @include T.scrollable(T.color("primary"));
 
         & > * {
@@ -94,20 +80,27 @@ $-decorator: T.var("decorator", "size");
     }
 
     &.is-top-decorated {
-        border-top: $-decorator solid T.color("shade");
+        border-top: T.var("decorator", "size") solid T.color("shade");
         border-top-left-radius: 0;
         border-top-right-radius: 0;
     }
 
     &.is-bottom-decorated {
-        border-bottom: $-decorator solid T.color("shade");
+        border-bottom: T.var("decorator", "size") solid T.color("shade");
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
     }
 
     &.is-loading {
-        @include T.overlay($-overlay, $-filter);
-        @include T.loader($-spinner, T.color("shade"), $-decorator);
+        @include T.overlay(
+            T.var("overlay", "background"),
+            T.var("overlay", "filter")
+        );
+        @include T.loader(
+            T.var("spinner", "size"),
+            T.var("overlay", "color", T.color("shade")),
+            T.var("decorator", "size")
+        );
     }
 
     &.is-overlaid:not(.is-loading) {
@@ -117,12 +110,12 @@ $-decorator: T.var("decorator", "size");
         }
     }
 
-    @each $name, $gap in T.gaps($-gaps) {
+    @each $name, $gap in T.gaps(T.var("card", "gaps", ())) {
         &.is-#{$name}-padded {
             padding: $gap;
 
             > .separator.is-attached {
-                margin: 0 (-$gap);
+                margin: 0 T.negate($gap);
             }
 
             > .section {
@@ -149,7 +142,7 @@ $-decorator: T.var("decorator", "size");
         }
     }
 
-    @each $name, $color in T.colors($-colors) {
+    @each $name, $color in T.colors(T.var("card", "colors", ())) {
         &.is-#{$name} {
             border: T.var("card", "border-#{$name}");
             box-shadow: T.var("card", "shadow-#{$name}");
@@ -167,12 +160,18 @@ $-decorator: T.var("decorator", "size");
             }
 
             &.is-loading {
-                @include T.loader-color(T.readable($-overlay, $color));
+                @include T.loader-color(
+                    T.variant(
+                        $name,
+                        "overlay",
+                        T.variant($name, "readable", $color)
+                    )
+                );
             }
         }
     }
 
-    @each $size in $-sizes {
+    @each $size in T.var("card", "sizes", ()) {
         $name: list.nth($size, 1);
         $width: list.nth($size, 2);
         &.is-#{$name} {

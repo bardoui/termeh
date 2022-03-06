@@ -1,7 +1,5 @@
 @use "../termeh" as T;
 
-$-gaps: T.var("container", "gaps", ());
-
 .container {
     display: block;
     position: relative;
@@ -9,7 +7,7 @@ $-gaps: T.var("container", "gaps", ());
     max-width: 100%;
 
     &:not(.is-marginless):not(:last-child) {
-        margin-bottom: T.gap("container");
+        margin-bottom: T.gap("macro");
     }
 
     &:not(.is-fullwidth) {
@@ -26,8 +24,8 @@ $-gaps: T.var("container", "gaps", ());
     }
 
     &:not(.is-paddingless) {
-        padding: T.gap("element");
-        @each $name, $gap in T.gaps($-gaps) {
+        padding: T.gap("macro");
+        @each $name, $gap in T.gaps(T.var("container", "gaps", ())) {
             &.is-#{$name}-padded {
                 padding: $gap;
             }

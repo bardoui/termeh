@@ -1,12 +1,6 @@
 @use "sass:math";
 @use "../termeh" as T;
 
-$-units: T.var("grid", "units", ());
-$-gaps: T.var("grid", "gaps", ());
-$-aligns: stretch, flex-start, flex-end, center, baseline;
-$-justifies: flex-start, flex-end, center, space-between, space-around,
-    space-evenly;
-
 .grid {
     display: flex;
     flex-wrap: wrap;
@@ -29,7 +23,7 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
             flex: 0 0 auto;
         }
 
-        @each $name, $unit in T.units($-units) {
+        @each $name, $unit in T.units(T.var("grid", "units", ())) {
             &.is-#{$name} {
                 flex: 0 0 auto;
                 width: $unit;
@@ -38,13 +32,12 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
     }
 
     &:not(.is-gapless) {
-        $--g: math.div(T.gap("container"), 2);
-        margin: T.negate($--g);
+        margin: T.negate(math.div(T.gap("macro"), 2));
         > .column {
-            padding: $--g;
+            padding: math.div(T.gap("macro"), 2);
         }
 
-        @each $name, $gap in T.gaps($-gaps) {
+        @each $name, $gap in T.gaps(T.var("grid", "gaps", ())) {
             &.is-#{$name}-gaped {
                 margin: T.negate(math.div($gap, 2));
                 > .column {
@@ -54,12 +47,15 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
         }
     }
 
+    $-aligns: stretch, flex-start, flex-end, center, baseline;
     @each $align in $-aligns {
         &.is-#{$align}-aligned {
             align-items: $align;
         }
     }
 
+    $-justifies: flex-start, flex-end, center, space-between, space-around,
+        space-evenly;
     @each $justify in $-justifies {
         &.is-#{$justify}-justified {
             justify-content: $justify;
@@ -73,7 +69,7 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
                     flex: 0 0 auto;
                 }
 
-                @each $name, $unit in T.units($-units) {
+                @each $name, $unit in T.units(T.var("grid", "units", ())) {
                     &.is-#{$device}-#{$name} {
                         flex: 0 0 auto;
                         width: $unit;

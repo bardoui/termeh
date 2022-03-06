@@ -14,11 +14,15 @@ table {
     font: inherit;
 
     tr {
-        background: T.color("background");
-        transition: all T.transition-params();
+        background: T.color("table");
+        @include T.transition(all);
 
         &.is-even {
-            background: T.color("alternative");
+            background: T.variant(
+                "table",
+                "even",
+                T.variant("base", "section")
+            );
         }
 
         &:not(.is-expanded) .extra {
@@ -30,10 +34,10 @@ table {
     td {
         width: 1px;
         vertical-align: middle;
-        padding: T.el-pad(T.gap("element"));
         font-weight: normal;
-        color: T.color("foreground");
-        transition: all T.transition-params();
+        padding: T.control-padding();
+        color: T.variant("table", "color");
+        @include T.transition(all);
 
         &.is-center-aligned {
             text-align: center;
@@ -57,10 +61,10 @@ table {
         }
 
         &.is-sorted {
-            background-color: T.var(
+            background-color: T.variant(
                 "table",
-                "sort-background",
-                rgba(T.color("shade"), 0.1)
+                "sort",
+                rgba(T.variant("shade", "mute"), 0.1)
             );
         }
     }
@@ -68,10 +72,11 @@ table {
     thead {
         padding: 0;
         margin: 0;
-        border-bottom: 1px solid T.color("shade");
+        border-bottom: 1px solid T.variant("table", "divider", T.color("shade"));
 
         tr {
-            border-top: 1px solid T.color("separator");
+            border-top: 1px solid
+                T.variant("table", "separator", T.variant("base", "separator"));
 
             th {
                 font-weight: T.var("strong", "weight", bold);
@@ -81,19 +86,15 @@ table {
                 }
 
                 &.is-sorted {
-                    color: T.readable(
-                        T.color("background"),
-                        T.color("primary"),
-                        T.var("strong", "weight", bold) == bold
-                    );
+                    color: T.variant("shade", "readable");
                 }
 
                 &.is-asc {
-                    border-top: 1px solid T.color("primary");
+                    border-top: 1px solid T.color("shade");
                 }
 
                 &.is-desc {
-                    border-bottom: 1px solid T.color("primary");
+                    border-bottom: 1px solid T.color("shade");
                 }
             }
         }
@@ -102,11 +103,17 @@ table {
     tbody {
         tr {
             &:not(:last-child) {
-                border-bottom: 1px solid T.color("separator");
+                border-bottom: 1px solid
+                    T.variant(
+                        "table",
+                        "separator",
+                        T.variant("base", "separator")
+                    );
             }
 
             &:last-child {
-                border-bottom: 1px solid T.color("shade");
+                border-bottom: 1px solid
+                    T.variant("table", "divider", T.color("shade"));
             }
         }
     }
@@ -116,14 +123,14 @@ table {
     }
 
     &.is-stripped > tbody > tr:nth-child(even) {
-        background: T.color("alternative");
+        background: T.variant("table", "even", T.variant("base", "section"));
     }
 
     &.is-hoverable > tbody > tr:hover {
-        background-color: T.var(
+        background: T.variant(
             "table",
-            "hover-background",
-            rgba(T.color("shade"), 0.25)
+            "hover",
+            rgba(T.variant("shade", "mute"), 0.25)
         );
     }
 
@@ -132,11 +139,7 @@ table {
         &.is-#{$name} {
             thead tr th {
                 &.is-sorted {
-                    color: T.readable(
-                        T.color("background"),
-                        $color,
-                        T.var("strong", "weight", bold) == bold
-                    );
+                    color: T.variant($name, "readable");
                 }
 
                 &.is-asc {

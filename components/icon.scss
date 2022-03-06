@@ -1,8 +1,5 @@
 @use "../termeh" as T;
 
-$-sizes: T.var("icon", "sizes", ());
-$-colors: T.var("icon", "colors", ());
-
 .icon {
     display: inline-flex;
     box-sizing: border-box;
@@ -10,19 +7,19 @@ $-colors: T.var("icon", "colors", ());
     justify-content: center;
     width: 1em;
     height: 1em;
-    transition: all T.transition-params();
+    @include T.transition(all);
 
     img {
         display: block;
         max-height: 100%;
         max-width: 100%;
-        transition: all T.transition-params();
+        @include T.transition(all);
     }
 
     svg {
         width: 100%;
         fill: currentColor;
-        transition: all T.transition-params();
+        @include T.transition(all);
 
         > * {
             fill: currentColor;
@@ -43,7 +40,7 @@ $-colors: T.var("icon", "colors", ());
 
     &.is-action {
         cursor: pointer;
-        color: T.muted(T.color("background"), T.color("shade"));
+        color: T.variant("shade", "mute");
 
         > img {
             filter: T.var("icon", "action-filter", grayscale(0.5));
@@ -51,7 +48,7 @@ $-colors: T.var("icon", "colors", ());
 
         &:hover {
             text-decoration: none;
-            color: T.color("foreground");
+            color: T.variant("base", "color");
 
             > img {
                 filter: T.var("icon", "action-hover-filter", grayscale(0));
@@ -68,34 +65,33 @@ $-colors: T.var("icon", "colors", ());
         }
     }
 
-    @each $name, $size in T.sizes($-sizes) {
+    @each $name, $size in T.sizes(T.var("icon", "sizes", ())) {
         &.is-#{$name} {
             height: $size;
             width: $size;
         }
     }
 
-    @each $name, $color in T.colors($-colors) {
+    @each $name, $color in T.colors(T.var("icon", "colors", ())) {
         &.is-#{$name} {
-            color: T.readable(T.color("background"), $color);
+            &:not(.is-action) {
+                color: T.variant($name, "readable");
+            }
 
-            &.is-action {
-                color: T.muted(T.color("background"), T.color("shade"));
-                &:hover {
-                    color: T.readable(T.color("background"), $color);
-                }
+            &.is-action :hover {
+                color: T.variant($name, "readable");
             }
 
             &.is-loading {
-                @include T.loader-color($color);
+                @include T.loader-color(T.variant($name, "readable"));
             }
         }
     }
 
     &:disabled,
     &.is-disabled {
+        color: T.variant("input", "disabled-color") !important;
         @include T.locked();
-        color: T.disabled(T.color("background"), true) !important;
 
         > img {
             filter: grayscale(1) !important;

@@ -1,0 +1,72 @@
+@use "../termeh" as T;
+
+.tag {
+    display: inline-flex;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    padding: 0 T.gap("micro");
+    color: T.variant("shade", "color");
+    background-color: T.color("shade");
+    border-radius: T.var("radius", "normal");
+    line-height: T.var("line-height", "inline", 1.6em);
+    font-size: T.var("tag", "size");
+    @include T.unselectable();
+
+    > * {
+        margin: auto;
+    }
+
+    &.is-loading {
+        color: T.color("shade");
+        @include T.loader(
+            1em,
+            T.variant("shade", "color"),
+            T.var("decorator", "size")
+        );
+    }
+
+    &.is-light {
+        background-color: T.variant("shade", "light");
+        color: T.variant("shade", "readable");
+
+        &.is-loading {
+            color: T.variant("shade", "light");
+            @include T.loader-color(T.variant("shade", "readable"));
+        }
+    }
+
+    &.is-rounded {
+        border-radius: T.var("radius", "rounded");
+    }
+
+    @each $name, $size in T.sizes(T.var("tag", "sizes", ())) {
+        &.is-#{$name} {
+            font-size: $size;
+        }
+    }
+
+    @each $name, $color in T.colors(T.var("tag", "colors", ())) {
+        &.is-#{$name} {
+            background-color: $color;
+            color: T.variant($name, "color");
+
+            &.is-loading {
+                color: $color;
+                @include T.loader-color(T.variant($name, "color"));
+            }
+
+            &.is-light {
+                background-color: T.variant($name, "light");
+                color: T.variant($name, "readable");
+
+                &.is-loading {
+                    color: T.variant($name, "light");
+                    @include T.loader-color(T.variant($name, "readable"));
+                }
+            }
+        }
+    }
+}

@@ -8,30 +8,36 @@ h5,
 h6 {
     font-weight: bold;
     &:not(.is-marginless):not(:last-child) {
-        margin-bottom: T.gap("element");
+        margin-bottom: T.gap("macro");
     }
 }
 
 h1 {
-    font-size: T.size("huge");
+    font-size: T.size("massive");
+    line-height: T.var("line-height", "large", 1.2em);
 }
 
 h2 {
-    font-size: T.size("big");
+    font-size: T.size("huge");
+    line-height: T.var("line-height", "large", 1.2em);
 }
 
 h3 {
-    font-size: T.size("large");
+    font-size: T.size("big");
+    line-height: T.var("line-height", "medium", 1.4em);
 }
 
 h4 {
-    font-size: T.size("medium");
+    font-size: T.size("large");
+    line-height: T.var("line-height", "medium", 1.4em);
 }
 
 h5 {
-    font-size: T.size("normal");
+    font-size: T.size("medium");
+    line-height: T.var("line-height", "normal", 1.6em);
 }
 
 h6 {
-    font-size: T.size("small");
+    font-size: T.size("normal");
+    line-height: T.var("line-height", "normal", 1.6em);
 }

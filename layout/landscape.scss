@@ -1,11 +1,6 @@
 @use "sass:math";
 @use "../termeh" as T;
 
-$-gaps: T.var("landscape", "gaps", ());
-$-aligns: stretch, flex-start, flex-end, center, baseline;
-$-justifies: flex-start, flex-end, center, space-between, space-around,
-    space-evenly;
-
 .landscape {
     display: flex;
     flex-direction: row;
@@ -14,7 +9,7 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
     overflow: hidden;
     overflow-x: auto;
     scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
+    @include T.overflow-touch();
     @include T.scrollable(T.color("primary"));
 
     > * {
@@ -46,13 +41,13 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
     }
 
     &:not(.is-gapless) {
-        margin: T.negate(math.div(T.gap("element"), 2));
+        margin: T.negate(T.gap("micro"));
 
         > * {
-            margin: math.div(T.gap("element"), 2);
+            margin: T.gap("micro");
         }
 
-        @each $name, $gap in T.gaps($-gaps) {
+        @each $name, $gap in T.gaps(T.var("landscape", "gaps", ())) {
             &.is-#{$name}-gaped {
                 margin: T.negate(math.div($gap, 2));
 
@@ -63,12 +58,15 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
         }
     }
 
+    $-aligns: stretch, flex-start, flex-end, center, baseline;
     @each $align in $-aligns {
         &.is-#{$align}-aligned {
             align-items: $align;
         }
     }
 
+    $-justifies: flex-start, flex-end, center, space-between, space-around,
+        space-evenly;
     @each $justify in $-justifies {
         &.is-#{$justify}-justified {
             justify-content: $justify;

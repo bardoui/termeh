@@ -1,0 +1,151 @@
+@use "sass:map";
+@use "sass:list";
+@use "var";
+@use "helper";
+
+$--breakpoints: (
+    "tablet": 769px,
+    "desktop": 1024px,
+    "widescreen": 1216px,
+    "fullhd": 1408px,
+) !default;
+
+$--queries: (
+    "until-fullhd": "screen and (max-width: 1407px)",
+    "until-widescreen": "screen and (max-width: 1215px)",
+    "until-desktop": "screen and (max-width: 1023px)",
+    "tablet": "screen and (min-width: 769px)",
+    "desktop": "screen and (min-width: 1024px)",
+    "widescreen": "screen and (min-width: 1216px)",
+    "fullhd": "screen and (min-width: 1408px)",
+    "mobile": "screen and (max-width: 768px)",
+    "tablet-only": "screen and (min-width: 769px) and (max-width: 1023px)",
+    "desktop-only": "screen and (min-width: 1024px) and (max-width: 1215px)",
+    "widescreen-only": "screen and (min-width: 1216px) and (max-width: 1407px)",
+) !default;
+
+@function breakpoint($device) {
+    $device: helper.string-of($device, "breakpoint", "device");
+    @if map.has-key($--breakpoints, $device) {
+        @return map.get($--breakpoints, $device);
+    }
+    @error "#{$device} breakpoint not found!";
+}
+
+@function media-query($name) {
+    $name: helper.string-of($name, "media-query", "name");
+    @if map.has-key($--queries, $name) {
+        @return map.get($--queries, $name);
+    }
+    @error "#{$name} media query not found!";
+}
+
+@function breakpoints() {
+    @return $--breakpoints;
+}
+
+@function media-queries($includes: ()) {
+    $includes: helper.list-of($includes, "media-queries", "includes");
+    $ignores: var.var("media-query", "ignore", ());
+    $res: ();
+    @each $k, $v in $--queries {
+        @if list.index($includes, $k) != null or list.index($ignores, $k) == null {
+            $res: map.merge($res, helper.map-from($k, $v));
+        }
+    }
+    @return $res;
+}
+
+@mixin from($device) {
+    $device: func.string-of($device, "from", "device");
+    $unit: breakpoint($device);
+    @media screen and (min-width: $unit) {
+        @content;
+    }
+}
+
+@mixin until($device) {
+    $device: func.string-of($device, "until", "device");
+    $unit: breakpoint($device);
+    @media screen and (max-width: ($unit - 1px)) {
+        @content;
+    }
+}
+
+@mixin non-touch() {
+    @media (hover: hover) {
+        @content;
+    }
+}
+
+@mixin touch() {
+    @media (hover: none) {
+        @content;
+    }
+}
+
+@mixin mobile() {
+    @media #{media-query("mobile")} {
+        @content;
+    }
+}
+
+@mixin tablet() {
+    @media #{media-query("tablet")} {
+        @content;
+    }
+}
+
+@mixin tablet-only() {
+    @media #{media-query("tablet-only")} {
+        @content;
+    }
+}
+
+@mixin until-desktop() {
+    @media #{media-query("until-desktop")} {
+        @content;
+    }
+}
+
+@mixin desktop() {
+    @media #{media-query("desktop")} {
+        @content;
+    }
+}
+
+@mixin desktop-only() {
+    @media #{media-query("desktop-only")} {
+        @content;
+    }
+}
+
+@mixin until-widescreen() {
+    @media #{media-query("until-widescreen")} {
+        @content;
+    }
+}
+
+@mixin widescreen() {
+    @media #{media-query("widescreen")} {
+        @content;
+    }
+}
+
+@mixin widescreen-only() {
+    @media #{media-query("widescreen-only")} {
+        @content;
+    }
+}
+
+@mixin until-fullhd() {
+    @media #{media-query("until-fullhd")} {
+        @content;
+    }
+}
+
+@mixin fullhd() {
+    @media #{media-query("fullhd")} {
+        @content;
+    }
+}

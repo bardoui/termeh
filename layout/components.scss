@@ -1,10 +1,5 @@
 @use "../termeh" as T;
 
-$-separator: T.var("base", "separator", 1px);
-$-aligns: stretch, flex-start, flex-end, center, baseline;
-$-justifies: flex-start, flex-end, center, space-between, space-around,
-    space-evenly;
-
 .components {
     display: flex;
     flex-direction: row;
@@ -22,19 +17,22 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
         flex: 1 1 0;
     }
 
-    > .divider {
+    > .separator {
         display: block;
         align-self: stretch;
-        width: $-separator;
-        background-color: T.color("separator");
+        width: 1px;
+        background-color: T.variant("base", "separator");
     }
 
+    $-aligns: stretch, flex-start, flex-end, center, baseline;
     @each $align in $-aligns {
         &.is-#{$align}-aligned {
             align-items: $align;
         }
     }
 
+    $-justifies: flex-start, flex-end, center, space-between, space-around,
+        space-evenly;
     @each $justify in $-justifies {
         &.is-#{$justify}-justified {
             justify-content: $justify;

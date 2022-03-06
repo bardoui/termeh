@@ -1,17 +1,13 @@
+@use "sass:math";
 @use "../termeh" as T;
-
-$-sizes: T.var("header", "sizes", ());
-$-gaps: T.var("header", "gaps", ());
-$-colors: T.var("header", "colors", ());
-$-decorator: T.var("decorator", "size", 2px);
 
 .header {
     display: block;
     box-sizing: border-box;
-    padding: T.el-pad(T.gap("element"));
+    padding: T.control-padding();
 
     &:not(.is-marginless) {
-        margin-bottom: T.gap("element");
+        margin-bottom: T.gap("macro");
     }
 
     h1,
@@ -20,38 +16,24 @@ $-decorator: T.var("decorator", "size", 2px);
     h4,
     h5,
     h6 {
-        font-size: T.size("normal");
-        margin: 0;
+        margin-bottom: 0 !important;
     }
 
     &.is-left-decorated {
-        border-left: $-decorator solid T.color("shade");
+        border-left: T.var("decorator", "size") solid T.color("shade");
     }
 
     &.is-right-decorated {
-        border-right: $-decorator solid T.color("shade");
+        border-right: T.var("decorator", "size") solid T.color("shade");
     }
 
-    @each $name, $size in T.sizes($-sizes) {
-        &.is-#{$name} {
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                font-size: $size;
-            }
-        }
-    }
-
-    @each $name, $gap in T.gaps($-gaps) {
+    @each $name, $gap in T.gaps(T.var("header", "gaps", ())) {
         &.is-#{$name}-padded {
-            padding: T.el-pad($gap);
+            padding: math.div($gap, 2) $gap;
         }
     }
 
-    @each $name, $color in T.colors($-colors) {
+    @each $name, $color in T.colors(T.var("header", "colors", ())) {
         &.is-#{$name} {
             h1,
             h2,
@@ -59,7 +41,7 @@ $-decorator: T.var("decorator", "size", 2px);
             h4,
             h5,
             h6 {
-                color: T.readable(T.color("background"), $color);
+                color: T.variant($name, "readable");
             }
 
             &.is-left-decorated {

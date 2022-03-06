@@ -1,0 +1,166 @@
+@charset "UTF-8";
+@use "core/color";
+@use "core/var";
+@use "core/font";
+@use "core/gap";
+@use "core/unit";
+
+// Color +overlay
+@include color.define-color("base", white);
+@include color.define-variant("base", "color", #081e30);
+// @include color.define-variant("base", "code", #081e30);
+// @include color.define-variant("base", "strong", #081e30);
+@include color.define-variant("base", "section", #f8f9fa);
+@include color.define-variant("base", "separator", #e1e6ea);
+@include color.define-variant("base", "box", #ffffff);
+
+@include color.define-color("inverse", #081e30);
+@include color.define-variant("inverse", "color", white);
+@include color.define-variant("inverse", "separator", #414447);
+@include color.define-variant("inverse", "section", #373f46);
+@include color.define-variant("inverse", "box", #081e30);
+
+@include color.define-color("table", white);
+// @include color.define-variant("table", "color", #081e30);
+// @include color.define-variant("table", "divider", #8d99ae);
+// @include color.define-variant("table", "separator", #e1e6ea);
+// @include color.define-variant("table", "even", #f0f2f5);
+// @include color.define-variant("table", "sort", #e1e6ea);
+// @include color.define-variant("table", "hover", #879aab);
+
+@include color.define-color("input", white);
+// @include color.define-variant("input", "border", #f0f2f5);
+// @include color.define-variant("input", "placeholder", #f0f2f5);
+@include color.define-variant("input", "disabled", #f0f2f5);
+@include color.define-variant("input", "disabled-border", #e1e6ea);
+@include color.define-variant("input", "disabled-color", #879aab);
+
+@include color.define-palette("shade", #8d99ae);
+@include color.define-palette("primary", #2196f3);
+@include color.define-palette("error", #c00021);
+@include color.define-palette("success", #0ead69);
+
+// global vars
+@include var.define("base", "direction", ltr);
+@include var.define("base", "min-width", 300px);
+
+@include var.define("line-height", "normal", 1.6em);
+@include var.define("line-height", "medium", 1.4em);
+@include var.define("line-height", "large", 1.2em);
+@include var.define("line-height", "inline", 1.8em);
+
+@include var.define("radius", "normal", 3px);
+@include var.define("radius", "rounded", 290486px);
+@include var.define("radius", "circle", 50%);
+
+@include var.define("media-query", "ignore", ());
+
+@include var.define("font", "size", 12px);
+@include var.define("font", "family", "'Segoe UI', Tahoma, Geneva, Verdana");
+@include var.define("font", "code-family", monospace);
+@include var.define("font", "code-size", 1rem);
+
+@include var.define("scroll", "size", 8px);
+// @include var.define("scroll", "track", getter.color("separator"));
+// @include var.define("scroll", "thumb", getter.color("mute"));
+
+@include var.define("overlay", "background", rgba(white, 0.75));
+// @include var.define("overlay", "color", black);
+// @include var.define("overlay", "filter", none);
+
+@include var.define("strong", "weight", bold);
+
+@include var.define("decorator", "size", 2px);
+@include var.define("spinner", "size", 2rem);
+
+@include var.define("transition", "duration", 250ms);
+@include var.define("transition", "ease", ease);
+
+// @include var.define("image", "sizes", ());
+
+// @include var.define("table", "colors", ());
+
+// @include var.define("grid", "units", ());
+// @include var.define("grid", "gaps", ());
+
+// @include var.define("container", "gaps", ());
+// @include var.define("container", "desktop", 960px);
+// @include var.define("container", "widescreen", 1200px);
+
+// @include var.define("gaper", "gaps", ());
+
+// @include var.define("content", "gaps", ());
+// @include var.define("content", "colors", ());
+
+// @include var.define("landscape", "gaps", ());
+
+// @include var.define("padder", "gaps", ());
+
+// @include var.define("input", "colors", ());
+// @include var.define("input", "gaps", ());
+
+// @include var.define("button", "sizes", ());
+// @include var.define("button", "colors", ());
+
+@include var.define("tag", "size", 0.9em);
+// @include var.define("tag", "sizes", ());
+// @include var.define("tag", "colors", ());
+
+// @include var.define("card", "gaps", ());
+// @include var.define("card", "colors", ());
+// @include var.define("card", "sizes", ());
+// @include var.define("card", "border", null);
+// @include var.define("card", "shadow", null);
+// @include var.define("card", "border-{$color}", null);
+// @include var.define("card", "shadow-{$color}", null);
+
+// @include var.define("header", "gaps", ());
+// @include var.define("header", "colors", ());
+
+// @include var.define("icon", "sizes", ());
+// @include var.define("icon", "colors", ());
+// @include var.define("icon", "action-filter", null);
+// @include var.define("icon", "action-hover-filter", null);
+
+// @include var.define("link", "colors", ());
+
+// @include var.define("meta", "colors", ());
+
+// Font sizes
+@include font.define-size("small", 0.8em, true);
+@include font.define-size("normal", 1em, true);
+@include font.define-size("medium", 1.25em, true);
+@include font.define-size("large", 1.5em, true);
+@include font.define-size("big", 2em, true);
+@include font.define-size("huge", 2.5em, true);
+@include font.define-size("massive", 3em, true);
+
+// Gaps
+@include gap.define-gap("macro", 1.6rem, false);
+@include gap.define-gap("micro", 0.5rem, false);
+@include gap.define-gap("mini", 0.5em, true);
+@include gap.define-gap("small", 0.85em, true);
+@include gap.define-gap("normal", 1em, true);
+@include gap.define-gap("medium", 1.5em, true);
+@include gap.define-gap("large", 2em, true);
+@include gap.define-gap("huge", 2.5em, true);
+@include gap.define-gap("massive", 3em, true);
+
+// Units
+@include unit.define-unit("full", 100%, true);
+@include unit.define-unit("half", 50%, true);
+@include unit.define-unit("1-of-3", 33.3333%, true);
+@include unit.define-unit("2-of-3", 66.6666%, true);
+@include unit.define-unit("1-of-4", 25%, true);
+@include unit.define-unit("2-of-4", 50%, true);
+@include unit.define-unit("3-of-4", 75%, true);
+@include unit.define-unit("1-of-5", 20%, true);
+@include unit.define-unit("2-of-5", 40%, true);
+@include unit.define-unit("3-of-5", 60%, true);
+@include unit.define-unit("4-of-5", 80%, true);
+@include unit.define-unit("1-of-7", 14.2857%, true);
+@include unit.define-unit("2-of-7", 28.5714%, true);
+@include unit.define-unit("3-of-7", 42.8571%, true);
+@include unit.define-unit("4-of-7", 57.1428%, true);
+@include unit.define-unit("5-of-7", 71.4285%, true);
+@include unit.define-unit("6-of-7", 85.7142%, true);

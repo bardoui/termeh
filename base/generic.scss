@@ -6,7 +6,7 @@
 
 ::selection {
     background-color: T.color("primary");
-    color: T.foreground(T.color("primary"));
+    color: T.variant("primary", "color");
 }
 
 html {
@@ -16,9 +16,9 @@ html {
     -webkit-font-smoothing: antialiased;
     direction: T.var("base", "direction", ltr);
     min-width: T.var("base", "min-width", 300px);
-    background-color: T.color("background");
+    background-color: T.color("base");
     font-family: T.var("font", "family");
-    font-size: 1rem;
+    font-size: T.var("font", "size", 12px);
     height: 100%;
     overflow: hidden;
 }
@@ -31,6 +31,14 @@ header,
 hgroup,
 section {
     display: block;
+}
+
+blockquote {
+    display: block;
+    padding: T.gap("macro");
+    margin: T.gap("macro");
+    border-radius: T.var("radius", "normal");
+    background-color: T.variant("base", "section");
 }
 
 body,
@@ -58,8 +66,8 @@ pre {
 }
 
 body {
-    color: T.color("foreground");
-    line-height: T.var("base", "line-height", 1.6em);
+    color: T.variant("base", "color");
+    line-height: T.var("line-height", "normal", 1.6em);
     height: 100%;
     overflow: hidden;
     overflow-y: auto;
@@ -67,11 +75,11 @@ body {
 }
 
 a {
-    color: T.readable(T.color("background"), T.color("primary"));
+    color: T.variant("primary", "readable");
     cursor: pointer;
     text-decoration: none;
     strong {
-        color: T.readable(T.color("background"), T.color("primary"), true);
+        color: T.variant("primary", "readable");
     }
     &:hover {
         text-decoration: underline;
@@ -80,21 +88,21 @@ a {
 
 code {
     direction: ltr;
-    padding: T.gap("element");
+    padding: T.gap("macro");
     font-size: T.var("font", "code-size");
     font-family: T.var("font", "code-family");
-    color: T.readable(T.color("alternative"), T.color("foreground"));
-    background-color: T.color("alternative");
+    color: T.variant("base", "code");
+    background-color: T.variant("base", "section");
 }
 
 hr {
     display: block;
     border: none;
-    height: T.var("base", "separator", 1px);
-    background-color: T.color("separator");
+    height: 1px;
+    background-color: T.variant("base", "separator");
 
     &:not(.is-marginless) {
-        margin: T.gap("element") 0;
+        margin: T.gap("macro") 0;
     }
 }
 
@@ -114,7 +122,7 @@ span {
 }
 
 strong {
-    color: T.var("strong", "color");
+    color: T.variant("base", "strong");
     font-weight: T.var("strong", "weight");
 }
 
@@ -123,17 +131,17 @@ fieldset {
 }
 
 pre {
-    @include T.overflow-touch();
     direction: ltr;
-    padding: T.gap("element");
+    padding: T.gap("macro");
     font-size: T.var("font", "code-size");
     font-family: T.var("font", "code-family");
-    color: T.readable(T.color("alternative"), T.color("foreground"));
-    background-color: T.color("alternative");
+    color: T.variant("base", "code");
+    background-color: T.variant("base", "section");
     white-space: pre;
     word-wrap: normal;
     overflow-x: auto;
     @include T.scrollable(T.color("primary"));
+    @include T.overflow-touch();
 
     code {
         background-color: none;
@@ -151,11 +159,11 @@ table {
             text-align: inherit;
         }
         th {
-            color: T.var("strong", "color");
+            color: T.variant("base", "strong");
         }
     }
 }
 
 p:not(:last-child):not(.is-marginless) {
-    margin-bottom: T.gap("element");
+    margin-bottom: T.gap("macro");
 }

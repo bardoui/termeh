@@ -1,16 +1,10 @@
 @use "sass:math";
 @use "../termeh" as T;
 
-$-gaps: T.var("gaper", "gaps", ());
-$-separator: T.var("base", "separator", 1px);
-$-aligns: stretch, flex-start, flex-end, center, baseline;
-$-justifies: flex-start, flex-end, center, space-between, space-around,
-    space-evenly;
-
 .gaper {
+    $-gaps: T.var("gaper", "gaps", ());
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
     box-sizing: border-box;
@@ -23,11 +17,15 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
         flex: 1 1 0;
     }
 
-    > .divider {
+    > .separator,
+    > .gutter {
         display: block;
         align-self: stretch;
-        width: $-separator;
-        background-color: T.color("separator");
+        width: 1px;
+    }
+
+    > .separator {
+        background-color: T.variant("base", "separator");
     }
 
     &.is-stacked {
@@ -39,33 +37,19 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
 
     &.is-stacked,
     &.is-stacked-reverse {
-        > .divider {
-            height: $-separator;
+        > .separator,
+        > .gutter {
+            height: 1px;
             width: unset;
         }
     }
 
-    @each $align in $-aligns {
-        &.is-#{$align}-aligned {
-            align-items: $align;
-        }
-    }
-
-    @each $justify in $-justifies {
-        &.is-#{$justify}-justified {
-            justify-content: $justify;
-        }
-    }
-
     &.is-auto {
-        margin: T.negate(math.div(T.gap("element"), 2));
+        flex-wrap: wrap;
+        margin: T.negate(T.gap("micro"));
 
         > * {
-            margin: math.div(T.gap("element"), 2);
-        }
-
-        > .gutter {
-            display: none;
+            margin: T.gap("micro");
         }
 
         @each $name, $gap in T.gaps($-gaps) {
@@ -80,50 +64,50 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
     }
 
     &:not(.is-auto) {
-        > .divider {
-            margin: 0 T.gap("element");
-        }
-
+        flex-wrap: nowrap;
+        > .separator,
         > .gutter {
-            display: block;
-            box-sizing: border-box;
-            flex: 0 0 auto;
-            width: T.gap("element");
+            margin: 0 T.gap("micro");
         }
 
         &.is-stacked,
         &.is-stacked-reverse {
-            > .divider {
-                margin: T.gap("element") 0;
-            }
-
+            > .separator,
             > .gutter {
-                height: T.gap("element");
-                width: unset;
+                margin: T.gap("micro") 0;
             }
         }
 
         @each $name, $gap in T.gaps($-gaps) {
             &.is-#{$name}-gaped {
-                > .divider {
-                    margin: 0 $gap;
-                }
-
+                > .separator,
                 > .gutter {
-                    width: $gap;
+                    margin: 0 math.div($gap, 2);
                 }
 
                 &.is-stacked,
                 &.is-stacked-reverse {
-                    > .divider {
-                        margin: $gap 0;
-                    }
-
+                    > .separator,
                     > .gutter {
-                        height: $gap;
+                        margin: math.div($gap, 2) 0;
                     }
                 }
             }
+        }
+    }
+
+    $-aligns: stretch, flex-start, flex-end, center, baseline;
+    @each $align in $-aligns {
+        &.is-#{$align}-aligned {
+            align-items: $align;
+        }
+    }
+
+    $-justifies: flex-start, flex-end, center, space-between, space-around,
+        space-evenly;
+    @each $justify in $-justifies {
+        &.is-#{$justify}-justified {
+            justify-content: $justify;
         }
     }
 
@@ -138,9 +122,32 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
 
             &.is-#{$device}-stacked,
             &.is-#{$device}-stacked-reverse {
-                > .divider {
-                    height: $-separator;
+                > .separator,
+                > .gutter {
+                    height: 1px;
                     width: unset;
+                }
+            }
+
+            &:not(.is-auto) {
+                &.is-#{$device}-stacked,
+                &.is-#{$device}-stacked-reverse {
+                    > .separator,
+                    > .gutter {
+                        margin: T.gap("micro") 0;
+                    }
+                }
+
+                @each $name, $gap in T.gaps($-gaps) {
+                    &.is-#{$name}-gaped {
+                        &.is-#{$device}-stacked,
+                        &.is-#{$device}-stacked-reverse {
+                            > .separator,
+                            > .gutter {
+                                margin: math.div($gap, 2) 0;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -153,35 +160,6 @@ $-justifies: flex-start, flex-end, center, space-between, space-around,
             @each $justify in $-justifies {
                 &.is-#{$device}-#{$justify}-justified {
                     justify-content: $justify;
-                }
-            }
-
-            &:not(.is-auto) {
-                &.is-#{$device}-stacked,
-                &.is-#{$device}-stacked-reverse {
-                    > .divider {
-                        margin: T.gap("element") 0;
-                    }
-
-                    > .gutter {
-                        height: T.gap("element");
-                        width: unset;
-                    }
-                }
-
-                @each $name, $gap in T.gaps($-gaps) {
-                    &.is-#{$name}-gaped {
-                        &.is-#{$device}-stacked,
-                        &.is-#{$device}-stacked-reverse {
-                            > .divider {
-                                margin: $gap 0;
-                            }
-
-                            > .gutter {
-                                height: $gap;
-                            }
-                        }
-                    }
                 }
             }
         }

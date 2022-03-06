@@ -1,0 +1,31 @@
+@use "sass:map";
+@use "sass:list";
+@use "helper";
+
+$--gaps: () !default;
+
+@mixin define-gap($name, $gap, $iterable: true) {
+    $name: helper.string-of($name, "define-gap", "name");
+    $gap: helper.number-of($gap, "define-gap", "gap");
+    $iterable: helper.bool-of($iterable, "define-gap", "iterable");
+    $--gaps: map.merge($--gaps, helper.map-from($name, $gap $iterable)) !global;
+}
+
+@function gap($name) {
+    $name: helper.string-of($name, "gap", "name");
+    @if map.has-key($--gaps, $name) {
+        @return list.nth(map.get($--gaps, $name), 1);
+    }
+    @error "#{$name} gap not found!";
+}
+
+@function gaps($includes: ()) {
+    $includes: helper.list-of($includes, "gaps", "includes");
+    $res: ();
+    @each $k, $v in $--gaps {
+        @if list.index($includes, $k) != null or list.nth($v, 2) == true {
+            $res: map.merge($res, helper.map-from($k, list.nth($v, 1)));
+        }
+    }
+    @return $res;
+}

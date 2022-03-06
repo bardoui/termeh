@@ -1,0 +1,63 @@
+@use "sass:map";
+@use "sass:list";
+@use "helper";
+
+$--sizes: () !default;
+$--weights: (
+    "lighter": 100,
+    "light": 300,
+    "normal": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+    "bolder": 900,
+) !default;
+
+@mixin define-size($name, $size, $iterable: true) {
+    $name: helper.string-of($name, "define-size", "name");
+    $size: helper.number-of($size, "define-size", "size");
+    $iterable: helper.bool-of($iterable, "define-size", "iterable");
+    $--sizes: map.merge($--sizes, helper.map-from($name, $size $iterable)) !global;
+}
+
+@function size($name) {
+    $name: helper.string-of($name, "size", "name");
+    @if map.has-key($--sizes, $name) {
+        @return list.nth(map.get($--sizes, $name), 1);
+    }
+    @error "#{$name} size not found!";
+}
+
+@function sizes($includes: ()) {
+    $includes: helper.list-of($includes, "sizes", "includes");
+    $res: ();
+    @each $k, $v in $--sizes {
+        @if list.index($includes, $k) != null or list.nth($v, 2) == true {
+            $res: map.merge($res, helper.map-from($k, list.nth($v, 1)));
+        }
+    }
+    @return $res;
+}
+
+@function font-weight($name) {
+    $name: helper.string-of($name, "font-weight", "name");
+    @if map.has-key($--weights, $name) {
+        @return map.get($--weights, $name);
+    }
+    @error "#{$name} font-weight not found!";
+}
+
+@function font-weights($only: ()) {
+    $only: helper.list-of($only, "font-weightss", "only");
+    @if list.length($only) == 0 {
+        @return $--weights;
+    } @else {
+        $res: ();
+        @each $k, $v in $--weights {
+            @if list.index($only, $k) != null {
+                $res: map.merge($res, helper.map-from($k, $v));
+            }
+        }
+        @return $res;
+    }
+}

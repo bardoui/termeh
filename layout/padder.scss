@@ -1,0 +1,11 @@
+@use "../termeh" as T;
+
+.padder {
+    display: block;
+    box-sizing: border-box;
+    @each $name, $gap in T.gaps(T.var("padder", "gaps", ())) {
+        &.is-#{$name} {
+            padding: $gap;
+        }
+    }
+}

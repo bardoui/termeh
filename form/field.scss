@@ -1,21 +1,18 @@
 @use "../termeh" as T;
 
-$-colors: T.var("input", "colors", ());
-
 .field {
     display: block;
 
     &:not(:last-child):not(.is-marginless) {
-        margin-bottom: T.gap("container");
+        margin-bottom: T.gap("macro");
     }
 
-    > :not(:last-child):not(.is-marginless) {
-        margin-bottom: T.gap("element");
+    > :not(:last-child):not(.is-marginless):not(.help):not(.error) {
+        margin-bottom: T.gap("micro");
     }
 
     > label,
     .help {
-        line-height: 1em;
         display: block;
     }
 
@@ -25,29 +22,29 @@ $-colors: T.var("input", "colors", ());
 
     .error {
         display: none;
-        line-height: 1em;
-        color: T.readable(T.color("background"), T.color("error"));
+        color: T.variant("error", "readable");
     }
 
     &.is-required {
         > label::after {
             content: "*";
-            color: T.readable(T.color("background"), T.color("primary"));
+            color: T.variant("primary", "readable");
         }
     }
 
-    @each $name, $color in T.colors($-colors) {
+    @each $name, $color in T.colors(T.var("input", "colors", ())) {
         &.is-#{$name} {
             &.is-required {
                 > label::after {
-                    color: T.readable(T.color("background"), $color);
+                    color: T.variant($name, "readable");
                 }
             }
         }
     }
 
     &.is-failed {
-        .input {
+        .input,
+        .input-like {
             border-color: T.color("error");
         }
 

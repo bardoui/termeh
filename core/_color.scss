@@ -1,0 +1,197 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:color" as sassCol;
+@use "helper";
+@use "contrast";
+@use "palette";
+
+// (color: map(palette default active light readable mute color decorator)
+$--colors: () !default;
+
+// internal
+@function -vars($name) {
+    @return if(map.has-key($--colors, $name), map.get($--colors, $name), ());
+}
+
+@function -var($name, $var) {
+    $vars: -vars($name);
+    @return map.get($vars, $var) or null;
+}
+
+@function -color($name, $fallback: null) {
+    @return -var($name, "--color") or $fallback;
+}
+
+@function -active($color) {
+    $base: -color("base", white);
+    $tone: contrast.tone($base);
+    @return palette.palette($color, if($tone == "light", "600", "400"));
+}
+
+@function -active-i($color) {
+    $base: -color("inverse", black);
+    $tone: contrast.tone($base);
+    @return palette.palette($color, if($tone == "light", "600", "400"));
+}
+
+@function -light($color) {
+    $base: -color("base", white);
+    $tone: contrast.tone($base);
+    $color: palette.palette($color, if($tone == "light", "800", "200"));
+    @return sassCol.mix($base, $color, 85%);
+}
+
+@function -light-i($color) {
+    $base: -color("inverse", black);
+    $tone: contrast.tone($base);
+    $color: palette.palette($color, if($tone == "light", "800", "200"));
+    @return sassCol.mix($base, $color, 85%);
+}
+
+@function -readable($color) {
+    $inv: -color("inverse", black);
+    $base: -color("base", white);
+    $tone: contrast.tone($base);
+    $color: palette.palette($color, if($tone == "light", "700", "200"));
+    @return sassCol.mix($inv, $color, 10%);
+}
+
+@function -readable-i($color) {
+    $inv: -color("base", white);
+    $base: -color("inverse", black);
+    $tone: contrast.tone($base);
+    $color: palette.palette($color, if($tone == "light", "700", "200"));
+    @return sassCol.mix($inv, $color, 10%);
+}
+
+@function -mute($color) {
+    $base: -color("base", white);
+    $tone: contrast.tone($base);
+    $color: palette.palette($color, if($tone == "light", "800", "200"));
+    @return sassCol.mix($base, $color, 50%);
+}
+
+@function -mute-i($color) {
+    $base: -color("inverse", black);
+    $tone: contrast.tone($base);
+    $color: palette.palette($color, if($tone == "light", "800", "200"));
+    @return sassCol.mix($base, $color, 50%);
+}
+
+@function -foreground($color) {
+    $tone: contrast.tone($color);
+    @return if($tone == "light", sassCol.mix(black, $color, 95%), #ffffff);
+}
+
+@function -foreground-i($color) {
+    @return -foreground($color);
+}
+
+@function -decorator($color) {
+    $base: -color("base", white);
+    $tone: contrast.tone($base);
+    $color: palette.palette($color, if($tone == "light", "800", "200"));
+    @return sassCol.mix($base, $color, 40%);
+}
+
+@function -decorator-i($color) {
+    $base: -color("inverse", black);
+    $tone: contrast.tone($base);
+    $color: palette.palette($color, if($tone == "light", "800", "200"));
+    @return sassCol.mix($base, $color, 40%);
+}
+
+// global
+@mixin define-color($name, $color) {
+    $name: helper.string-of($name, "define-color", "name");
+    $color: helper.color-of($color, "define-color", "color");
+    $vars: ();
+    $vars: map.set($vars, "--palette", false);
+    $vars: map.set($vars, "--color", $color);
+    $--colors: map.merge($--colors, helper.map-from($name, $vars)) !global;
+}
+
+@mixin define-palette($name, $color) {
+    $name: helper.string-of($name, "define-palette", "name");
+    $color: helper.color-of($color, "define-palette", "color");
+    $vars: ();
+    $vars: map.set($vars, "--palette", true);
+    $vars: map.set($vars, "--color", $color);
+    $vars: map.set($vars, "inverse", $color);
+    $--colors: map.merge($--colors, helper.map-from($name, $vars)) !global;
+}
+
+@mixin define-variant($name, $variant, $color) {
+    $name: helper.string-of($name, "define-variant", "name");
+    $variant: helper.string-of($variant, "define-variant", "variant");
+    $color: helper.color-of($color, "define-variant", "color");
+    @if $variant != "--palette" {
+        $vars: -vars($name);
+        $vars: map.set($vars, $variant, $color);
+        $--colors: map.merge($--colors, helper.map-from($name, $vars)) !global;
+    } @else {
+        @error "use define-palette first!";
+    }
+}
+
+@function color($name, $inverse: false) {
+    $name: helper.string-of($name, "color", "name");
+    $inverse: helper.bool-of($inverse, "color", "inverse");
+    $res: -var($name, if($inverse == true, "inverse", "--color"));
+    @if $res != null {
+        @return $res;
+    }
+    @error "#{$name} color not found!";
+}
+
+@function variant($name, $variant, $fallback: null) {
+    $name: helper.string-of($name, "variant", "name");
+    $variant: helper.string-of($variant, "variant", "variant");
+    $color: -color($name);
+    $var: -var($name, $variant);
+    @if $color != null and $var == null {
+        @if $variant == "active" {
+            @return -active($color);
+        } @else if $variant == "active-inverse" {
+            @return -active-i($color);
+        } @else if $variant == "light" {
+            @return -light($color);
+        } @else if $variant == "light-inverse" {
+            @return -light-i($color);
+        } @else if $variant == "readable" {
+            @return -readable($color);
+        } @else if $variant == "readable-inverse" {
+            @return -readable-i($color);
+        } @else if $variant == "mute" {
+            @return -mute($color);
+        } @else if $variant == "mute-inverse" {
+            @return -mute-i($color);
+        } @else if $variant == "color" {
+            @return -foreground($color);
+        } @else if $variant == "color-inverse" {
+            @return -foreground-i($color);
+        } @else if $variant == "decorator" {
+            @return -decorator($color);
+        } @else if $variant == "decorator-inverse" {
+            @return -decorator-i($color);
+        }
+    }
+    @return $var or $fallback;
+}
+
+@function colors($only: ()) {
+    $only: helper.list-of($only, "colors", "only");
+    $res: ();
+    @each $k, $v in $--colors {
+        @if -var($k, "--palette") == true {
+            @if list.length($only) == 0 {
+                $res: map.merge($res, helper.map-from($k, -color($k)));
+            } @else {
+                @if list.index($only, $k) != null {
+                    $res: map.merge($res, helper.map-from($k, -color($k)));
+                }
+            }
+        }
+    }
+    @return $res;
+}

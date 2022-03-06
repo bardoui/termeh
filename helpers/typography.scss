@@ -43,8 +43,8 @@ $text-aligns: left right center justify;
     }
 }
 
-@each $label, $color in T.colors() {
-    .is-#{$label}-colored {
-        color: T.readable(T.color("background"), $color);
+@each $name, $color in T.colors() {
+    .is-#{$name}-colored {
+        color: T.variant($name, "readable");
     }
 }

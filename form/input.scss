@@ -1,33 +1,34 @@
 @use "sass:math";
 @use "../termeh" as T;
 
-$-gaps: T.var("input", "gaps", ());
-$-colors: T.var("input", "colors", ());
-$-separator: T.var("base", "separator", 1px);
-
 .input {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    padding: T.el-pad(T.gap("element"));
+    padding: T.control-padding();
     background-color: T.color("input");
-    border: 1px solid T.color("separator");
+    border: 1px solid
+        T.variant("input", "border", T.variant("base", "separator"));
     border-radius: T.var("radius", "normal");
 
-    > .divider {
+    > .separator {
         display: block;
         align-self: stretch;
-        width: $-separator;
-        background-color: T.color("separator");
-        margin: 0 math.div(T.gap("element"), 2);
+        width: 1px;
+        background-color: T.variant(
+            "input",
+            "border",
+            T.variant("base", "separator")
+        );
+        margin: 0 T.gap("micro");
     }
 
     > .gutter {
         display: block;
         box-sizing: border-box;
         flex: 0 0 auto;
-        width: T.gap("element");
+        width: T.gap("micro") * 2;
     }
 
     input {
@@ -37,10 +38,15 @@ $-separator: T.var("base", "separator", 1px);
         border-radius: 0;
 
         @include T.placeholder {
-            color: T.muted(T.color("input"), T.color("foreground"));
+            color: T.variant(
+                "input",
+                "placeholder",
+                T.variant("shade", "mute")
+            );
         }
     }
 
+    &.is-focused,
     &:focus-within {
         border-color: T.color("primary");
     }
@@ -49,11 +55,9 @@ $-separator: T.var("base", "separator", 1px);
         border-color: T.color("error");
     }
 
-    @each $name, $gap in T.gaps($-gaps) {
-        &.is-#{$name}-padded {
-            padding: T.el-pad($gap);
-
-            > .divider {
+    @each $name, $gap in T.gaps(T.var("input", "gaps", ())) {
+        &.is-#{$name}-gaped {
+            > .separator {
                 margin: 0 math.div($gap, 2);
             }
 
@@ -63,15 +67,16 @@ $-separator: T.var("base", "separator", 1px);
         }
     }
 
-    @each $name, $color in T.colors($-colors) {
+    @each $name, $color in T.colors(T.var("input", "colors", ())) {
         &.is-#{$name} {
+            &.is-focused,
             &:focus-within {
                 border-color: $color;
             }
 
             &::selection {
                 background-color: $color;
-                color: T.foreground($color);
+                color: T.variant($name, "color");
             }
         }
     }
@@ -79,8 +84,8 @@ $-separator: T.var("base", "separator", 1px);
     fieldset[disabled] &,
     &.is-disabled {
         @include T.locked();
-        background: T.disabled(T.color("input")) !important;
-        border-color: T.disabled(T.color("input"), true) !important;
-        color: T.muted(T.color("input"), T.color("foreground")) !important;
+        background: T.variant("input", "disabled") !important;
+        border-color: T.variant("input", "disabled-border") !important;
+        color: T.variant("input", "disabled-color") !important;
     }
 }

@@ -1,16 +1,13 @@
 @use "sass:math";
 @use "../termeh" as T;
 
-$-colors: T.var("link", "colors", ());
-
 .link {
     @include T.control();
-    line-height: 1em;
     cursor: pointer;
     text-shadow: none;
     display: inline-block;
     text-decoration: none;
-    padding: math.div(T.var("base", "line-height", 1.6em) - 1em, 2) 0;
+    line-height: T.var("line-height", "inline", 1.6em);
 
     &::after {
         content: " ";
@@ -20,21 +17,20 @@ $-colors: T.var("link", "colors", ());
         width: 0%;
         height: 1px;
         transform: translateX(-50%);
-        transition: all T.transition-params();
         background: currentColor;
+        @include T.transition(all);
     }
 
     &:hover {
         text-decoration: none;
-        ::after {
-            text-decoration: none;
+        &::after {
             width: 100%;
         }
     }
 
-    @each $name, $color in T.colors($-colors) {
+    @each $name, $color in T.colors(T.var("link", "colors", ())) {
         &.is-#{$name} {
-            color: T.readable(T.color("background"), $color);
+            color: T.variant($name, "readable");
         }
     }
 }

@@ -1,17 +1,15 @@
 @use "sass:math";
 @use "../termeh" as T;
 
-$-gaps: T.var("input", "gaps", ());
-$-colors: T.var("input", "colors", ());
-
 textarea {
     @include T.control();
     max-width: 100%;
     width: 100%;
     resize: vertical;
-    padding: T.gap("element");
+    padding: T.gap("micro") * 2;
     background-color: T.color("input");
-    border: 1px solid T.color("separator");
+    border: 1px solid
+        T.variant("input", "border", T.variant("base", "separator"));
     border-radius: T.var("radius", "normal");
 
     &:not([rows]) {
@@ -24,7 +22,7 @@ textarea {
     }
 
     @include T.placeholder {
-        color: T.muted(T.color("input"), T.color("foreground"));
+        color: T.variant("input", "placeholder", T.variant("shade", "mute"));
     }
 
     &:focus,
@@ -37,13 +35,7 @@ textarea {
         border-color: T.color("error");
     }
 
-    @each $name, $gap in T.gaps($-gaps) {
-        &.is-#{$name}-padded {
-            padding: $gap;
-        }
-    }
-
-    @each $name, $color in T.colors($-colors) {
+    @each $name, $color in T.colors(T.var("input", "colors", ())) {
         &.is-#{$name} {
             &:focus,
             &.is-focused {
@@ -52,7 +44,7 @@ textarea {
 
             &::selection {
                 background-color: $color;
-                color: T.foreground($color);
+                color: T.variant($name, "color");
             }
         }
     }
@@ -61,8 +53,8 @@ textarea {
     fieldset[disabled] &,
     &.is-disabled {
         @include T.locked();
-        background: T.disabled(T.color("input")) !important;
-        border-color: T.disabled(T.color("input"), true) !important;
-        color: T.muted(T.color("input"), T.color("foreground")) !important;
+        background: T.variant("input", "disabled") !important;
+        border-color: T.variant("input", "disabled-border") !important;
+        color: T.variant("input", "disabled-color") !important;
     }
 }

@@ -3,7 +3,7 @@
 @use "sass:map";
 @use "sass:color";
 @use "sass:string";
-@use "func";
+@use "helper";
 
 // define color and hues
 // see http://www.workwithcolor.com/
@@ -77,24 +77,20 @@ $-mix: (
 
 @function -validate($var) {
     $valids: "50" "100" "200" "300" "400" "500" "600" "700" "800" "900";
-    $var: func.string-of($var, "palette", "variant");
+    $var: helper.string-of($var, "palette", "variant");
     @if list.index($valids, $var) == null {
-        @error func.throw($var, "palette", "variant", "variant");
+        @error helper.throw($var, "palette", "variant", "variant");
     }
     @return $var;
 }
 
-@function palette-of($color, $variant) {
-    $color: func.color-of($color, "palette-of", "color");
+@function palette($color, $variant) {
+    $color: helper.color-of($color, "palette", "color");
     $variant: -validate($variant);
     $data: map.get($-mix, $variant);
     @if $data != null {
         $amount: list.nth($data, 1);
-        $base: if(
-            list.nth($data, 2) == brightest,
-            -brightest($color),
-            -darkest($color)
-        );
+        $base: if(list.nth($data, 2) == brightest, -brightest($color), -darkest($color));
         @return color.mix($base, $color, $amount);
     }
     @return $color;

@@ -1,0 +1,12 @@
+@use "helper";
+
+@function negate($value) {
+    $value: helper.number-of($value, "negate", "value");
+    @return -$value;
+}
+
+@mixin unify-parent($child) {
+    @at-root #{selector.unify(&, $child)} {
+        @content;
+    }
+}

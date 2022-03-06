@@ -1,31 +1,32 @@
 @use "../termeh" as T;
 
-$-colors: T.var("meta", "colors", ());
-
 .meta {
-    @include T.unselectable();
-
     display: inline-block;
     text-decoration: none;
     background: none;
     white-space: nowrap;
-    color: T.muted(T.color("background"), T.color("foreground"));
+    color: T.variant("shade", "mute");
+    line-height: T.var("line-height", "inline", 1.6em);
+    @include T.unselectable();
 
     &.is-action {
         cursor: pointer;
+        color: T.color("shade");
 
         &:hover {
             text-decoration: none;
-            color: T.color("foreground");
+            color: T.variant("shade", "readable");
         }
     }
 
-    @each $name, $color in T.colors($-colors) {
+    @each $name, $color in T.colors(T.var("meta", "colors", ())) {
         &.is-#{$name} {
-            color: T.muted(T.color("background"), $color);
+            &:not(.is-action) {
+                color: T.variant($name, "mute");
+            }
 
             &.is-action:hover {
-                color: T.readable(T.color("background"), $color);
+                color: T.variant($name, "readable");
             }
         }
     }

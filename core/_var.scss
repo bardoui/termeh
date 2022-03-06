@@ -1,0 +1,34 @@
+@use "sass:map";
+@use "sass:list";
+@use "helper";
+
+$--vars: () !default;
+
+@function -vars($com) {
+    @return if(map.has-key($--vars, $com), map.get($--vars, $com), ());
+}
+
+@mixin define($com, $prop, $v) {
+    $com: helper.string-of($com, "define", "component");
+    $prop: helper.string-of($prop, "define", "property");
+    $vars: map.merge(-vars($com), helper.map-from($prop, $v));
+    $--vars: map.merge($--vars, helper.map-from($com, $vars)) !global;
+}
+
+@function var($com, $prop, $fallback: null) {
+    $com: helper.string-of($com, "var", "component");
+    $prop: helper.string-of($prop, "var", "property");
+    @return map.get(-vars($com), $prop) or $fallback;
+}
+
+@mixin ltr() {
+    @if var("base", "direction", null) == ltr {
+        @content;
+    }
+}
+
+@mixin rtl() {
+    @if var("base", "direction", null) == rtl {
+        @content;
+    }
+}
