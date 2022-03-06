@@ -180,17 +180,6 @@
     border-right-color: transparent;
     border-radius: 50%;
     animation: spin 500ms infinite linear;
-
-    @at-root {
-        @keyframes spin {
-            from {
-                transform: translate3d(-50%, -50%, 0) rotate(0deg);
-            }
-            to {
-                transform: translate3d(-50%, -50%, 0) rotate(360deg);
-            }
-        }
-    }
 }
 
 @mixin spinner-color($color) {
