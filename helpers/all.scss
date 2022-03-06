@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@forward "layout";
-@forward "visibility";
-@forward "typography";
-@forward "attachment";
+@forward "./layout.scss";
+@forward "./visibility.scss";
+@forward "./typography.scss";
+@forward "./attachment.scss";

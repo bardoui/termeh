@@ -1,9 +1,9 @@
 @charset "UTF-8";
-@use "core/color";
-@use "core/var";
-@use "core/font";
-@use "core/gap";
-@use "core/unit";
+@use "./core/color";
+@use "./core/var";
+@use "./core/font";
+@use "./core/gap";
+@use "./core/unit";
 
 // Color +overlay
 @include color.define-color("base", white);

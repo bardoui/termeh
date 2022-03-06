@@ -232,7 +232,7 @@ You can use `all.scss` file inside sub-directory to import all directory content
 // Color
 @mixin define-color($name, $color);
 @mixin define-palette($name, $color);
-// Default Ui Variants: active, active-inverse, light, light-inverse, readable, readable-inverse, mute, mute-inverse, color, color-inverse, decorator, decorator-inverse
+// Default Ui Variants: active, active-inverse, light, light-inverse, readable, readable-inverse, mute, mute-inverse, color, color-inverse, decorator, decorator-inverse, overlay
 @mixin define-variant($name, $variant, $color);
 @function color($name, $inverse: false);
 @function variant($name, $variant, $fallback: null);

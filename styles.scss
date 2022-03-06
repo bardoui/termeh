@@ -1,6 +1,6 @@
 @charset "UTF-8";
-@forward "base/minireset";
-@forward "base/generic";
-@forward "base/heading";
-@forward "base/image";
-@forward "base/table";
+@forward "./base/minireset.scss";
+@forward "./base/generic.scss";
+@forward "./base/heading.scss";
+@forward "./base/image.scss";
+@forward "./base/table.scss";
