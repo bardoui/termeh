@@ -8,29 +8,47 @@
     text-decoration: none;
     text-align: center;
     padding: 0 T.gap("micro");
-    color: T.variant("shade", "color");
-    background-color: T.color("shade");
     border-radius: T.var("radius", "normal");
     line-height: T.var("line-height", "inline", 1.6em);
     font-size: T.var("tag", "size");
     @include T.unselectable();
+    @include T.transition(all);
 
     > * {
         margin: auto;
     }
 
+    &.is-action {
+        cursor: pointer;
+    }
+
     &.is-loading {
-        color: T.color("shade");
-        @include T.loader(
-            1em,
-            T.variant("shade", "color"),
-            T.var("decorator", "size")
-        );
+        @include T.locked();
+        @include T.loader(1em, transparent, T.var("decorator", "size"));
+    }
+
+    &:not(.is-light) {
+        color: T.variant("shade", "color");
+        background-color: T.color("shade");
+
+        &.is-action:hover {
+            background: T.variant("shade", "active");
+        }
+
+        &.is-loading {
+            color: T.color("shade");
+            @include T.loader-color(T.variant("shade", "color"));
+        }
     }
 
     &.is-light {
-        background-color: T.variant("shade", "light");
         color: T.variant("shade", "readable");
+        background-color: T.variant("shade", "light");
+
+        &.is-action:hover {
+            background: T.color("shade");
+            color: T.variant("shade", "color");
+        }
 
         &.is-loading {
             color: T.variant("shade", "light");
@@ -50,17 +68,28 @@
 
     @each $name, $color in T.colors(T.var("tag", "colors", ())) {
         &.is-#{$name} {
-            background-color: $color;
-            color: T.variant($name, "color");
+            &:not(.is-light) {
+                background-color: $color;
+                color: T.variant($name, "color");
 
-            &.is-loading {
-                color: $color;
-                @include T.loader-color(T.variant($name, "color"));
+                &.is-action:hover {
+                    background: T.variant($name, "active");
+                }
+
+                &.is-loading {
+                    color: $color;
+                    @include T.loader-color(T.variant($name, "color"));
+                }
             }
 
             &.is-light {
                 background-color: T.variant($name, "light");
                 color: T.variant($name, "readable");
+
+                &.is-action:hover {
+                    background: $color;
+                    color: T.variant($name, "color");
+                }
 
                 &.is-loading {
                     color: T.variant($name, "light");
