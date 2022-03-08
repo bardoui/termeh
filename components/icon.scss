@@ -78,8 +78,12 @@
                 color: T.variant($name, "readable");
             }
 
-            &.is-action :hover {
-                color: T.variant($name, "readable");
+            &.is-action {
+                color: T.variant($name, "mute");
+
+                :hover {
+                    color: T.variant($name, "readable");
+                }
             }
 
             &.is-loading {
