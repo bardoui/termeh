@@ -96,10 +96,10 @@
     &.is-disabled {
         color: T.variant("input", "disabled-color") !important;
         @include T.locked();
+        opacity: 0.25;
 
         > img {
             filter: grayscale(1) !important;
-            opacity: 0.25;
         }
     }
 }

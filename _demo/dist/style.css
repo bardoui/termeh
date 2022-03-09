@@ -692,6 +692,12 @@ table.is-success thead tr th.is-desc {
   border-left-color: #088048;
   border-bottom-color: #088048;
 }
+.tag:disabled, .tag.is-disabled, fieldset[disabled] .tag {
+  background: #f0f2f5 !important;
+  color: #879aab !important;
+  pointer-events: none;
+  user-select: none;
+}
 
 .button {
   transition: all 250ms ease;
@@ -1587,10 +1593,10 @@ table.is-success thead tr th.is-desc {
   color: #879aab !important;
   pointer-events: none;
   user-select: none;
+  opacity: 0.25;
 }
 .icon:disabled > img, .icon.is-disabled > img {
   filter: grayscale(1) !important;
-  opacity: 0.25;
 }
 
 .link {
@@ -1659,6 +1665,12 @@ table.is-success thead tr th.is-desc {
 .link.is-success {
   color: #088048;
 }
+.link:disabled, .link.is-disabled {
+  color: #879aab !important;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.25;
+}
 
 .meta {
   display: inline-block;
@@ -1704,6 +1716,12 @@ table.is-success thead tr th.is-desc {
 }
 .meta.is-success.is-action:hover {
   color: #088048;
+}
+.meta:disabled, .meta.is-disabled {
+  color: #879aab !important;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.25;
 }
 
 .input {
@@ -2819,6 +2837,7 @@ fieldset[disabled] label.radio input {
   align-items: center;
   justify-content: flex-start;
   box-sizing: border-box;
+  flex-wrap: nowrap;
 }
 .gaper > * {
   flex: 0 0 auto;
@@ -2848,7 +2867,6 @@ fieldset[disabled] label.radio input {
   width: unset;
 }
 .gaper.is-auto {
-  flex-wrap: wrap;
   margin: -0.5rem;
 }
 .gaper.is-auto > * {
@@ -2895,9 +2913,6 @@ fieldset[disabled] label.radio input {
 }
 .gaper.is-auto.is-massive-gaped > * {
   margin: 1.5em;
-}
-.gaper:not(.is-auto) {
-  flex-wrap: nowrap;
 }
 .gaper:not(.is-auto) > .separator,
 .gaper:not(.is-auto) > .gutter {
@@ -2970,6 +2985,9 @@ fieldset[disabled] label.radio input {
 .gaper:not(.is-auto).is-massive-gaped.is-stacked > .gutter, .gaper:not(.is-auto).is-massive-gaped.is-stacked-reverse > .separator,
 .gaper:not(.is-auto).is-massive-gaped.is-stacked-reverse > .gutter {
   margin: 1.5em 0;
+}
+.gaper.is-wrap {
+  flex-wrap: wrap;
 }
 .gaper.is-stretch-aligned {
   align-items: stretch;

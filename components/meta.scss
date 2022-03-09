@@ -30,4 +30,11 @@
             }
         }
     }
+
+    &:disabled,
+    &.is-disabled {
+        color: T.variant("input", "disabled-color") !important;
+        @include T.locked();
+        opacity: 0.25;
+    }
 }
