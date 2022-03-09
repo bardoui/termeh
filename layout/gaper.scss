@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: flex-start;
     box-sizing: border-box;
+    flex-wrap: nowrap;
 
     > * {
         flex: 0 0 auto;
@@ -45,7 +46,6 @@
     }
 
     &.is-auto {
-        flex-wrap: wrap;
         margin: T.negate(T.gap("micro"));
 
         > * {
@@ -64,7 +64,6 @@
     }
 
     &:not(.is-auto) {
-        flex-wrap: nowrap;
         > .separator,
         > .gutter {
             margin: 0 T.gap("micro");
@@ -94,6 +93,10 @@
                 }
             }
         }
+    }
+
+    &.is-wrap {
+        flex-wrap: wrap;
     }
 
     $-aligns: stretch, flex-start, flex-end, center, baseline;

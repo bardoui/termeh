@@ -373,7 +373,7 @@ You can use `all.scss` file inside sub-directory to import all directory content
 - **content**: `is-centered`, `is-loading`, `is-overlaid`, `is-paddingless`, `is-{gap}-padded`, `is-{color}`
   - **Variables** _[content]_: `gaps`, `colors`
   - **.overlay**
-- **gaper**: `is-stacked`, `is-stacked-reverse`, `is-auto`,`is-{gap}-gaped`, `is-{align}-aligned`, `is-{justify}-justified`, `is-{device}-stacked`, `is-{device}-stacked-reverse`, `is-{device}-{align}-aligned`, `is-{device}-{justify}-justified`
+- **gaper**: `is-stacked`, `is-stacked-reverse`, `is-wrap`, `is-auto`,`is-{gap}-gaped`, `is-{align}-aligned`, `is-{justify}-justified`, `is-{device}-stacked`, `is-{device}-stacked-reverse`, `is-{device}-{align}-aligned`, `is-{device}-{justify}-justified`
 
   - **Variables** _[gaper]_: `gaps`
   - **.filler**
