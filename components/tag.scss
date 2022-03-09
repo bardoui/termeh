@@ -46,8 +46,11 @@
         background-color: T.variant("shade", "light");
 
         &.is-action:hover {
-            background: T.color("shade");
-            color: T.variant("shade", "color");
+            background: T.variant(
+                "shade",
+                "light-active",
+                T.variant("shade", "mute")
+            );
         }
 
         &.is-loading {
@@ -87,8 +90,11 @@
                 color: T.variant($name, "readable");
 
                 &.is-action:hover {
-                    background: $color;
-                    color: T.variant($name, "color");
+                    background: T.variant(
+                        $name,
+                        "light-active",
+                        T.variant($name, "mute")
+                    );
                 }
 
                 &.is-loading {

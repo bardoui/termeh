@@ -17,9 +17,7 @@
         color: T.variant("shade", "readable");
 
         &:hover {
-            text-decoration: none;
-            background-color: T.color("shade");
-            color: T.variant("shade", "color");
+            background-color: T.variant("shade", "light-active");
         }
 
         &.is-loading {
@@ -33,11 +31,10 @@
         }
     }
 
-    &.is-simple {
+    &.is-simple:not(.is-light) {
         color: T.variant("shade", "readable");
 
         &:hover {
-            text-decoration: none;
             background-color: T.variant("shade", "light");
         }
 
@@ -56,6 +53,10 @@
         border-radius: T.var("radius", "rounded");
     }
 
+    &:hover {
+        text-decoration: none;
+    }
+
     &:focus,
     &:active {
         box-shadow: 0 0 0 T.var("decorator", "size") rgba(T.color("shade"), 0.4);
@@ -69,7 +70,7 @@
 
     @each $name, $color in T.colors(T.var("button", "colors", ())) {
         &.is-#{$name} {
-            &:not(.is-simple) {
+            &:not(.is-simple):not(.is-light) {
                 background-color: $color;
                 color: T.variant($name, "color");
 
@@ -83,7 +84,7 @@
                 }
             }
 
-            &.is-simple {
+            &.is-simple:not(.is-light) {
                 color: T.variant($name, "readable");
 
                 &:hover {
@@ -92,6 +93,20 @@
 
                 &.is-loading {
                     color: transparent;
+                    @include T.loader-color(T.variant($name, "readable"));
+                }
+            }
+
+            &.is-light:not(.is-simple) {
+                background-color: T.variant($name, "light");
+                color: T.variant($name, "readable");
+
+                &:hover {
+                    background-color: T.variant($name, "light-active");
+                }
+
+                &.is-loading {
+                    color: T.variant($name, "light");
                     @include T.loader-color(T.variant($name, "readable"));
                 }
             }

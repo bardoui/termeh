@@ -232,7 +232,7 @@ You can use `all.scss` file inside sub-directory to import all directory content
 // Color
 @mixin define-color($name, $color);
 @mixin define-palette($name, $color);
-// Default Ui Variants: active, active-inverse, light, light-inverse, readable, readable-inverse, mute, mute-inverse, color, color-inverse, decorator, decorator-inverse, overlay
+// Default Ui Variants: active, active-inverse, light, light-inverse, light-active, light-active-inverse, readable, readable-inverse, mute, mute-inverse, color, color-inverse, decorator, decorator-inverse, overlay
 @mixin define-variant($name, $variant, $color);
 @function color($name, $inverse: false);
 @function variant($name, $variant, $fallback: null);
@@ -306,7 +306,7 @@ You can use `all.scss` file inside sub-directory to import all directory content
 
 ### Components
 
-- **button**: `is-loading`, `is-rounded`, `is-disabled`, `is-simple`, `is-{size}`, `is-{color}`
+- **button**: `is-loading`, `is-rounded`, `is-disabled`, `is-simple`, `is-light`, `is-{size}`, `is-{color}`
 
   - **Variables** _[button]_: `colors`, `sizes`
 
@@ -328,7 +328,7 @@ You can use `all.scss` file inside sub-directory to import all directory content
   - **Variables** _[link]_: `colors`
 - **meta**: `is-action`, `is-{color}`
   - **Variables** _[meta]_: `colors`
-- **tag**: `is-loading`, `is-light`, `is-rounded`, `is-{size}`, `is-{color}`
+- **tag**: `is-loading`, `is-light`, `is-action`, `is-rounded`, `is-{size}`, `is-{color}`
   - **Variables** _[tag]_: `size`, `sizes`, `colors`
 
 ### Form

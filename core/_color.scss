@@ -25,13 +25,13 @@ $--colors: () !default;
 @function -active($color) {
     $base: -color("base", white);
     $tone: contrast.tone($base);
-    @return palette.palette($color, if($tone == "light", "600", "400"));
+    @return palette.palette($color, if($tone == "light", "700", "300"));
 }
 
 @function -active-i($color) {
     $base: -color("inverse", black);
     $tone: contrast.tone($base);
-    @return palette.palette($color, if($tone == "light", "600", "400"));
+    @return palette.palette($color, if($tone == "light", "700", "300"));
 }
 
 @function -light($color) {
@@ -46,6 +46,19 @@ $--colors: () !default;
     $tone: contrast.tone($base);
     $color: palette.palette($color, if($tone == "light", "800", "200"));
     @return sassCol.mix($base, $color, 85%);
+}
+@function -light-active($color) {
+    $base: -color("base", white);
+    $tone: contrast.tone($base);
+    $color: palette.palette($color, if($tone == "light", "800", "200"));
+    @return sassCol.mix($base, $color, 75%);
+}
+
+@function -light-active-i($color) {
+    $base: -color("inverse", black);
+    $tone: contrast.tone($base);
+    $color: palette.palette($color, if($tone == "light", "800", "200"));
+    @return sassCol.mix($base, $color, 75%);
 }
 
 @function -readable($color) {
@@ -158,6 +171,10 @@ $--colors: () !default;
             @return -light($color);
         } @else if $variant == "light-inverse" {
             @return -light-i($color);
+        } @else if $variant == "light-active" {
+            @return -light-active($color);
+        } @else if $variant == "light-active-inverse" {
+            @return -light-active-i($color);
         } @else if $variant == "readable" {
             @return -readable($color);
         } @else if $variant == "readable-inverse" {
