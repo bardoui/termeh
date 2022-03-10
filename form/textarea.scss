@@ -11,6 +11,7 @@ textarea {
     border: 1px solid
         T.variant("input", "border", T.variant("base", "separator"));
     border-radius: T.var("radius", "normal");
+    line-height: T.var("line-height", "normal");
 
     &:not([rows]) {
         max-height: 40em;
