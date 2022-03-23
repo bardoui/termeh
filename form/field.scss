@@ -11,6 +11,10 @@
         margin-bottom: T.gap("micro");
     }
 
+    > * {
+        line-height: 1em !important;
+    }
+
     > label,
     .help {
         display: block;
@@ -43,7 +47,7 @@
     }
 
     &.is-failed {
-        animation: shake .5s ease;
+        animation: shake 0.5s ease;
         .input,
         .input-like {
             border-color: T.color("error");
