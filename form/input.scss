@@ -86,4 +86,8 @@
     &.is-disabled {
         @include T.disabled();
     }
+
+    > * {
+        line-height: 1em !important;
+    }
 }
