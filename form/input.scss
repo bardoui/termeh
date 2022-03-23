@@ -53,6 +53,7 @@
 
     &.is-failed {
         border-color: T.color("error");
+        animation: shake .5s ease;
     }
 
     @each $name, $gap in T.gaps(T.var("input", "gaps", ())) {

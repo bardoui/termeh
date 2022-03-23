@@ -2,6 +2,7 @@
 
 .table-container {
     display: block;
+    overflow-y: visible;
     overflow-x: auto;
     @include T.overflow-touch();
     @include T.scrollable(T.color("primary"));

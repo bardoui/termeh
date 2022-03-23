@@ -252,8 +252,14 @@ table td:not([align]),
 table th:not([align]) {
   text-align: inherit;
 }
-p:not(:last-child):not(.is-marginless) {
+p:not(:last-child):not(.is-marginless),
+ol:not(:last-child):not(.is-marginless),
+ul:not(:last-child):not(.is-marginless) {
   margin-bottom: 1.6rem;
+}
+
+li:not(:last-child):not(.is-marginless) {
+  margin-bottom: 0.5rem;
 }
 
 @keyframes spin {
@@ -262,6 +268,17 @@ p:not(:last-child):not(.is-marginless) {
   }
   to {
     transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+}
+@keyframes shake {
+  5%, 40% {
+    transform: translateX(-5px);
+  }
+  25%, 60% {
+    transform: translateX(5px);
+  }
+  0%, 100% {
+    transform: translateX(0);
   }
 }
 h1,
@@ -338,6 +355,7 @@ img.is-massive {
 
 .table-container {
   display: block;
+  overflow-y: visible;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -1799,6 +1817,7 @@ table.is-success thead tr th.is-desc {
 }
 .input.is-failed {
   border-color: #c00021;
+  animation: shake 0.5s ease;
 }
 .input.is-mini-gaped > .separator {
   margin: 0 0.25em;
@@ -1902,6 +1921,7 @@ textarea {
   background-color: white;
   border: 1px solid #e1e6ea;
   border-radius: 3px;
+  line-height: 1.6em;
 }
 textarea:focus, textarea.is-focused, textarea:active, textarea.is-active {
   outline: none;
@@ -1941,6 +1961,7 @@ textarea:focus, textarea.is-focused {
 }
 textarea.is-failed, textarea:invalid {
   border-color: #c00021;
+  animation: shake 0.5s ease;
 }
 textarea.is-shade:focus, textarea.is-shade.is-focused {
   border-color: #8d99ae;
@@ -2035,6 +2056,7 @@ select:focus, select.is-focused {
 }
 select.is-failed, select:invalid {
   border-color: #c00021;
+  animation: shake 0.5s ease;
 }
 select.is-shade {
   accent-color: #8d99ae;
@@ -2170,6 +2192,9 @@ fieldset[disabled] label.radio input {
 }
 .field.is-success.is-required > label::after {
   color: #088048;
+}
+.field.is-failed {
+  animation: shake 0.5s ease;
 }
 .field.is-failed .input,
 .field.is-failed .input-like {

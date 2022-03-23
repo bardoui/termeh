@@ -164,6 +164,14 @@ table {
     }
 }
 
-p:not(:last-child):not(.is-marginless) {
-    margin-bottom: T.gap("macro");
+p,
+ol,
+ul {
+    &:not(:last-child):not(.is-marginless) {
+        margin-bottom: T.gap("macro");
+    }
+}
+
+li:not(:last-child):not(.is-marginless) {
+    margin-bottom: T.gap("micro");
 }

@@ -34,6 +34,7 @@ textarea {
     &.is-failed,
     &:invalid {
         border-color: T.color("error");
+        animation: shake .5s ease;
     }
 
     @each $name, $color in T.colors(T.var("input", "colors", ())) {
