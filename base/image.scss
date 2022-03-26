@@ -10,4 +10,12 @@ img {
             width: $size;
         }
     }
+
+    &.is-rounded {
+        border-radius: T.var("radius", "normal");
+    }
+
+    &.is-circular {
+        border-radius: T.var("radius", "circle");
+    }
 }

@@ -294,7 +294,7 @@ You can use `all.scss` file inside sub-directory to import all directory content
 - **hr**: `is-marginless`
 - **p**: `is-marginless`
 - **h[1-6]**: `is-marginless`
-- **img**: `is-centered`, `is-{size}`
+- **img**: `is-centered`, `is-{size}`, `is-rounded`, `is-circular`
   - **Variables** _[image]_: `sizes`
 - **table**: `is-fullwidth`, `is-stripped`, `is-hoverable`, `is-{color}`
   - **Variables** _[table]_: `colors`
