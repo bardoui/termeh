@@ -279,6 +279,7 @@ You can use `all.scss` file inside sub-directory to import all directory content
 @mixin placeholder;
 @mixin reset();
 @mixin control();
+@mixin selection($name); // set color selection from registered color
 @mixin scrollbar($width, $track: null, $thumb: null, $thumb-hover: null);
 @mixin scrollable($color);
 @mixin scroll-color($color);

@@ -39,6 +39,8 @@
                     color: T.variant($name, "readable");
                 }
             }
+
+            @include T.selection($name);
         }
     }
 

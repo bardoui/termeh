@@ -352,6 +352,12 @@ img.is-huge {
 img.is-massive {
   width: 3em;
 }
+img.is-rounded {
+  border-radius: 3px;
+}
+img.is-circular {
+  border-radius: 50%;
+}
 
 .table-container {
   display: block;
@@ -1895,6 +1901,9 @@ fieldset[disabled] .input, .input.is-disabled {
   background-color: #f0f2f5;
   border-color: #e1e6ea;
   color: #879aab;
+}
+.input > * {
+  line-height: 1em !important;
 }
 
 textarea {

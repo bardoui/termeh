@@ -46,5 +46,7 @@ $text-aligns: left right center justify;
 @each $name, $color in T.colors() {
     .is-#{$name}-colored {
         color: T.variant($name, "readable");
+
+        @include T.selection($name);
     }
 }

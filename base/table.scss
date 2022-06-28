@@ -151,6 +151,8 @@ table {
                     border-bottom-color: $color;
                 }
             }
+
+            @include T.selection($name);
         }
     }
 }

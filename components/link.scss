@@ -31,10 +31,11 @@
     @each $name, $color in T.colors(T.var("link", "colors", ())) {
         &.is-#{$name} {
             color: T.variant($name, "readable");
+
+            @include T.selection($name);
         }
     }
 
-    
     &:disabled,
     &.is-disabled {
         color: T.variant("input", "disabled-color") !important;

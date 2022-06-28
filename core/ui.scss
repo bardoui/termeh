@@ -122,6 +122,15 @@
     }
 }
 
+@mixin selection($name) {
+    $name: helper.string-of($name, "selection", "name");
+
+    &::selection {
+        background-color: T.color($name);
+        color: T.variant($name, "color");
+    }
+}
+
 @mixin scrollbar($width, $track: null, $thumb: null, $thumb-hover: null) {
     $width: helper.number-of($width, "scrollbar", "width");
     $track: helper.color-of($track, "scrollbar", "track");

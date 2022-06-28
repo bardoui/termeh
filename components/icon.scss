@@ -89,6 +89,8 @@
             &.is-loading {
                 @include T.loader-color(T.variant($name, "readable"));
             }
+
+            @include T.selection($name);
         }
     }
 

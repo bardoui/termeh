@@ -34,7 +34,7 @@ textarea {
     &.is-failed,
     &:invalid {
         border-color: T.color("error");
-        animation: shake .5s ease;
+        animation: shake 0.5s ease;
     }
 
     @each $name, $color in T.colors(T.var("input", "colors", ())) {
@@ -44,10 +44,7 @@ textarea {
                 border-color: $color;
             }
 
-            &::selection {
-                background-color: $color;
-                color: T.variant($name, "color");
-            }
+            @include T.selection($name);
         }
     }
 

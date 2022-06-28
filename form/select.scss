@@ -36,11 +36,8 @@ select {
             &.is-focused {
                 border-color: $color;
             }
-
-            &::selection {
-                background-color: $color;
-                color: T.variant($name, "color");
-            }
+            
+            @include T.selection($name);
         }
     }
 
