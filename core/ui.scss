@@ -125,7 +125,7 @@
 @mixin selection($name) {
     $name: helper.string-of($name, "selection", "name");
 
-    &::selection {
+    &::selection, *::selection {
         background-color: color.color($name);
         color: color.variant($name, "color");
     }
