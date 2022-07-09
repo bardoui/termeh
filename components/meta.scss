@@ -4,7 +4,6 @@
     display: inline-block;
     text-decoration: none;
     background: none;
-    white-space: nowrap;
     color: T.variant("shade", "mute");
     line-height: T.var("line-height", "inline", 1.6em);
     @include T.unselectable();
@@ -17,6 +16,10 @@
             text-decoration: none;
             color: T.variant("shade", "readable");
         }
+    }
+
+    &:not(.is-wrap){
+        white-space: nowrap;
     }
 
     @each $name, $color in T.colors(T.var("meta", "colors", ())) {

@@ -3,7 +3,6 @@
 .tag {
     display: inline-flex;
     width: auto;
-    white-space: nowrap;
     overflow: hidden;
     text-decoration: none;
     text-align: center;
@@ -57,6 +56,10 @@
             color: T.variant("shade", "light");
             @include T.loader-color(T.variant("shade", "readable"));
         }
+    }
+
+    &:not(.is-wrap){
+        white-space: nowrap;
     }
 
     &.is-rounded {
